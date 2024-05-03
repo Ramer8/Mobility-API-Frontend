@@ -1,0 +1,360 @@
+.managmentDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userContainer {
+    border: .5px solid gray;
+    padding: 1em;
+    border-radius: 1em;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50%;
+}
+
+.fulltableUser {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.messageTable {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2em;
+    color: crimson;
+    font-weight: 700;
+    opacity: .8;
+}
+
+.postContainerTable {
+    /* max-width: 62%; */
+    /* max-height: 20vh; */
+    border: .5px solid gray;
+    height: 50%;
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.postsTable {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.fulltablePost {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.userTable {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.datePost {
+    display: flex;
+}
+
+.preHeader {
+    display: flex;
+    border-bottom: 1px solid gray;
+    padding-bottom: .5em;
+    gap: 1em;
+
+}
+
+.leftSide {
+    flex: 1;
+    font-size: 1.5em;
+}
+
+.searchBar {
+    display: flex;
+}
+
+
+.deleteUsers {
+
+    flex: none;
+    padding-right: 1em;
+    border: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.deleteUsers:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.headerTitle {
+    font-weight: 700;
+    padding-top: .1em;
+    padding-bottom: .2em;
+    border-bottom: .1em solid gray;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.header,
+.row {
+
+    display: table-row;
+}
+
+.idUser {
+    text-overflow: hidden;
+    white-space: nowrap;
+    overflow: scroll;
+    overflow: hidden;
+}
+
+
+.header>div,
+.row>div {
+
+    display: table-cell;
+    padding: 8px;
+}
+
+.header>div {
+    font-weight: bold;
+
+}
+
+.row:nth-child(even) {
+
+    color: rgb(106, 150, 201);
+    /* Optional: Alternate row colors */
+}
+
+.body-container {
+    max-height: 400px;
+    width: 100%;
+    /* Set maximum height */
+    overflow-y: auto;
+    /* Enable vertical scroll */
+}
+
+/* =================checkbox css */
+@supports(-webkit-appearance: none) or (-moz-appearance: none) {
+
+    input[type='checkbox'] {
+        /* color: crimson; */
+        --active-inner: crimson;
+        --border: #8492A6;
+        --background: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 21px;
+        outline: none;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        border: 1px solid var(--bc, var(--border));
+        background: var(--b, var(--background));
+        transition: background .3s, border-color .3s, ;
+
+        &:after {
+            content: '';
+            display: block;
+            left: 0;
+            top: 0;
+            position: absolute;
+            transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
+        }
+
+
+
+        &:not(.switch) {
+            width: 21px;
+
+            &:after {
+                opacity: var(--o, 0);
+            }
+
+            &:checked {
+                --o: 1;
+            }
+        }
+
+    }
+
+    input[type='checkbox'] {
+        &:not(.switch) {
+            border-radius: 7px;
+
+            &:after {
+                width: 5px;
+                height: 9px;
+                border: 2px solid var(--active-inner);
+                border-top: 0;
+                border-left: 0;
+                left: 7px;
+                top: 4px;
+                transform: rotate(var(--r, 20deg));
+            }
+
+            &:checked {
+                --r: 43deg;
+            }
+        }
+
+        &.switch {
+            width: 38px;
+            border-radius: 11px;
+
+            &:after {
+                left: 2px;
+                top: 2px;
+                border-radius: 50%;
+                width: 15px;
+                height: 15px;
+                background: var(--ab, var(--border));
+                transform: translateX(var(--x, 0));
+            }
+
+            &:checked {
+                --ab: var(--active-inner);
+                --x: 17px;
+            }
+
+            &:disabled {
+                &:not(:checked) {
+                    &:after {
+                        opacity: .6;
+                    }
+                }
+            }
+        }
+    }
+
+    input[type='radio'] {
+        border-radius: 50%;
+
+        &:after {
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            background: var(--active-inner);
+            opacity: 0;
+            transform: scale(var(--s, .7));
+        }
+
+        &:checked {
+            --s: .5;
+        }
+    }
+}
+
+
+ul {
+    margin: 12px;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    max-width: 320px;
+
+    li {
+        margin: 16px 0;
+        position: relative;
+    }
+}
+
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+/* // Center & dribbble */
+body {
+    /* min-height: 100vh; */
+    /* color: #8A91B4; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #F6F8FF; */
+
+}
+
+/* @media(max-width: 800px) {
+    padding: 20px;
+} */
+
+@media (prefers-color-scheme: light) {
+    input[type='checkbox'] {
+        --border: black;
+    }
+}
+
+
+
+@media (min-width: 200px) {
+
+    .userContainer,
+    .table,
+    .preHeader,
+    .header {
+        width: 100%;
+        overflow-x: scroll;
+
+    }
+}
+
+
+
+@media (min-width: 300px) {
+
+    .userContainer,
+    .table,
+    .preHeader,
+    .header {
+        width: 100%;
+        overflow-x: scroll;
+
+    }
+}
+
+@media (min-width: 500px) {
+
+    .userContainer,
+    .table,
+    .header {
+        width: max-content;
+        overflow-x: scroll;
+
+    }
+}
+
+.postContainer {
+    margin-top: 1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+
+}

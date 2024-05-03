@@ -1,0 +1,63 @@
+/* .postDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.myPostContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.titlePostContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.leftSide {
+    margin-inline: 1em;
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.postList {
+    min-width: 70%;
+    height: 59vh;
+    width: 100%;
+    /* overflow-x: hidden; */
+}
+
+/*** SWIPE LIST OVERRIDES **/
+.swipe-action__leading {
+    background-color: blue;
+    color: whitesmoke;
+    margin-bottom: .5rem;
+    border-radius: .2em;
+}
+
+.swipe-action__trailing {
+    background-color: red;
+    margin-bottom: .5rem;
+    border-radius: .2em;
+    color: whitesmoke;
+}
+
+.swipeable-list .swipe-action {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}

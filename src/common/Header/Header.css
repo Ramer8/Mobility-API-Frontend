@@ -1,0 +1,33 @@
+.headerDesign {
+    height: 10vh;
+    width: 100vw;
+
+    /* border-bottom: solid 1px rgba(60, 72, 88, .15); */
+    -webkit-box-shadow: 0 0 3px rgba(60, 72, 88, .15);
+    box-shadow: 0 0 3px rgba(60, 72, 88, .15);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .headerDesign {
+        color: #8492a6;
+        background-color: #1b2836;
+        -webkit-box-shadow: 0 0 3px #8492a6;
+        box-shadow: 0 0 3px #8492a6;
+    }
+
+    .navigateDesign {
+        color: #8492a6;
+    }
+}

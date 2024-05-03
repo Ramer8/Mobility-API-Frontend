@@ -1,0 +1,23 @@
+.registerDesign {
+    height: 90vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+label {
+    color: #8492a6;
+}
+
+.error {
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    width: max-content;
+    border-radius: 2em;
+    padding: 1em;
+}

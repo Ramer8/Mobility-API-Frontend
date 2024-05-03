@@ -1,0 +1,125 @@
+.post {
+    transition: all .5s ease-out;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* max-width: 30em; */
+    width: 100%;
+    color: #9ea9b8;
+    font-weight: 500;
+    margin-bottom: .5em;
+    /* border: 1px solid #ffffff40; */
+    gap: .3em;
+    padding: 1em;
+    border-radius: .5em;
+
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(42, 61, 82)
+        /* background-color: whitesmoke; */
+
+}
+
+.postHighlighted {
+    background-color: rgb(42, 45, 82)
+        /* background-color: red; */
+}
+
+@media (prefers-color-scheme: light) {
+    .postHighlighted {
+        background-color: rgba(218, 218, 218, 0.20) !important;
+    }
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .hoverPostText {
+    visibility: hidden;
+    width: auto;
+    text-align: center;
+    flex: row;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    margin: 0em 15em;
+    transition: 0.3s;
+}
+
+.tooltip:hover .hoverPostText {
+    visibility: visible;
+}
+
+.headerPost {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.postOwner {
+    color: lightgrey;
+}
+
+@media (prefers-color-scheme: light) {
+    .postOwner {
+        color: dimgray;
+    }
+
+    .post {
+        background-color: rgba(218, 218, 218, 0.700);
+    }
+}
+
+.date {
+    color: black;
+    font-size: .8em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.postContent {
+    color: #386cf0;
+    cursor: pointer;
+}
+
+.postContent:hover {
+    color: #90a7e1;
+    border-radius: .5em;
+}
+
+.iconsInteraction {
+    font-size: .9em;
+    margin-inline: .5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.likesElements {
+    gap: .5em;
+    flex-direction: row;
+    display: flex;
+}
+
+.newPost {
+    /* margin: .5em .1em; */
+    /* border: 1px solid #ffffff40; */
+    width: 100%;
+    border-radius: 1em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: whitesmoke;
+
+}
