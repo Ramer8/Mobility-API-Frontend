@@ -76,6 +76,9 @@ export const fetchMyProfile = async (token) => {
 }
 
 export const updateProfile = async (data, token) => {
+  console.log(data, "los enviados")
+  console.log(`${import.meta.env.VITE_API_URL}profile`)
+
   const options = {
     method: "PUT",
     headers: {
@@ -87,7 +90,7 @@ export const updateProfile = async (data, token) => {
 
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/users/profile`,
+      `${import.meta.env.VITE_API_URL}users/profile`,
       options
     )
 

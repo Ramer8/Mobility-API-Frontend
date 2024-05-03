@@ -21,12 +21,10 @@ const Profile = () => {
   const [loadedData, setLoadedData] = useState(false)
 
   const [user, setUser] = useState({
-    name: "",
-    gender: "",
-    birthday: "",
-    address: "",
+    userName: "",
     phone: "",
-    bio: "",
+    address: "",
+    payment: "",
   })
 
   const [userError, setUserError] = useState({
@@ -95,7 +93,10 @@ const Profile = () => {
         }
         setLoadedData(true)
         setUser({
-          name: fetched.data.name,
+          userName: fetched.data.userName,
+          phone: fetched.data.phone,
+          address: fetched.data.address,
+          payment: fetched.data.payment,
         })
       } catch (error) {
         console.error(error)
@@ -108,20 +109,16 @@ const Profile = () => {
 
   const updateData = async () => {
     if (!userError.name) {
-      console.log(user)
       try {
         const fetched = await updateProfile(user, rdxUser.credentials.token)
 
         toast.success(fetched.message, { theme: "dark", autoClose: 500 })
         setUser({
-          name: fetched.data.name,
-          gender: fetched.data.gender,
-          birthday: fetched.data.birthday,
-          address: fetched.data.address,
-          phone: fetched.data.phone,
-          bio: fetched.data.bio,
+          userName: fetched.userNameUpdated,
+          address: fetched.addressUpdated,
+          phone: fetched.phoneUpdated,
+          payment: fetched.paymentUpdated,
         })
-        console.log(fetched)
         setWrite("disabled")
       } catch (error) {
         console.log(error)
@@ -130,11 +127,11 @@ const Profile = () => {
       return
     }
   }
-  // useEffect(() => {
-  //   toast.dismiss()
+  useEffect(() => {
+    toast.dismiss()
 
-  //   userError.nameError && toast.warn(userError.nameError, { theme: "dark" })
-  // }, [userError, write])
+    userError.nameError && toast.warn(userError.nameError, { theme: "dark" })
+  }, [userError, write])
 
   return (
     <>
@@ -153,22 +150,22 @@ const Profile = () => {
                 alt="profilePic"
               />
               <div className="titlePic">Upload picture</div>
-              <div className="advicePicture">
+              {/* <div className="advicePicture">
                 For best results, use an image at least 256px by 256px in either
                 .jpg or .png format
-              </div>
-              <div className="buttonsPicture">
-                <CustomButton
-                  className={"primaryButton uploadProfile"}
-                  title={"Upload"}
-                  functionEmit={() => setWrite("")}
-                />
-                <CustomButton
-                  className={" primaryButton removeProfile"}
-                  title={"Remove"}
-                  functionEmit={() => setWrite("")}
-                />
-              </div>
+              </div> */}
+            </div>
+            <div className="buttonsPicture">
+              <CustomButton
+                className={"primaryButton uploadProfile"}
+                title={"Upload"}
+                functionEmit={() => setWrite("")}
+              />
+              <CustomButton
+                className={" primaryButton removeProfile"}
+                title={"Remove"}
+                functionEmit={() => setWrite("")}
+              />
             </div>
             <div className="formProfile">
               <label>Name:</label>
@@ -180,52 +177,13 @@ const Profile = () => {
                 }
                 type={"text"}
                 placeholder={""}
-                name={"name"}
+                name={"userName"}
                 disabled={write}
-                value={user.name || ""}
+                value={user.userName || ""}
                 functionChange={(e) => inputHandler(e)}
                 onBlurFunction={(e) => checkError(e)}
               />
-              <label>Gender:</label>
-              <div className="gender">
-                <div>
-                  <input
-                    type="radio"
-                    id="female"
-                    name="gender"
-                    disabled={write}
-                    value={"Female"}
-                    onChange={(e) => inputHandler(e)}
-                  />
-                  <label htmlFor="female">Female</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    id="male"
-                    name="gender"
-                    value={"Male"}
-                    onChange={(e) => inputHandler(e)}
-                  />
-                  <label htmlFor="male">Male</label>
-                </div>
-              </div>
 
-              <label>Birthday:</label>
-              <CustomInput
-                className={
-                  `inputDesign ${
-                    userError.nameError.length !== 0 ? "inputDesignError" : ""
-                  }` && ` inputDesign ${write === "" ? "" : "inputBlock"}`
-                }
-                type={"datetime-local"}
-                placeholder={""}
-                name={"birthday"}
-                disabled={write}
-                value={user.birthday || ""}
-                functionChange={(e) => inputHandler(e)}
-                // onBlurFunction={(e) => checkError(e)}
-              />
               <label>Address:</label>
               <CustomInput
                 className={
@@ -256,21 +214,41 @@ const Profile = () => {
                 functionChange={(e) => inputHandler(e)}
                 // onBlurFunction={(e) => checkError(e)}
               />
-              <label>Your Bio Here:</label>
-              <CustomInputTextArea
-                className={
-                  `inputDesign ${
-                    userError.nameError.length !== 0 ? "inputDesignError" : ""
-                  }` && ` inputDesign ${write === "" ? "" : "inputBlock"}`
-                }
-                type={"text"}
-                placeholder={""}
-                name={"bio"}
-                disabled={write}
-                value={user.bio || ""}
-                functionChange={(e) => inputHandler(e)}
-                // onBlurFunction={(e) => checkError(e)}
-              />
+              <label>Payment:</label>
+              <div className="gender">
+                <div>
+                  <input
+                    type="radio"
+                    id="debit"
+                    name="payment"
+                    disabled={write}
+                    value={"debit"}
+                    onChange={(e) => inputHandler(e)}
+                  />
+                  <label htmlFor="debit">Debit</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="credit"
+                    name="payment"
+                    value={"credit"}
+                    onChange={(e) => inputHandler(e)}
+                  />
+                  <label htmlFor="credit">Credit</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="cash"
+                    name="payment"
+                    value={"cash"}
+                    onChange={(e) => inputHandler(e)}
+                  />
+                  <label htmlFor="cash">Cash</label>
+                </div>
+              </div>
+
               <CustomButton
                 className={
                   write === ""

@@ -21,13 +21,17 @@
 @media (prefers-color-scheme: dark) {
 
     .headerDesign {
-        color: #8492a6;
-        background-color: #1b2836;
+        /* color: #8492a6; */
+        color: beige;
+        /* background-color: #1b2836; */
+        background-color: beige;
+        background-color: rgba(25, 25, 112, 0.957);
         -webkit-box-shadow: 0 0 3px #8492a6;
         box-shadow: 0 0 3px #8492a6;
     }
 
     .navigateDesign {
-        color: #8492a6;
+        /* color: #8492a6; */
+        color: beige
     }
 }
