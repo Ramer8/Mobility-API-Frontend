@@ -14,6 +14,7 @@ import {
   calulateAge,
   formatDateToHumansWay,
 } from "../../utils/functions"
+import GeoLocation from "../../common/Geolocation/GeoLocation"
 
 export const Home = () => {
   const [activeMenu, setActiveMenu] = useState(false)
@@ -77,5 +78,9 @@ export const Home = () => {
 
   // console.log(!showProfile, " show y loaded ", !loadedData)
 
-  return <div className="homeDesign">HOLA</div>
+  return (
+    <div className="homeDesign">
+      <GeoLocation />
+    </div>
+  )
 }
