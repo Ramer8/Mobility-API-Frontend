@@ -16,7 +16,7 @@ import { login } from "../../app/slices/userSlice"
 export const Register = () => {
   const [loadingFlag, setLoadingFlag] = useState(false)
   const [credentials, setCredentials] = useState({
-    name: "",
+    userName: "",
     email: "",
     password: "",
   })
@@ -136,8 +136,8 @@ export const Register = () => {
               credentialsError.nameError !== "" ? "inputDesignError" : ""
             }`}
             type="text"
-            name="name"
-            value={credentials.name || ""}
+            name="userName"
+            value={credentials.userName || ""}
             placeholder="write your name...."
             functionChange={inputHandler}
             onBlurFunction={(e) => checkError(e)}

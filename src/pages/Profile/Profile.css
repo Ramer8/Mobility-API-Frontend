@@ -1,17 +1,26 @@
-/* .profileDesign {
-    height: 130vh;
+.profileDesign {
+    height: 90vh;
     width: 100vw;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+}
+
+@media(max-width: 500px) {
+    .boxProfile {
+        width: 70%;
+    }
+
+    .profileDesign {
+        height: auto;
+    }
+}
 
 @media(min-width: 500px) {
     .boxProfile {
         width: 70%;
-
     }
 }
 
@@ -25,7 +34,6 @@
 @media(min-width: 1000px) {
     .boxProfile {
         width: 50%;
-
     }
 }
 
@@ -109,7 +117,17 @@
     align-items: start;
 }
 
-.gender {
+.phoneLabel,
+.paymentLabel,
+.addressLabel,
+.nameLabel {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+
+.payment {
     display: flex;
     margin: 1em;
     gap: 1em;

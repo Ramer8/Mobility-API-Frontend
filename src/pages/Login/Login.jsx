@@ -79,13 +79,13 @@ export const Login = () => {
 
     console.log(decoded?.tokenData?.roleName)
     // Go to SuperAdmin Managment
-    // if (decoded?.tokenData?.roleName === "super_admin") {
-    //   navigate("/managment")
-    //   dispatch(login({ super: true }))
-    //   return
-    // }
+    if (decoded?.tokenData?.roleName === "super_admin") {
+      navigate("/managment")
+      dispatch(login({ super: true }))
+      return
+    }
 
-    // dispatch(login({ super: false }))
+    dispatch(login({ super: false }))
 
     // Home redirected
     setTimeout(() => {
