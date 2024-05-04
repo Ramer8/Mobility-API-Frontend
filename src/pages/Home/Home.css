@@ -31,6 +31,8 @@
     /* luego quitar el borde o agregar para ver con otro objeto */
 }
 
+
+
 @media(min-width: 500px) {
     .boxContainer {
         width: 70%;

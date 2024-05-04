@@ -9,12 +9,10 @@ import Post from "../Post/Post"
 import { searchUserData } from "../../app/slices/searchUserSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { logout, userData } from "../../app/slices/userSlice"
-import {
-  calculateProgress,
-  calulateAge,
-  formatDateToHumansWay,
-} from "../../utils/functions"
-import GeoLocation from "../../common/Geolocation/GeoLocation"
+
+// import GeoLocation from "../../common/Geolocation/GeoLocation"
+
+import Maps from "../../common/Maps/Maps"
 
 export const Home = () => {
   const [activeMenu, setActiveMenu] = useState(false)
@@ -26,7 +24,7 @@ export const Home = () => {
   const rdxUser = useSelector(userData)
 
   const searchCriteria = useSelector(searchUserData)
-  console.log("home")
+  console.log(" in home view")
   // console.log(searchCriteria)  if not use this I can delete it!
   // when arrive to home view load the value from magament by redux
 
@@ -80,7 +78,8 @@ export const Home = () => {
 
   return (
     <div className="homeDesign">
-      <GeoLocation />
+      {/* <GeoLocation /> */}
+      <Maps />
     </div>
   )
 }

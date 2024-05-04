@@ -1,0 +1,21 @@
+.inputbBox {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.buttonBar {
+    flex-direction: row;
+    display: flex;
+    padding: 0;
+}
+
+.infoBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}

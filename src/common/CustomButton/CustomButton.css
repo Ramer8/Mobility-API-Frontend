@@ -210,7 +210,7 @@
     -webkit-box-shadow: 0 3px 5px 0 rgba(57, 108, 240, .3);
     box-shadow: 0 3px 5px 0 rgba(57, 108, 240, .3);
 }
-}
+
 
 .deleteAppointment:hover {
     cursor: pointer;
@@ -288,6 +288,36 @@
     border-bottom-left-radius: 0em
 }
 
+.clearRouteButton {
+    margin-inline: 0em;
+    background-color: lightcoral;
+    border: 1px solid red;
+    transition: 0.4s;
+    -webkit-transition: all .3s;
+}
+
+.clearRouteButton:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.cursorButton {
+    border: none;
+    margin-inline: 0;
+    padding: 0;
+}
+
+.cursorButton:hover {
+
+    transition: .7s;
+    -webkit-transition: all .7s;
+    color: green;
+    display: flex;
+    border-radius: 100%;
+    border: 1px solid green;
+    cursor: pointer;
+
+}
 
 .closeModalButton {
     display: flex;
