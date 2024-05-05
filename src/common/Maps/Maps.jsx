@@ -11,16 +11,21 @@ import "./Maps.css"
 import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice"
 
+const libraries = ["places"]
 const Maps = () => {
   const [map, setMap] = useState(null)
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState("")
   const [duration, setDuration] = useState("")
   const rdxUser = useSelector(userData)
-  // let center
-  rdxUser.location ? console.log(rdxUser.location) : console.log("no location")
 
-  console.log(rdxUser.location, "from map")
+  rdxUser.location ? console.log(rdxUser.location) : console.log("no location")
+  console.log(
+    rdxUser.location.latitude,
+    "lat",
+    rdxUser.location.longitude,
+    "long"
+  )
   // const centerRef = useRef()
   // (center = {
   //     lat: rdxUser.location.latitute,
@@ -38,7 +43,7 @@ const Maps = () => {
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
+    libraries: libraries,
   })
 
   const center = { lat: 39.5102503, lng: -0.4115731 }

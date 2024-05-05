@@ -10,8 +10,6 @@ import { searchUserData } from "../../app/slices/searchUserSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { logout, userData } from "../../app/slices/userSlice"
 
-// import GeoLocation from "../../common/Geolocation/GeoLocation"
-
 import Maps from "../../common/Maps/Maps"
 
 export const Home = () => {
@@ -20,10 +18,17 @@ export const Home = () => {
   const [loadedData, setLoadedData] = useState(false)
 
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+
+  // const dispatch = useDispatch()
   const rdxUser = useSelector(userData)
 
-  const searchCriteria = useSelector(searchUserData)
+  // console.log(rdxUser.location)
+
+  // useEffect(() => {
+  //   console.log(rdxUser, "from home")
+  // }, [rdxUser])
+
+  // const searchCriteria = useSelector(searchUserData)
   console.log(" in home view")
   // console.log(searchCriteria)  if not use this I can delete it!
   // when arrive to home view load the value from magament by redux
@@ -63,12 +68,12 @@ export const Home = () => {
   //   }
   // }, [rdxUser.credentials.token]) // Execute useEffect whenever the token changes
 
-  // useEffect(() => {
-  //   if (!rdxUser.credentials.token) {
-  //     navigate("/login")
-  //   }
-  //   setLoadedData(true)
-  // }, [rdxUser])
+  useEffect(() => {
+    if (!rdxUser.credentials.token) {
+      navigate("/login")
+    }
+    // setLoadedData(true)
+  }, [rdxUser])
 
   // const changeBackground = () => {
   //   setActiveMenu(!activeMenu)

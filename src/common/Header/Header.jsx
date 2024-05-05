@@ -18,7 +18,7 @@ export const Header = () => {
   // useEffect(() => {
   //   const fetch = async () => {
   //     const fetched = await fetchMyProfile(rdxUser.credentials.token)
-
+  //     console.log("paso por aqui header")
   //     if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
   //       dispatch(logout({ credentials: "" }))
   //       navigate("/login")
@@ -70,7 +70,12 @@ export const Header = () => {
             <div
               onClick={() =>
                 dispatch(
-                  logout({ credentials: "", online: false, super: false })
+                  logout({
+                    credentials: "",
+                    online: false,
+                    super: false,
+                    location: "",
+                  })
                 )
               }
             >

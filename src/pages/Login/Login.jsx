@@ -26,10 +26,6 @@ export const Login = () => {
   })
 
   const [status, setStatus] = useState("")
-  const [location, setLocation] = useState({
-    latitude: null,
-    longitude: null,
-  })
 
   const ERROR_MSG_TIME = 6000
   const SUCCESS_MSG_TIME = 1600
@@ -45,8 +41,11 @@ export const Login = () => {
     setStatus("")
 
     console.log(latitude, "encontrándote!")
+
     let location = { latitude, longitude }
+
     dispatch(login({ location }))
+
     //then we have the coords location go to home view
 
     navigate("/home")
