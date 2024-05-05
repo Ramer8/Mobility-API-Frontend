@@ -40,8 +40,6 @@ export const Login = () => {
 
     setStatus("")
 
-    console.log(latitude, "encontrándote!")
-
     let location = { latitude, longitude }
 
     dispatch(login({ location }))
@@ -112,7 +110,6 @@ export const Login = () => {
       dispatch(login({ super: true }))
       return
     }
-
     geoFindMe()
 
     dispatch(login({ super: false }))
@@ -146,9 +143,34 @@ export const Login = () => {
     }, ERROR_MSG_TIME)
   }, [credentialsError])
 
+  const logSuperAdmin = async () => {
+    setCredentials({
+      email: "super@super.com",
+      password: "123456",
+    })
+    await logMe()
+  }
+  const log = () => {
+    setCredentials({
+      email: "user@user.com",
+      password: "123456",
+    })
+    console.log(credentials)
+    logMe()
+  }
   return (
     <div className="loginDesign">
       {/* <pre>{JSON.stringify(credentials, null, 2)}</pre> */}
+      <CustomButton
+        className={"icon clear primaryButton"}
+        title={"Log superadmin"}
+        functionEmit={logSuperAdmin}
+      />
+      <CustomButton
+        className={"icon clear primaryButton"}
+        title={"Log user"}
+        functionEmit={log}
+      />
       <label>Name:</label>
       <CustomInput
         className={`inputDesign ${

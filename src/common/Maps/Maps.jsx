@@ -30,7 +30,6 @@ const Maps = () => {
         lat: rdxUser.location.latitude,
         lng: rdxUser.location.longitude,
       })
-      console.log(rdxUser.location)
     } else {
       console.log("location empty")
     }
@@ -42,6 +41,7 @@ const Maps = () => {
   })
 
   const originRef = useRef()
+
   const destiantionRef = useRef()
 
   if (!isLoaded) {
@@ -67,11 +67,12 @@ const Maps = () => {
   //   setDistance(results.routes[0].legs[0].distance.text)
   //   setDuration(results.routes[0].legs[0].duration.text)
   // }
+  const geocoder = new google.maps.Geocoder()
   async function calculateRoute() {
     if (destiantionRef.current.value === "") {
       return console.log("no destination")
     }
-    console.log("calculating")
+    console.log("calculating route")
     let results
     const directionsService = new google.maps.DirectionsService()
 
@@ -93,7 +94,6 @@ const Maps = () => {
           setDirectionsResponse(results)
           setDistance(results.routes[0].legs[0].distance.text)
           setDuration(results.routes[0].legs[0].duration.text)
-          // Handle the route calculation results...
         },
         (error) => {
           console.error("Error getting current location:", error)
@@ -112,9 +112,6 @@ const Maps = () => {
     destiantionRef.current.value = ""
   }
 
-  const geocoder = new google.maps.Geocoder()
-
-  // Perform geocoding to get coordinates of the destination
   const showDestination = () => {
     {
       geocoder.geocode(
@@ -122,8 +119,6 @@ const Maps = () => {
         (results, status) => {
           if (status === google.maps.GeocoderStatus.OK) {
             const destinationCoords = results[0].geometry.location
-            console.log(destinationCoords)
-
             map.panTo(destinationCoords)
           } else {
             console.error("Geocoding failed:", status)
