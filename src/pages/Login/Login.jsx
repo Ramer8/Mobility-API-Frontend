@@ -25,12 +25,41 @@ export const Login = () => {
     passwordError: "",
   })
 
+  const [status, setStatus] = useState("")
+  const [location, setLocation] = useState({
+    latitude: null,
+    longitude: null,
+  })
+
   const ERROR_MSG_TIME = 6000
   const SUCCESS_MSG_TIME = 1600
 
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
+
+  const success = (position) => {
+    const latitude = position.coords.latitude
+    const longitude = position.coords.longitude
+
+    setStatus("")
+
+    console.log(latitude, "encontrándote!")
+    let location = { latitude, longitude }
+    dispatch(login({ location }))
+    //then we have the coords location go to home view
+
+    navigate("/home")
+  }
+
+  const error = () => {
+    setStatus("Unable to retrieve your location")
+  }
+
+  const geoFindMe = () => {
+    setStatus("Locating…")
+    navigator.geolocation.getCurrentPosition(success, error)
+  }
 
   const checkError = (e) => {
     const error = validame(e.target.name, e.target.value)
@@ -85,12 +114,14 @@ export const Login = () => {
       return
     }
 
+    geoFindMe()
+
     dispatch(login({ super: false }))
 
     // Home redirected
-    setTimeout(() => {
-      navigate("/home")
-    }, SUCCESS_MSG_TIME)
+    // setTimeout(() => {
+    //   navigate("/home")
+    // }, SUCCESS_MSG_TIME)
   }
 
   useEffect(() => {
