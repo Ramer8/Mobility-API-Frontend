@@ -5,14 +5,36 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { CustomButton } from "../CustomButton/CustomButton"
 import "./Maps.css"
+import { useSelector } from "react-redux"
+import { userData } from "../../app/slices/userSlice"
+
 const Maps = () => {
   const [map, setMap] = useState(null)
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState("")
   const [duration, setDuration] = useState("")
+  const rdxUser = useSelector(userData)
+  // let center
+  rdxUser.location ? console.log(rdxUser.location) : console.log("no location")
+
+  console.log(rdxUser.location, "from map")
+  // const centerRef = useRef()
+  // (center = {
+  //     lat: rdxUser.location.latitute,
+  //     lng: rdxUser.location.longitude,
+  //   })
+
+  // useEffect(() => {
+  //   console.log(rdxUser.location, "from maps")
+
+  //   centerRef.current.value = {
+  //     lat: location.latitute,
+  //     lng: location.longitude,
+  //   }
+  // }, [rdxUser])
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -79,6 +101,7 @@ const Maps = () => {
             }
             functionEmit={() => {
               map.panTo(center)
+              // map.panTo(centerRef.current?.value)
               map.setZoom(15)
             }}
           />
