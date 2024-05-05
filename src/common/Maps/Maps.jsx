@@ -1,9 +1,9 @@
 import {
   useJsApiLoader,
   GoogleMap,
-  Marker,
   Autocomplete,
   DirectionsRenderer,
+  Marker,
 } from "@react-google-maps/api"
 import { useEffect, useRef, useState } from "react"
 import { CustomButton } from "../CustomButton/CustomButton"
@@ -30,6 +30,7 @@ const Maps = () => {
         lat: rdxUser.location.latitude,
         lng: rdxUser.location.longitude,
       })
+      console.log(rdxUser.location)
     } else {
       console.log("location empty")
     }
@@ -44,31 +45,94 @@ const Maps = () => {
   const destiantionRef = useRef()
 
   if (!isLoaded) {
-    return
+    return <div>Loading...</div>
   }
+  // async function calculateRoute() {
+  //   if (originRef.current.value === "" || destiantionRef.current.value === "") {
+  //     return
+  //   }
+  //   let results
+  //   const directionsService = new google.maps.DirectionsService()
+  //   if (rdxUser.location) {
+  //     results = await directionsService.route({
+  //       origin: location,
+  //       // origin: originRef.current.value,
+  //       destination: destiantionRef.current.value,
+  //       travelMode: google.maps.TravelMode.DRIVING,
+  //     })
+  //     return results
+  //   }
+
+  //   setDirectionsResponse(results)
+  //   setDistance(results.routes[0].legs[0].distance.text)
+  //   setDuration(results.routes[0].legs[0].duration.text)
+  // }
   async function calculateRoute() {
-    if (originRef.current.value === "" || destiantionRef.current.value === "") {
-      return
+    if (destiantionRef.current.value === "") {
+      return console.log("no destination")
     }
+    console.log("calculating")
+    let results
     const directionsService = new google.maps.DirectionsService()
-    const results = await directionsService.route({
-      origin: originRef.current.value,
-      destination: destiantionRef.current.value,
-      travelMode: google.maps.TravelMode.DRIVING,
-    })
-    setDirectionsResponse(results)
-    setDistance(results.routes[0].legs[0].distance.text)
-    setDuration(results.routes[0].legs[0].duration.text)
+
+    // Fetch the user's current location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const currentLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          }
+
+          results = await directionsService.route({
+            origin: currentLocation,
+            destination: destiantionRef.current.value,
+            travelMode: google.maps.TravelMode.DRIVING,
+          })
+
+          setDirectionsResponse(results)
+          setDistance(results.routes[0].legs[0].distance.text)
+          setDuration(results.routes[0].legs[0].duration.text)
+          // Handle the route calculation results...
+        },
+        (error) => {
+          console.error("Error getting current location:", error)
+        }
+      )
+    } else {
+      console.error("Geolocation is not supported by this browser.")
+    }
   }
 
   function clearRoute() {
     setDirectionsResponse(null)
     setDistance("")
     setDuration("")
-    originRef.current.value = ""
+    // originRef.current.value = ""
     destiantionRef.current.value = ""
   }
 
+  const geocoder = new google.maps.Geocoder()
+
+  // Perform geocoding to get coordinates of the destination
+  const showDestination = () => {
+    {
+      geocoder.geocode(
+        { address: destiantionRef.current?.value },
+        (results, status) => {
+          if (status === google.maps.GeocoderStatus.OK) {
+            const destinationCoords = results[0].geometry.location
+            console.log(destinationCoords)
+
+            map.panTo(destinationCoords)
+          } else {
+            console.error("Geocoding failed:", status)
+          }
+        }
+      )
+      map.setZoom(15)
+    }
+  }
   return (
     <>
       {/* {location && `${location.lat}` + `${location.lng}` */}
@@ -76,14 +140,14 @@ const Maps = () => {
         <>
           <div className="inputBox">
             <div className="row">
-              <Autocomplete>
+              {/* <Autocomplete>
                 <input
                   className="inputDesign"
                   type="text"
                   placeholder="Origin"
-                  ref={originRef}
+                  ref={location}
                 ></input>
-              </Autocomplete>
+              </Autocomplete> */}
               <CustomButton
                 aria-label="center back"
                 className={"cursorButton"}
@@ -114,6 +178,13 @@ const Maps = () => {
                 ref={destiantionRef}
               ></input>
             </Autocomplete>
+            <CustomButton
+              className={"primaryButton uploadProfile"}
+              title={"Search"}
+              functionEmit={() => {
+                showDestination()
+              }}
+            />
             <div className="buttonBar">
               <CustomButton
                 className={"primaryButton uploadProfile"}
