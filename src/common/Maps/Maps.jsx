@@ -10,6 +10,7 @@ import { CustomButton } from "../CustomButton/CustomButton"
 import "./Maps.css"
 import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice"
+import { calculateMoneyTrip } from "../../utils/functions"
 
 const libraries = ["places"]
 const Maps = () => {
@@ -301,7 +302,7 @@ const Maps = () => {
                       </g>
                     </svg>
                   </div>
-                  <div> {distance}</div>
+                  <div>{distance}</div>
                 </div>
                 <div className="rowInfoBar">
                   <div className="titleInfoBar">
@@ -342,6 +343,10 @@ const Maps = () => {
                   </div>
                   <div>{duration}</div>
                 </div>
+              </div>
+              <div className="price">
+                € {calculateMoneyTrip(distance)}-
+                {calculateMoneyTrip(distance) + 7}
               </div>
             </div>
           )}
