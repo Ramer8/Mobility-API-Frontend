@@ -25,13 +25,27 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between;  */
-    /* to mobile screen */
-    justify-content: space-around;
-    /* to big screen */
+
+    justify-content: space-evenly;
     /* align-items: center; */
     padding-top: .5em;
-    /* height: 50vh; */
+    /* background-color: rgba(25, 25, 112, 0.957); */
+}
+
+@media(max-width: 500px) {
+    .footerData {
+        justify-content: space-evenly;
+    }
+
+    .infoBar {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.price {
+    font-weight: 600;
+    font-size: 1.1em;
 }
 
 .titleData {
@@ -42,7 +56,7 @@
 .leftColumn {
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: .3em;
 }
 
 .carIcon {
@@ -61,7 +75,7 @@
 .rowInfoBar {
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: .3em;
 }
 
 .titleInfoBar {
@@ -71,5 +85,5 @@
 .rowTitleData {
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: .5em;
 }
