@@ -104,3 +104,8 @@ export const formatDateToHumansWay = (dateString) => {
 
   return `${day}${suffix} ${months[monthIndex]} ${year}`
 }
+
+export const calculateMoneyTrip = (km) => {
+  const distance = parseInt(km.slice(0, -3))
+  return Math.round((distance * 23) / 12.5)
+}
