@@ -134,7 +134,33 @@ const Maps = () => {
       {location && (
         <>
           <div className="inputBox">
-            <div className="row">
+            <div className="buttonBar">
+              <Autocomplete>
+                <input
+                  className="inputDesign destination"
+                  type="text"
+                  placeholder="Destination"
+                  ref={destiantionRef}
+                ></input>
+              </Autocomplete>
+              <CustomButton
+                className={"searchButton"}
+                title={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                  </svg>
+                }
+                functionEmit={() => {
+                  showDestination()
+                }}
+              />
               {/* <Autocomplete>
                 <input
                   className="inputDesign"
@@ -152,10 +178,10 @@ const Maps = () => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    className="bi bi-send-fill"
+                    className="bi bi-cursor-fill"
                     viewBox="0 0 16 16"
                   >
-                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z" />
+                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
                   </svg>
                 }
                 functionEmit={() => {
@@ -165,24 +191,9 @@ const Maps = () => {
               />
             </div>
 
-            <Autocomplete>
-              <input
-                className="inputDesign"
-                type="text"
-                placeholder="Destination"
-                ref={destiantionRef}
-              ></input>
-            </Autocomplete>
-            <CustomButton
-              className={"primaryButton uploadProfile"}
-              title={"Search"}
-              functionEmit={() => {
-                showDestination()
-              }}
-            />
-            <div className="buttonBar">
+            <div className="buttonBar2">
               <CustomButton
-                className={"primaryButton uploadProfile"}
+                className={"primaryButton uploadProfile calculateRouteButton"}
                 title={"Calculate Route"}
                 functionEmit={() => {
                   calculateRoute()
@@ -218,6 +229,7 @@ const Maps = () => {
             center={location}
             zoom={15}
             mapContainerStyle={{ width: "100%", height: "100%" }}
+            // map-id="DEMO_MAP_ID"
             options={{
               zoomControl: false,
               streetViewControl: false,
