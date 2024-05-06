@@ -34,17 +34,6 @@
     box-shadow: 1px 1px 5px gray;
 }
 
-.likes {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    color: indianred;
-
-}
-
-.likes:hover {
-    color: red;
-}
 
 .uploadProfile {
     padding: 0em;
@@ -55,7 +44,6 @@
     margin: 1em;
     /* padding-inline: 1.5em; */
 }
-
 
 .removeProfile {
     padding: .5rem 2rem;
@@ -120,7 +108,7 @@
     align-items: center;
 
     background-color: #396cf0;
-   
+}
 
 .registerButton:hover {
     cursor: pointer;
@@ -288,35 +276,61 @@
     border-bottom-left-radius: 0em
 }
 
+.calculateRouteButton {
+    color: whitesmoke;
+    margin-inline: 0em;
+}
+
 .clearRouteButton {
     margin-inline: 0em;
     background-color: lightcoral;
-    border: 1px solid red;
+    border: 1px solid lightcoral;
     transition: 0.4s;
     -webkit-transition: all .3s;
 }
 
 .clearRouteButton:hover {
     cursor: pointer;
-    color: red;
+    color: lightcoral;
+    border: 1px solid lightcoral;
 }
 
 .cursorButton {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 0.4em;
+    padding: .5rem 1rem;
     border: none;
-    margin-inline: 0;
-    padding: 0;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 5px lightslategrey;
+    margin-left: 1em;
 }
 
 .cursorButton:hover {
 
     transition: .7s;
     -webkit-transition: all .7s;
-    color: green;
     display: flex;
-    border-radius: 100%;
-    border: 1px solid green;
+    box-shadow: 1px 1px 5px black;
+    /* border: 1px solid lightgray; */
     cursor: pointer;
+}
 
+.searchButton {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 0.4em;
+    padding: .5rem 1rem;
+    margin-left: -3em;
+}
+
+.searchButton:hover {
+    transition: .7s;
+    -webkit-transition: all .7s;
+    color: hsl(223, 86%, 58%);
+    cursor: pointer;
 }
 
 .closeModalButton {
