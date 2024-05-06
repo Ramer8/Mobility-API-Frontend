@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { logout, userData } from "../../app/slices/userSlice"
 import { validame } from "../../utils/functions"
 import { CustomButton } from "../../common/CustomButton/CustomButton"
-import { CustomInputTextArea } from "../../common/CustomInputTextArea/CustomInputTextArea"
 import Spinner from "../../common/Spinner/Spinner"
 
 const Profile = () => {
