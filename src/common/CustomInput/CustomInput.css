@@ -25,6 +25,7 @@
 
 .destination {
     margin: 0;
+    padding: .5rem 1rem;
 }
 
 .inputDesignError {
