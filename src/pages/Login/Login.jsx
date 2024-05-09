@@ -106,8 +106,9 @@ export const Login = () => {
     console.log(decoded?.tokenData?.roleName)
     // Go to SuperAdmin Managment
     if (decoded?.tokenData?.roleName === "super_admin") {
-      navigate("/managment")
+      geoFindMe()
       dispatch(login({ super: true }))
+      navigate("/managment")
       return
     }
     geoFindMe()
