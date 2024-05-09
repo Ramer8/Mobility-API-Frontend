@@ -11,6 +11,10 @@ import { fetchMyTripWithId } from "../../services/apiCalls"
 const Pickup = () => {
   const [loadedData, setLoadedData] = useState(false)
   const [trip, setTrip] = useState({})
+  const [DriverNameSplited, setDriverNameSplited] = useState({
+    name: "",
+    last: "",
+  })
 
   // {
   //       "startLocation": null,
@@ -44,10 +48,6 @@ const Pickup = () => {
   const rdxUser = useSelector(userData)
   const dispatch = useDispatch()
 
-  let arrayName
-  let LastName
-  let firstName
-
   useEffect(() => {
     if (!rdxUser.credentials.token) {
       navigate("/login")
@@ -56,7 +56,6 @@ const Pickup = () => {
 
   useEffect(() => {
     const fetching = async () => {
-      console.log("pasa x aca?")
       const tripId = 2
       try {
         const fetched = await fetchMyTripWithId(
@@ -97,12 +96,11 @@ const Pickup = () => {
         })
 
         const splitName = (name) => {
-          if (name) {
-            arrayName = name.split(/(?=[A-Z])/)
-            // firstName = arrayName[0]
-            // LastName = arrayName[1]
-          }
-          return arrayName
+          let arrayName = name.split(/(?=[A-Z])/)
+          setDriverNameSplited({
+            name: arrayName[0],
+            last: arrayName[1],
+          })
         }
         splitName(fetched.data[0].driver.driverName)
       } catch (error) {
@@ -113,7 +111,6 @@ const Pickup = () => {
       fetching()
     }
   }, [rdxUser])
-
   return (
     <>
       {trip && (
@@ -122,14 +119,16 @@ const Pickup = () => {
             {/* {trip.map((element) => console.log(element))} */}
             <div className="pickupTitle">Pickup in {"3"}' minutes</div>
             <div className="pickupMsg">
-              Meet {trip.driverName}
+              Meet {DriverNameSplited.name}
               at the pickup point
             </div>
           </div>
           <div className="pickupBody">
             <div className="bodyLeft">
               <div className="bodyLeftTop">
-                <b>{"driverName"}</b>{" "}
+                <b>
+                  {DriverNameSplited.name} {DriverNameSplited.last}
+                </b>{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
