@@ -68,8 +68,8 @@
 .data {
     display: flex;
     flex-direction: row;
-    flex-direction: row;
     justify-content: space-evenly;
+    margin-bottom: -.8em;
 }
 
 .price {
