@@ -76,7 +76,7 @@ export const fetchMyProfile = async (token) => {
 }
 // console.log(`${import.meta.env.VITE_API_URL}users/profile`)
 // http://localhost:5500/users/profile
-export const fetchMyTrip = async (tripId, token) => {
+export const fetchMyTripWithId = async (tripId, token) => {
   const options = {
     method: "PUT",
     headers: {
@@ -92,7 +92,6 @@ export const fetchMyTrip = async (tripId, token) => {
     )
 
     const data = await response.json()
-    console.log(data)
     if (!data.success) {
       throw new Error(data.message)
     }
