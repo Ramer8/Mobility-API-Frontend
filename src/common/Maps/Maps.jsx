@@ -240,12 +240,6 @@ const Maps = () => {
                   clearRoute()
                 }}
               />
-              <div onClick={toggleSection} className="icon">
-                O
-              </div>
-              <div onClick={toggleSection1} className="icon">
-                1
-              </div>
             </div>
           </div>
           <GoogleMap
@@ -272,6 +266,7 @@ const Maps = () => {
               className={`footerData ${showSection ? "show" : ""}
             ${toggleButtonTrip ? "showMore" : ""}
             `}
+              onClick={toggleSection1}
             >
               <div className="data">
                 <div className="leftColumn">
@@ -381,7 +376,28 @@ const Maps = () => {
                   {calculateMoneyTrip(distance) + 7}
                 </div>
               </div>
-              <div>hola</div>
+              <div>
+                <div className="buttonBarSliding">
+                  <CustomButton
+                    className={`primaryButton orderTaxi  
+                `}
+                    title={"Order Taxi now"}
+                    functionEmit={() => {
+                      toggleSection()
+                      //Navigate to new page and toggleSection()
+                    }}
+                  />
+                  <CustomButton
+                    className={`primaryButton buttonLater  
+                `}
+                    title={"Later"}
+                    functionEmit={() => {
+                      toggleSection1()
+                      //Navigate to new page
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </>

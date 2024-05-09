@@ -116,3 +116,12 @@
     flex-direction: row;
     gap: .5em;
 }
+
+.buttonBarSliding {
+    flex-direction: row;
+    display: flex;
+    padding: 0;
+    gap: .7em;
+    margin-bottom: .2em;
+    margin-inline: .5em;
+}
