@@ -1,8 +1,69 @@
 import "./Pickup.css"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 import { CustomButton } from "../../common/CustomButton/CustomButton"
 import { CustomInput } from "../../common/CustomInput/CustomInput"
+import { useEffect, useState } from "react"
+import { logout, userData } from "../../app/slices/userSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { fetchMyTrip } from "../../services/apiCalls"
 
 const Pickup = () => {
+  const [loadedData, setLoadedData] = useState(false)
+
+  const navigate = useNavigate()
+  const rdxUser = useSelector(userData)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (!rdxUser.credentials.token) {
+      navigate("/login")
+    }
+  }, [rdxUser])
+
+  useEffect(() => {
+    const fetching = async () => {
+      console.log("pasa x aca?")
+      const tripId = 2
+      try {
+        const fetched = await fetchMyTrip(tripId, rdxUser.credentials.token)
+
+        if (!fetched?.success) {
+          if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
+            dispatch(logout({ credentials: "" }))
+
+            toast.error(fetched.message, {
+              theme: "dark",
+              position: "top-left",
+              autoClose: 500,
+            })
+            return
+          }
+          toast.error(fetched.message, {
+            theme: "dark",
+            position: "top-left",
+            autoClose: 500,
+          })
+          navigate("/login")
+          return
+        }
+        setLoadedData(true)
+        // setUser({
+        //   userName: fetched.data.userName,
+        //   phone: fetched.data.phone,
+        //   address: fetched.data.address,
+        //   payment: fetched.data.payment,
+        // })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    if (!loadedData) {
+      fetching()
+    }
+  }, [rdxUser])
+
   return (
     <>
       <div className="pickupContainer">
@@ -79,6 +140,7 @@ const Pickup = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }

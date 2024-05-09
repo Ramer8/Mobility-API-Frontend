@@ -74,6 +74,34 @@ export const fetchMyProfile = async (token) => {
     return error
   }
 }
+// console.log(`${import.meta.env.VITE_API_URL}users/profile`)
+// http://localhost:5500/users/profile
+export const fetchMyTrip = async (tripId, token) => {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  try {
+    // localhost:5500/trips/1
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}trips/${tripId}`,
+      options
+    )
+
+    const data = await response.json()
+    console.log(data)
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+
+    return data
+  } catch (error) {
+    return error
+  }
+}
 
 export const updateProfile = async (data, token) => {
   // console.log(`${import.meta.env.VITE_API_URL}users/profile`)
