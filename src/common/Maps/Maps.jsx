@@ -11,6 +11,7 @@ import "./Maps.css"
 import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice"
 import { calculateMoneyTrip } from "../../utils/functions"
+import { useNavigate } from "react-router-dom"
 
 const libraries = ["places"]
 const Maps = () => {
@@ -26,6 +27,7 @@ const Maps = () => {
     lng: null,
   })
 
+  const navigate = useNavigate()
   const rdxUser = useSelector(userData)
 
   useEffect(() => {
@@ -384,6 +386,10 @@ const Maps = () => {
                     title={"Order Taxi now"}
                     functionEmit={() => {
                       toggleSection()
+                      setTimeout(() => {
+                        navigate("/pickup")
+                      }, 500)
+
                       //Navigate to new page and toggleSection()
                     }}
                   />

@@ -19,6 +19,7 @@ import { PersistGate } from "redux-persist/integration/react"
 import { persistStore } from "redux-persist"
 import Post from "./pages/Post/Post.jsx"
 import Managment from "./pages/Managment/Managment.jsx"
+import Pickup from "./pages/Pickup/Pickup.jsx"
 
 const persistor = persistStore(store)
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/pickup",
+        element: <Pickup />,
       },
       {
         path: "/managment",
