@@ -1,4 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Oswald:wght@200..700&family=Tilt+Neon&display=swap');
+
 .pickupDesign {
+
+    /* <uniquifier>: Use a unique and descriptive class name */
+    /* <weight>: Use a value from 200 to 700 */
+
+
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    font-style: normal;
+
     /* height: 90vh; */
 
     /* height: 170vh; */
@@ -12,4 +24,132 @@
     align-items: center;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.pickupContainer {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: .5em;
+    box-shadow: 0 0 5px gray;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pickupHeader {
+    background-color: white;
+    margin-top: -1.2em;
+    padding-inline: 1em;
+    padding-bottom: 2em;
+
+    flex-direction: column;
+    display: flex;
+
+    justify-content: flex-start;
+    align-items: start;
+
+    border: solid 1px gray;
+    border-radius: .7em;
+    width: 98%;
+    box-shadow: 0 0 5px gray;
+
+}
+
+.pickupTitle {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    color: black;
+    font-style: normal;
+    font-size: 1.7em;
+    padding-top: .6em;
+}
+
+.pickupMsg {
+    padding-top: .3em;
+    font-weight: 500;
+}
+
+.pickupBody {
+    padding-top: .5em;
+    padding-inline: .4em;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1em;
+}
+
+.bodyLeft {
+    /* background-color: blue; */
+    line-height: 1.5;
+}
+
+.bodyLeftTop {
+    color: black;
+}
+
+.carBrandModel {
+    font-size: .8em;
+}
+
+.numberPlate {
+    text-transform: uppercase;
+    width: fit-content;
+    padding-inline: .3em;
+    border: 1px solid gray;
+    border-radius: .2em;
+    font-size: .8em;
+}
+
+.bodyright {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carIcon {}
+
+.profilePic {
+    border-radius: 50%;
+    display: flex;
+    margin-right: -1.6em;
+    z-index: 1;
+    margin-top: -.7em;
+}
+
+.bottomBar {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1em;
+    margin-bottom: .5em;
+}
+
+.callIcon {
+    display: flex;
+    border-radius: 50%;
+    border: solid 1px gray;
+    padding: .5em;
+    margin: 0;
+}
+
+.input {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.chatIcon {
+    padding: .5em;
+    margin-right: -3em;
+    z-index: 1;
 }

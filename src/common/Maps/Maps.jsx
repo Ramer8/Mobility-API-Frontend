@@ -145,7 +145,7 @@ const Maps = () => {
       setShowSection((prevShowSection) => !prevShowSection)
     }, 50) // Adjust the delay time as needed
   }
-  const toggleSectionBottomButtonBar = () => {
+  const toggleSectionBottomButtonB = () => {
     // Delay the toggle of showSection state to ensure transition effect
     setTimeout(() => {
       setToggleButtonTrip((prevToggleButtonTrip) => !prevToggleButtonTrip)
@@ -268,7 +268,7 @@ const Maps = () => {
               className={`footerData ${showSection ? "show" : ""}
             ${toggleButtonTrip ? "showMore" : ""}
             `}
-              onClick={toggleSectionBottomButtonBar}
+              onClick={toggleSectionBottomButtonB}
             >
               <div className="data">
                 <div className="leftColumn">
@@ -398,7 +398,7 @@ const Maps = () => {
                 `}
                     title={"Later"}
                     functionEmit={() => {
-                      toggleSectionBottomButtonBar()
+                      toggleSectionBottomButtonB()
                       //Navigate to new page
                     }}
                   />

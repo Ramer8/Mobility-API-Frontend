@@ -44,7 +44,10 @@
     flex-direction: column;
     /* justify-content: space-evenly; */
     background-color: rgba(25, 25, 112, 0.957);
+    color: antiquewhite;
 }
+
+
 
 .footerData.show {
     transform: translateY(50%);

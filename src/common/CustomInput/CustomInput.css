@@ -40,6 +40,16 @@
     color: black;
 }
 
+.inputMSG {
+    margin: 0;
+    border-radius: 2em;
+    box-shadow: none;
+    border: 1px solid gray;
+    background-color: white;
+    padding: .3rem 2.5rem;
+    width: 100%;
+}
+
 .searchInputUser {
     box-shadow: none;
     background-color: rgb(42, 61, 82);
