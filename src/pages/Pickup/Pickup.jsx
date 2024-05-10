@@ -8,14 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { fetchMyTripWithId } from "../../services/apiCalls"
 
-const Pickup = () => {
-  const [loadedData, setLoadedData] = useState(false)
-  const [trip, setTrip] = useState({})
-  const [DriverNameSplited, setDriverNameSplited] = useState({
-    name: "",
-    last: "",
-  })
-
+const Pickup = ({ trip, setTrip, DriverNameSplited }) => {
   const navigate = useNavigate()
   const rdxUser = useSelector(userData)
   const dispatch = useDispatch()
@@ -25,65 +18,6 @@ const Pickup = () => {
       navigate("/login")
     }
   }, [rdxUser])
-
-  useEffect(() => {
-    const fetching = async () => {
-      const tripId = 7
-      try {
-        const fetched = await fetchMyTripWithId(
-          tripId,
-          rdxUser.credentials.token
-        )
-        console.log(fetched.message)
-        if (!fetched?.success) {
-          if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
-            dispatch(logout({ credentials: "" }))
-            navigate("/login")
-            toast.error(fetched.message, {
-              theme: "dark",
-              position: "top-left",
-              autoClose: 2000,
-            })
-            return
-          }
-          toast.error(fetched.message, {
-            theme: "dark",
-            position: "top-left",
-            autoClose: 2000,
-          })
-
-          return
-        }
-        console.log(fetched.data[0], "lo fetcheados")
-        setLoadedData(true)
-        setTrip({
-          carModel: fetched.data[0].car.model,
-          carNumberPlate: fetched.data[0].car.numberPlate,
-          carSeats: fetched.data[0].car.seats,
-          destination: fetched.data[0].destination,
-          driverName: fetched.data[0].driver.driverName,
-          driverScore: fetched.data[0].driver.score,
-          startLocation: fetched.data[0].startLocation,
-          tripDate: fetched.data[0].tripDate,
-          driverMsg: fetched.data[0].driver.driverMessage,
-        })
-        const splitName = (name) => {
-          let arrayName = name.split(/(?=[A-Z])/)
-          setDriverNameSplited({
-            name: arrayName[0],
-            last: arrayName[1],
-          })
-        }
-        splitName(fetched.data[0].driver.driverName)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    if (!loadedData) {
-      fetching()
-    }
-  }, [rdxUser])
-  console.log(trip, "los no fetch")
 
   return (
     <>
@@ -173,7 +107,6 @@ const Pickup = () => {
           </div>
         </div>
       )}
-
       <ToastContainer />
     </>
   )

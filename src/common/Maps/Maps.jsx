@@ -7,27 +7,39 @@ import {
 import { useEffect, useRef, useState } from "react"
 import { CustomButton } from "../CustomButton/CustomButton"
 import "./Maps.css"
-import { useSelector } from "react-redux"
-import { userData } from "../../app/slices/userSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { logout, userData } from "../../app/slices/userSlice"
 import { calculateMoneyTrip } from "../../utils/functions"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { createTrip } from "../../services/apiCalls"
+import { createTrip, fetchMyTripWithId } from "../../services/apiCalls"
+import Pickup from "../../pages/Pickup/Pickup"
+// import Pickup from "../../pages/Pickup/Pickup"
 
 const places = ["places"]
 const Maps = () => {
   const [showSection, setShowSection] = useState(false)
-
   const [toggleButtonTrip, setToggleButtonTrip] = useState(false)
+  const [toogleButtonPickupTrip, setToogleButtonPickupTrip] = useState(false)
   const [map, setMap] = useState(null)
   const [directionsResponse, setDirectionsResponse] = useState(null)
+  const [tripChanged, setTripChanged] = useState(false)
   const [distance, setDistance] = useState("")
   const [duration, setDuration] = useState("")
+
+  const [loadedData, setLoadedData] = useState(false)
+  const [DriverNameSplited, setDriverNameSplited] = useState({
+    name: "",
+    last: "",
+  })
+
   const [location, setLocation] = useState({
     lat: null,
     lng: null,
   })
+  const [trip, setTrip] = useState({})
+
   const [tripId, setTripId] = useState("")
   const [newTrip, setNewTrip] = useState({
     startLocation: "",
@@ -36,6 +48,7 @@ const Maps = () => {
   })
   const navigate = useNavigate()
   const rdxUser = useSelector(userData)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (rdxUser.location) {
@@ -47,6 +60,65 @@ const Maps = () => {
       console.log("location empty")
     }
   }, [rdxUser.location])
+
+  useEffect(() => {
+    const fetching = async () => {
+      setTrip("")
+      try {
+        console.log(tripId, "inside de function fecth trip")
+        const fetched = await fetchMyTripWithId(
+          tripId,
+          rdxUser.credentials.token
+        )
+        console.log(fetched.message, "hace el viaje??")
+        if (!fetched?.success) {
+          if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
+            dispatch(logout({ credentials: "" }))
+            navigate("/login")
+            toast.error(fetched.message, {
+              // theme: "dark",
+              // position: "top-left",
+              // autoClose: 2000,
+            })
+            return
+          }
+          toast.error(fetched.message, {
+            // theme: "dark",
+            // position: "top-left",
+            // autoClose: 2000,
+          })
+
+          return
+        }
+        // setLoadedData(true)
+        setTrip({
+          carModel: fetched.data[0].car.model,
+          carNumberPlate: fetched.data[0].car.numberPlate,
+          carSeats: fetched.data[0].car.seats,
+          destination: fetched.data[0].destination,
+          driverName: fetched.data[0].driver.driverName,
+          driverScore: fetched.data[0].driver.score,
+          startLocation: fetched.data[0].startLocation,
+          tripDate: fetched.data[0].tripDate,
+          driverMsg: fetched.data[0].driver.driverMessage,
+        })
+        const splitName = (name) => {
+          let arrayName = name.split(/(?=[A-Z])/)
+          setDriverNameSplited({
+            name: arrayName[0],
+            last: arrayName[1],
+          })
+        }
+        splitName(fetched.data[0].driver.driverName)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    // console.log(tripChanged, "es true o false? ")
+    if (tripChanged) {
+      fetching()
+    }
+  }, [tripChanged])
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -62,6 +134,7 @@ const Maps = () => {
   }
   const myNewTrip = async () => {
     try {
+      console.log(newTrip, "los datos a guardar")
       const fetched = await createTrip(newTrip, rdxUser.credentials.token)
       console.log(fetched.message)
 
@@ -69,26 +142,21 @@ const Maps = () => {
         toast.error(fetched.message, { theme: "dark" })
         return
       }
-      if (fetched?.success) {
-        toast.success(fetched.message, { theme: "dark" })
-      }
+      console.log(fetched, "SE CREO EL VIAJE")
+      // if (fetched?.success) {
+      //   toast.success(fetched.message, { theme: "dark" })
+      // } lo quito para ver si me da error
 
+      //Save trip id to share to pickup component
       setTripId(fetched.data.id)
-      // setNewTrip({
-      //   location: location,
-      //   destination: destiantionRef.current.value,
-      //   driverId: "2",
-      // })
+      // console.log(tripId)
 
-      //hardcoded but I can put random with a function or put location
-      //and add a function with the nearby postion
-
-      // setTripChanged(!tripChanged)
+      setTripChanged(!tripChanged) //bandera para hacer el fetch data para pickup
     } catch (error) {
       console.log(error)
     }
   }
-
+  // a.stringify()
   const geocoder = new google.maps.Geocoder()
   async function calculateRoute() {
     if (destiantionRef.current.value === "") {
@@ -97,12 +165,11 @@ const Maps = () => {
 
     const coordinateArray = [location.lat, location.lng]
     const serializedCordinates = JSON.stringify(coordinateArray)
-    console.log(coordinateArray, "el creado ")
-
+    Math.floor(Math.random() * 6 + 1)
     setNewTrip({
       startLocation: serializedCordinates,
       destination: destiantionRef.current.value,
-      driverId: "2",
+      driverId: Math.floor(Math.random() * 6 + 1).toString(),
       //hardcoded but I can put random with a function or put location
       //and add a function with the nearby postion
     })
@@ -139,8 +206,7 @@ const Maps = () => {
       console.error("Geolocation is not supported by this browser.")
     }
   }
-  // console.log(destiantionRef.current.value, "el destino q busca google")
-  //  console.log(currentLocation, "de donde inicia el viaje")
+
   function clearRoute() {
     setShowSection(false)
     setToggleButtonTrip(false)
@@ -148,6 +214,7 @@ const Maps = () => {
       setDirectionsResponse(null)
       setDistance("")
       setDuration("")
+      // setNewTrip({ startLocation: "", destination: "", driverId: "" })
       // originRef.current.value = ""
       destiantionRef.current.value = ""
     }, 500)
@@ -170,16 +237,21 @@ const Maps = () => {
     }
   }
   const toggleSection = () => {
-    // Delay the toggle of showSection state to ensure transition effect
     setTimeout(() => {
       setShowSection((prevShowSection) => !prevShowSection)
-    }, 50) // Adjust the delay time as needed
+    }, 50)
   }
   const toggleSectionBottomButtonB = () => {
-    // Delay the toggle of showSection state to ensure transition effect
     setTimeout(() => {
       setToggleButtonTrip((prevToggleButtonTrip) => !prevToggleButtonTrip)
-    }, 50) // Adjust the delay time as needed
+    }, 50)
+  }
+  const toggleSectionTripInfo = () => {
+    setTimeout(() => {
+      setToogleButtonPickupTrip(
+        (prevToogleButtonPickupTrip) => !prevToogleButtonPickupTrip
+      )
+    }, 50)
   }
 
   return (
@@ -188,6 +260,12 @@ const Maps = () => {
       {location && (
         <>
           <div className="inputBox">
+            {/* <button
+              className="primaryButton"
+              onClick={() => toggleSectionTripInfo()}
+            >
+              get info trip
+            </button> */}
             <div className="buttonBar">
               <Autocomplete>
                 <input
@@ -295,7 +373,6 @@ const Maps = () => {
               )}
             </GoogleMap>
           )}
-
           <div className={`footerMaps `}>
             <div
               className={`footerData ${showSection ? "show" : ""}
@@ -420,9 +497,9 @@ const Maps = () => {
                     functionEmit={() => {
                       myNewTrip()
                       toggleSection()
-                      setTimeout(() => {
-                        navigate("/pickup")
-                      }, 500)
+                      // setTimeout(() => {
+                      //   navigate("/pickup")
+                      // }, 500)
                       //Navigate to new page and toggleSection()
                     }}
                   />
@@ -437,6 +514,18 @@ const Maps = () => {
                   />
                 </div>
               </div>
+            </div>
+            <div
+              className={`tripInfo ${toogleButtonPickupTrip ? "show" : ""}
+            }
+            `}
+              onClick={() => toggleSectionTripInfo()}
+            >
+              <Pickup
+                trip={trip}
+                setTrip={setTrip}
+                DriverNameSplited={DriverNameSplited}
+              />
             </div>
           </div>
         </>
