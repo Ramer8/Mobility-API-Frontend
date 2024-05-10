@@ -3,7 +3,6 @@ import {
   GoogleMap,
   Autocomplete,
   DirectionsRenderer,
-  Marker,
 } from "@react-google-maps/api"
 import { useEffect, useRef, useState } from "react"
 import { CustomButton } from "../CustomButton/CustomButton"
@@ -16,7 +15,7 @@ import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { createTrip } from "../../services/apiCalls"
 
-const libraries = ["places"]
+const places = ["places"]
 const Maps = () => {
   const [showSection, setShowSection] = useState(false)
 
@@ -29,13 +28,12 @@ const Maps = () => {
     lat: null,
     lng: null,
   })
-
+  const [tripId, setTripId] = useState("")
   const [newTrip, setNewTrip] = useState({
     startLocation: "",
     destination: "",
     driverId: "",
   })
-
   const navigate = useNavigate()
   const rdxUser = useSelector(userData)
 
@@ -52,7 +50,7 @@ const Maps = () => {
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-    libraries: libraries,
+    libraries: places,
   })
 
   const originRef = useRef()
@@ -69,10 +67,13 @@ const Maps = () => {
 
       if (!fetched?.success) {
         toast.error(fetched.message, { theme: "dark" })
+        return
       }
       if (fetched?.success) {
         toast.success(fetched.message, { theme: "dark" })
       }
+
+      setTripId(fetched.data.id)
       // setNewTrip({
       //   location: location,
       //   destination: destiantionRef.current.value,
@@ -119,7 +120,6 @@ const Maps = () => {
             lng: position.coords.longitude,
           }
           console.log(currentLocation)
-          console.log(typeof currentLocation)
           results = await directionsService.route({
             origin: currentLocation,
             destination: destiantionRef.current.value,
@@ -130,7 +130,6 @@ const Maps = () => {
           setDistance(results.routes[0].legs[0].distance.text)
           setDuration(results.routes[0].legs[0].duration.text)
           toggleSection()
-          // setLocation(currentLocation)
         },
         (error) => {
           console.error("Error getting current location:", error)
@@ -290,7 +289,7 @@ const Maps = () => {
               }}
               onLoad={(map) => setMap(map)}
             >
-              <Marker position={location} />
+              {/* <Marker position={location} /> */}
               {directionsResponse && (
                 <DirectionsRenderer directions={directionsResponse} />
               )}
@@ -421,9 +420,9 @@ const Maps = () => {
                     functionEmit={() => {
                       myNewTrip()
                       toggleSection()
-                      // setTimeout(() => {
-                      //   navigate("/pickup")
-                      // }, 500)
+                      setTimeout(() => {
+                        navigate("/pickup")
+                      }, 500)
                       //Navigate to new page and toggleSection()
                     }}
                   />

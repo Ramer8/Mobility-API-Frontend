@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { logout, userData } from "../../app/slices/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { createTrip, fetchMyTripWithId } from "../../services/apiCalls"
+import { fetchMyTripWithId } from "../../services/apiCalls"
 
 const Pickup = () => {
   const [loadedData, setLoadedData] = useState(false)
@@ -28,30 +28,30 @@ const Pickup = () => {
 
   useEffect(() => {
     const fetching = async () => {
-      const tripId = 2
+      const tripId = 7
       try {
         const fetched = await fetchMyTripWithId(
           tripId,
           rdxUser.credentials.token
         )
-
+        console.log(fetched.message)
         if (!fetched?.success) {
           if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
             dispatch(logout({ credentials: "" }))
-
+            navigate("/login")
             toast.error(fetched.message, {
               theme: "dark",
               position: "top-left",
-              autoClose: 500,
+              autoClose: 2000,
             })
             return
           }
           toast.error(fetched.message, {
             theme: "dark",
             position: "top-left",
-            autoClose: 500,
+            autoClose: 2000,
           })
-          navigate("/login")
+
           return
         }
         console.log(fetched.data[0], "lo fetcheados")
@@ -65,8 +65,8 @@ const Pickup = () => {
           driverScore: fetched.data[0].driver.score,
           startLocation: fetched.data[0].startLocation,
           tripDate: fetched.data[0].tripDate,
+          driverMsg: fetched.data[0].driver.driverMessage,
         })
-
         const splitName = (name) => {
           let arrayName = name.split(/(?=[A-Z])/)
           setDriverNameSplited({
@@ -83,6 +83,8 @@ const Pickup = () => {
       fetching()
     }
   }, [rdxUser])
+  console.log(trip, "los no fetch")
+
   return (
     <>
       {trip && (
@@ -90,6 +92,7 @@ const Pickup = () => {
           <div className="pickupHeader">
             {/* {trip.map((element) => console.log(element))} */}
             <div className="pickupTitle">Pickup in {"3"}' minutes</div>
+            {/* posibility put the meesage of driver  */}
             <div className="pickupMsg">
               Meet {DriverNameSplited.name}
               at the pickup point
