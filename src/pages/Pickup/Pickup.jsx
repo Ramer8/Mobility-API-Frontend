@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { logout, userData } from "../../app/slices/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { fetchMyTripWithId } from "../../services/apiCalls"
+import { createTrip, fetchMyTripWithId } from "../../services/apiCalls"
 
 const Pickup = () => {
   const [loadedData, setLoadedData] = useState(false)
@@ -15,34 +15,6 @@ const Pickup = () => {
     name: "",
     last: "",
   })
-
-  // {
-  //       "startLocation": null,
-  //       "destination": null,
-  //       "tripDate": "2024-05-09T13:44:22.000Z",
-  //       "tripStartDate": "2024-05-01T09:50:00.000Z",
-  //       "tripFinishDate": null,
-  //       "driver": {
-  //         "driverName": "AddieBatz",
-  //         "carId": 4
-  //       },
-  //       "car": {
-  //         "numberPlate": "AN22SAC",
-  //         "model": "BMW Alpine",
-  //         "powerEngine": "Electric",
-  //         "seats": 6,
-  //         "accessibleCar": true
-  //       },
-  //       "user": {
-  //         "userName": "user",
-  //         "payment": "debit"
-  //       }
-
-  //     userName: fetched.data.userName,
-  //     phone: fetched.data.phone,
-  //     address: fetched.data.address,
-  //     payment: fetched.data.payment,
-  //   })
 
   const navigate = useNavigate()
   const rdxUser = useSelector(userData)

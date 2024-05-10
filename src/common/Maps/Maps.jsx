@@ -12,6 +12,9 @@ import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice"
 import { calculateMoneyTrip } from "../../utils/functions"
 import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { createTrip } from "../../services/apiCalls"
 
 const libraries = ["places"]
 const Maps = () => {
@@ -25,6 +28,12 @@ const Maps = () => {
   const [location, setLocation] = useState({
     lat: null,
     lng: null,
+  })
+
+  const [newTrip, setNewTrip] = useState({
+    startLocation: "",
+    destination: "",
+    driverId: "",
   })
 
   const navigate = useNavigate()
@@ -53,35 +62,54 @@ const Maps = () => {
   if (!isLoaded) {
     return <div>Loading...</div>
   }
-  // async function calculateRoute() {
-  //   if (originRef.current.value === "" || destiantionRef.current.value === "") {
-  //     return
-  //   }
-  //   let results
-  //   const directionsService = new google.maps.DirectionsService()
-  //   if (rdxUser.location) {
-  //     results = await directionsService.route({
-  //       origin: location,
-  //       // origin: originRef.current.value,
-  //       destination: destiantionRef.current.value,
-  //       travelMode: google.maps.TravelMode.DRIVING,
-  //     })
-  //     return results
-  //   }
+  const myNewTrip = async () => {
+    try {
+      const fetched = await createTrip(newTrip, rdxUser.credentials.token)
+      console.log(fetched.message)
 
-  //   setDirectionsResponse(results)
-  //   setDistance(results.routes[0].legs[0].distance.text)
-  //   setDuration(results.routes[0].legs[0].duration.text)
-  // }
+      if (!fetched?.success) {
+        toast.error(fetched.message, { theme: "dark" })
+      }
+      if (fetched?.success) {
+        toast.success(fetched.message, { theme: "dark" })
+      }
+      // setNewTrip({
+      //   location: location,
+      //   destination: destiantionRef.current.value,
+      //   driverId: "2",
+      // })
+
+      //hardcoded but I can put random with a function or put location
+      //and add a function with the nearby postion
+
+      // setTripChanged(!tripChanged)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const geocoder = new google.maps.Geocoder()
   async function calculateRoute() {
     if (destiantionRef.current.value === "") {
       return console.log("no destination")
     }
+
+    const coordinateArray = [location.lat, location.lng]
+    const serializedCordinates = JSON.stringify(coordinateArray)
+    console.log(coordinateArray, "el creado ")
+
+    setNewTrip({
+      startLocation: serializedCordinates,
+      destination: destiantionRef.current.value,
+      driverId: "2",
+      //hardcoded but I can put random with a function or put location
+      //and add a function with the nearby postion
+    })
     console.log("calculating route")
+
     let results
     const directionsService = new google.maps.DirectionsService()
-
+    console.log(directionsService, "las direcciones de google")
     // Fetch the user's current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -90,7 +118,8 @@ const Maps = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           }
-
+          console.log(currentLocation)
+          console.log(typeof currentLocation)
           results = await directionsService.route({
             origin: currentLocation,
             destination: destiantionRef.current.value,
@@ -101,6 +130,7 @@ const Maps = () => {
           setDistance(results.routes[0].legs[0].distance.text)
           setDuration(results.routes[0].legs[0].duration.text)
           toggleSection()
+          // setLocation(currentLocation)
         },
         (error) => {
           console.error("Error getting current location:", error)
@@ -110,7 +140,8 @@ const Maps = () => {
       console.error("Geolocation is not supported by this browser.")
     }
   }
-
+  // console.log(destiantionRef.current.value, "el destino q busca google")
+  //  console.log(currentLocation, "de donde inicia el viaje")
   function clearRoute() {
     setShowSection(false)
     setToggleButtonTrip(false)
@@ -151,10 +182,7 @@ const Maps = () => {
       setToggleButtonTrip((prevToggleButtonTrip) => !prevToggleButtonTrip)
     }, 50) // Adjust the delay time as needed
   }
-  // console.log(location.lat && "hola")
-  // if (!location.lat) {
-  //   console.log("no hay location")
-  // }
+
   return (
     <>
       {/* {location && `${location.lat}` + `${location.lng}` */}
@@ -391,11 +419,11 @@ const Maps = () => {
                 `}
                     title={"Order Taxi now"}
                     functionEmit={() => {
+                      myNewTrip()
                       toggleSection()
-                      setTimeout(() => {
-                        navigate("/pickup")
-                      }, 500)
-
+                      // setTimeout(() => {
+                      //   navigate("/pickup")
+                      // }, 500)
                       //Navigate to new page and toggleSection()
                     }}
                   />
@@ -414,6 +442,7 @@ const Maps = () => {
           </div>
         </>
       )}
+      <ToastContainer autoClose={3000} />
     </>
   )
 }

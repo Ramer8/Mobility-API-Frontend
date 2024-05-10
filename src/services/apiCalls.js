@@ -50,6 +50,7 @@ export const registerMe = async (credenciales) => {
     return error
   }
 }
+//for taxi mobility proyect
 export const fetchMyProfile = async (token) => {
   const options = {
     method: "GET",
@@ -74,6 +75,7 @@ export const fetchMyProfile = async (token) => {
     return error
   }
 }
+//for mobility proyect
 // console.log(`${import.meta.env.VITE_API_URL}users/profile`)
 // http://localhost:5500/users/profile
 export const fetchMyTripWithId = async (tripId, token) => {
@@ -102,6 +104,7 @@ export const fetchMyTripWithId = async (tripId, token) => {
   }
 }
 
+//for mobility proyect
 export const updateProfile = async (data, token) => {
   // console.log(`${import.meta.env.VITE_API_URL}users/profile`)
   // http://localhost:5500/users/profile
@@ -155,6 +158,35 @@ export const getAllUsersPosts = async (token) => {
     return error
   }
 }
+//for mobility proyect
+
+export const createTrip = async (data, token) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  }
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}trips`,
+      options
+    )
+
+    const data = await response.json()
+    console.log(data, "recently created trip")
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+
+    return data
+  } catch (error) {
+    return error
+  }
+}
+
 export const createPost = async (data, token) => {
   const options = {
     method: "POST",
