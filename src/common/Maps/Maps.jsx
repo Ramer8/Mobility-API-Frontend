@@ -151,7 +151,10 @@ const Maps = () => {
       setToggleButtonTrip((prevToggleButtonTrip) => !prevToggleButtonTrip)
     }, 50) // Adjust the delay time as needed
   }
-
+  // console.log(location.lat && "hola")
+  // if (!location.lat) {
+  //   console.log("no hay location")
+  // }
   return (
     <>
       {/* {location && `${location.lat}` + `${location.lng}` */}
@@ -244,24 +247,27 @@ const Maps = () => {
               />
             </div>
           </div>
-          <GoogleMap
-            center={location}
-            zoom={15}
-            mapContainerStyle={{ width: "100%", height: "100%" }}
-            // map-id="DEMO_MAP_ID"
-            options={{
-              zoomControl: false,
-              streetViewControl: false,
-              mapTypeControl: false,
-              fullscreenControl: false,
-            }}
-            onLoad={(map) => setMap(map)}
-          >
-            <Marker position={location} />
-            {directionsResponse && (
-              <DirectionsRenderer directions={directionsResponse} />
-            )}
-          </GoogleMap>
+          {location && (
+            <GoogleMap
+              center={location}
+              // center={location? "insert lat & lng" : location} to fix warning error at start.
+              zoom={15}
+              mapContainerStyle={{ width: "100%", height: "100%" }}
+              // map-id="DEMO_MAP_ID"
+              options={{
+                zoomControl: false,
+                streetViewControl: false,
+                mapTypeControl: false,
+                fullscreenControl: false,
+              }}
+              onLoad={(map) => setMap(map)}
+            >
+              <Marker position={location} />
+              {directionsResponse && (
+                <DirectionsRenderer directions={directionsResponse} />
+              )}
+            </GoogleMap>
+          )}
 
           <div className={`footerMaps `}>
             <div
