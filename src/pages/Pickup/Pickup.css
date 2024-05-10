@@ -84,12 +84,29 @@
 }
 
 .bodyLeft {
-    /* background-color: blue; */
     line-height: 1.5;
 }
 
-.bodyLeftTop {
+
+
+.driverName {
+    font-weight: 400;
     color: black;
+}
+
+.starIcon {
+    margin-bottom: -.15em;
+    color: #8492a6;
+}
+
+.driverScore {
+    font-weight: 300;
+}
+
+.bodyLeftTop {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
 }
 
 .carBrandModel {
@@ -99,8 +116,9 @@
 .numberPlate {
     text-transform: uppercase;
     width: fit-content;
+    margin-top: .3em;
     padding-inline: .3em;
-    border: 1px solid gray;
+    border: 1px solid #8492a6;
     border-radius: .2em;
     font-size: .8em;
 }
