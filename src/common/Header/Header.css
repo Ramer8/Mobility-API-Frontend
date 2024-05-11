@@ -9,7 +9,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
-    margin-inline: 3em;
+    margin-inline: 1em;
     margin-top: 1em;
 
 }
@@ -17,15 +17,16 @@
 .headerDropDown {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .dropdownIcons {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
-    /* justify-content: flex-start;
-    align-items: flex-start; */
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .menu {
@@ -36,8 +37,8 @@
 @media (prefers-color-scheme: dark) {
 
     .headerDesign {
-        color: #8492a6;
-        /* color: beige; */
+        /* color: #8492a6; */
+        color: beige;
         /* background-color: #1b2836; */
         /* background-color: beige; */
         /* background-color: rgba(25, 25, 112, 0.957); */
@@ -51,13 +52,14 @@
     }
 }
 
+/* .picIconButton {
+    padding: 0;
+    margin: 0;
+} */
+
 .dropbtn {
     color: #8492a6;
     border-radius: 50%;
-    /* color: #3498DB; */
-    /* color: white; */
-    /* border: solid 1px gray; */
-    /* padding: 16px; */
     cursor: pointer;
 }
 
@@ -70,15 +72,16 @@
 .dropdown {
     position: relative;
     display: inline-block;
+
 }
 
 .dropdown-content {
     display: none;
-    border-radius: 1em;
-    margin-left: -5em;
+    border-radius: .7em;
+    margin-left: -3em;
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
+    background-color: #f1f1f1e0;
+    width: 120px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -86,14 +89,16 @@
 }
 
 .dropdown-content .dropdownIcons {
-    color: black;
-    padding: 12px 26px;
-    text-decoration: none;
-    display: block;
+    /* display: block; */
+    letter-spacing: .5px;
+    line-height: 1.5;
+    padding: .5em;
 }
 
-.dropdown a:hover {
-    background-color: #ddd;
+.dropdownIcons:hover {
+    background-color: lightgray;
+    color: #396cf0;
+    border: none;
 }
 
 .show {
