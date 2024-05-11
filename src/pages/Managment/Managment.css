@@ -32,7 +32,7 @@
     opacity: .8;
 }
 
-.postContainerTable {
+.tripContainerTable {
     /* max-width: 62%; */
     /* max-height: 20vh; */
     border: .5px solid gray;
@@ -44,12 +44,12 @@
     justify-content: center;
 }
 
-.postsTable {
+.tripTable {
     width: 100%;
     overflow-x: hidden;
 }
 
-.fulltablePost {
+.fulltableTrip {
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -59,7 +59,7 @@
     overflow-x: hidden;
 }
 
-.datePost {
+.dateTrip {
     display: flex;
 }
 
@@ -350,7 +350,7 @@ body {
     }
 }
 
-.postContainer {
+.tripContainer {
     margin-top: 1em;
     flex-direction: column;
     justify-content: center;

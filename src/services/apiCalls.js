@@ -394,6 +394,7 @@ export const deleteMoreThanOneTrips = async (array, token) => {
 }
 
 export const searchUsers = async (searchParam, token) => {
+  console.log(searchParam, "from api  calls")
   const options = {
     method: "GET",
     headers: {
@@ -402,15 +403,21 @@ export const searchUsers = async (searchParam, token) => {
     },
   }
   try {
+    console.log(
+      `${import.meta.env.VITE_API_URL}users/search?search=${searchParam}`
+    )
+
     const response = await fetch(
       // api/users?email=john@example.com&name=John `/api/users?${searchParam}`
 
       // `${import.meta.env.VITE_API_URL}/users?email=${email}&name=${name}`,
       // `${import.meta.env.VITE_API_URL}/users?email=${email}`,
-      `${import.meta.env.VITE_API_URL}/users?${searchParam}`,
+
+      `${import.meta.env.VITE_API_URL}users/search?search=${searchParam}`,
       options
     )
     const data = await response.json()
+    console.log(data, " from api")
     if (!data.success) {
       throw new Error(data.message)
     }

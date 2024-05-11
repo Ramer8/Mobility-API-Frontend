@@ -15,10 +15,10 @@ import {
 
 import {
   deleteMoreThanOneTrips,
-  // deleteMoreThanOnePosts,
+  // deleteMoreThanOneTrips,
   deleteMoreThanOneUsers,
   fetchAllUsers,
-  // getAllUsersPosts,
+  // getAllUsersTrips,
   getAllUsersTrips,
   searchUsers,
 } from "../../services/apiCalls"
@@ -31,10 +31,10 @@ const Managment = () => {
   const [searchUser, setSearchUser] = useState("")
 
   const [checkButton, setCheckButton] = useState(false)
-  const [checkButtonPost, setCheckButtonPost] = useState(false)
+  const [checkButtonTrip, setCheckButtonTrip] = useState(false)
 
   let arrayToDelete = []
-  let arrayToDeletePost = []
+  let arrayToDeleteTrip = []
 
   const rdxUser = useSelector(userData)
 
@@ -103,7 +103,7 @@ const Managment = () => {
       fetchingTrips()
     }
   }, [loadedData, searchUserRdx.criteriaUser])
-  console.log(trips)
+
   const handleCheck = (id) => {
     setCheckButton(!checkButton)
 
@@ -115,8 +115,6 @@ const Managment = () => {
       arrayToDelete.push(id)
     }
     setCheckButton(false)
-
-    // setUsersToDelete({ usersId: arrayToDelete })
   }
   const deleteUsers = async () => {
     const usersToRemove = { usersId: arrayToDelete }
@@ -149,38 +147,38 @@ const Managment = () => {
   }
 
   const handleCheckTrip = (id) => {
-    setCheckButtonPost(!checkButtonPost)
+    setCheckButtonTrip(!checkButtonTrip)
 
-    const isInArrayPost = arrayToDeletePost.includes(id)
-    if (isInArrayPost) {
-      const index = arrayToDeletePost.indexOf(id)
-      arrayToDeletePost.splice(index, 1)
+    const isInArrayTrip = arrayToDeleteTrip.includes(id)
+    if (isInArrayTrip) {
+      const index = arrayToDeleteTrip.indexOf(id)
+      arrayToDeleteTrip.splice(index, 1)
     } else {
-      arrayToDeletePost.push(id)
+      arrayToDeleteTrip.push(id)
     }
-    setCheckButtonPost(false)
+    setCheckButtonTrip(false)
     // setUsersToDelete({ usersId: arrayToDelete })
   }
-  const deletePosts = async () => {
-    const postsToRemove = { tripsId: arrayToDeletePost }
+  const deleteTrips = async () => {
+    const tripsToRemove = { tripsId: arrayToDeleteTrip }
 
-    if (arrayToDeletePost.length === 0) {
-      toast.warn("You must select at least one user to delete", {
+    if (arrayToDeleteTrip.length === 0) {
+      toast.warn("You must select at least one trip to delete", {
         theme: "dark",
       })
       return
     }
     try {
       const fetched = await deleteMoreThanOneTrips(
-        postsToRemove,
+        tripsToRemove,
         rdxUser.credentials.token
       )
       if (!fetched?.success) {
         toast.warn(fetched.message, { theme: "dark" })
 
         if (!rdxUser.credentials.token === undefined) {
-          toast.warn("Failed to fetch posts data", { theme: "dark" })
-          throw new Error("Failed to fetch posts data")
+          toast.warn("Failed to fetch trip data", { theme: "dark" })
+          throw new Error("Failed to fetch trip data")
         }
       }
       if (fetched?.success) {
@@ -190,7 +188,7 @@ const Managment = () => {
       console.log(error)
     }
 
-    arrayToDeletePost = []
+    arrayToDeleteTrip = []
     setLoadedData(!loadedData)
   }
 
@@ -200,21 +198,17 @@ const Managment = () => {
 
   const search = async () => {
     try {
-      let searchParam
-      if (searchUserRdx.criteriaUser.includes("@")) {
-        // Looks like an email
-        searchParam = `email=${searchUser}`
-      } else {
-        // Looks like a name
-        searchParam = `name=${searchUser}`
-      }
-      const fetched = await searchUsers(searchParam, rdxUser.credentials.token)
+      const fetched = await searchUsers(
+        searchUserRdx.criteriaUser,
+        rdxUser.credentials.token
+      )
       if (!fetched?.success) {
         // toast.error(fetched.message, { theme: "dark" })
         if (!rdxUser.credentials.token === undefined) {
           throw new Error("Failed to fetch Appointment data")
         }
       }
+      console.log(fetched, "from managme")
       setUsers(fetched.data)
     } catch (error) {
       console.log(error)
@@ -344,10 +338,10 @@ const Managment = () => {
               </div>
             </div>
           </div>
-          <div className="postContainerTable">
+          <div className="tripContainerTable">
             {!trips?.length && "No trips loaded"}
             {trips && (
-              <div className="postsTable">
+              <div className="tripTable">
                 <div className="preHeader">
                   <div className="leftSide colorized">Trips list</div>
                   <CustomButton
@@ -364,10 +358,10 @@ const Managment = () => {
                         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
                       </svg>
                     }
-                    functionEmit={() => deletePosts()}
+                    functionEmit={() => deleteTrips()}
                   />
                 </div>
-                <div className="fulltablePost">
+                <div className="fulltableTrip">
                   <div className="headerTitle">
                     <div>ID</div>
                     <div>StartLocation</div>
@@ -384,11 +378,11 @@ const Managment = () => {
                           <div className="idUser">{trips.id}</div>
                           <div>{trips.startLocation}</div>
                           <div>{trips.destination}</div>
-                          <div className="datePost">
+                          <div className="dateTrip">
                             {new Date(trips.tripDate).toDateString()}
                           </div>
 
-                          <div className="datePost">
+                          <div className="dateTrip">
                             {new Date(trips.tripFinishDate).toDateString()}
                           </div>
                           <div>{trips.car.model}</div>
@@ -410,7 +404,7 @@ const Managment = () => {
                               id="s1"
                               type="checkbox"
                               className="switch"
-                              value={checkButtonPost.state}
+                              value={checkButtonTrip.state}
                               onChange={() => handleCheckTrip(trips.id)}
                             />
                           </div>
