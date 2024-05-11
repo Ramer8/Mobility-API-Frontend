@@ -52,7 +52,9 @@
 
 .searchInputUser {
     box-shadow: none;
-    background-color: rgb(42, 61, 82);
+    border: solid 1px;
+    background-color: beige;
+    /* background-color: rgb(42, 61, 82); */
     font-weight: 600;
     color: #8492A6;
     display: flex;

@@ -227,7 +227,7 @@ const Managment = () => {
   //   { key: "email", label: "Email" },
   //   { key: "role", label: "Role" },
   // ]
-
+  const nextPage = () => {}
   return (
     <>
       {rdxUser.super && (
@@ -333,6 +333,13 @@ const Managment = () => {
                         </div>
                       </div>
                     ))}
+                    <div className="paginationBar">
+                      <div className="buttonPage" onClick={() => nextPage()}>
+                        {" "}
+                        ← previuous page
+                      </div>
+                      <div className="buttonPage"> next page → </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -377,7 +384,7 @@ const Managment = () => {
                         <div key={trips.id} className="row">
                           <div className="idUser">{trips.id}</div>
                           <div>{trips.startLocation}</div>
-                          <div>{trips.destination}</div>
+                          {trips?.destination.substring(0, 16) + "..."}
                           <div className="dateTrip">
                             {new Date(trips.tripDate).toDateString()}
                           </div>
@@ -395,7 +402,7 @@ const Managment = () => {
                           <div>{trips.user.userName}</div>
                           <div>{trips.user.payment}</div>
                           {/* <div>{trips?.userId.email}</div> */}
-                          {trips?.destination.substring(0, 16) + "..."}
+
                           <div>
                             {/* {"..." + trips?.userId.id.substring(19, 24)} */}
                           </div>
