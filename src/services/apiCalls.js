@@ -135,6 +135,30 @@ export const updateProfile = async (data, token) => {
     return error
   }
 }
+export const getAllUsersTrips = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}trips/all`,
+      options
+    )
+
+    const data = await response.json()
+    console.log(data)
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    return error
+  }
+}
 export const getAllUsersPosts = async (token) => {
   const options = {
     method: "GET",

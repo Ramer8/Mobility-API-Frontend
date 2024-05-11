@@ -18,12 +18,14 @@ import {
   deleteMoreThanOneUsers,
   fetchAllUsers,
   getAllUsersPosts,
+  getAllUsersTrips,
   searchUsers,
 } from "../../services/apiCalls"
 
 const Managment = () => {
   const [loadedData, setLoadedData] = useState(false)
   const [users, setUsers] = useState()
+  const [trips, setTrips] = useState()
   const [posts, setPosts] = useState()
 
   const [searchUser, setSearchUser] = useState("")
@@ -78,9 +80,9 @@ const Managment = () => {
       }
     }
     console.log(users)
-    const fetchingPost = async () => {
+    const fetchingTrips = async () => {
       try {
-        const fetched = await getAllUsersPosts(rdxUser.credentials.token)
+        const fetched = await getAllUsersTrips(rdxUser.credentials.token)
 
         if (!fetched?.success) {
           if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
@@ -91,17 +93,17 @@ const Managment = () => {
             throw new Error("Failed to fetch profile data")
           }
         }
-        setPosts(fetched.data)
+        setTrips(fetched.data)
       } catch (error) {
         console.error(error)
       }
     }
     if (!loadedData) {
       fetching()
-      fetchingPost()
+      fetchingTrips()
     }
   }, [loadedData, searchUserRdx.criteriaUser])
-
+  console.log(trips)
   const handleCheck = (id) => {
     setCheckButton(!checkButton)
 
@@ -146,7 +148,7 @@ const Managment = () => {
     setLoadedData(false)
   }
 
-  const handleCheckPost = (id) => {
+  const handleCheckTrip = (id) => {
     setCheckButtonPost(!checkButtonPost)
 
     const isInArrayPost = arrayToDeletePost.includes(id)
@@ -343,11 +345,11 @@ const Managment = () => {
             </div>
           </div>
           <div className="postContainerTable">
-            {!posts?.length && "No posts loaded"}
-            {posts && (
+            {!trips?.length && "No trips loaded"}
+            {trips && (
               <div className="postsTable">
                 <div className="preHeader">
-                  <div className="leftSide colorized">Post list</div>
+                  <div className="leftSide colorized">Trips list</div>
                   <CustomButton
                     className={"deleteUsers"}
                     title={
@@ -368,27 +370,40 @@ const Managment = () => {
                 <div className="fulltablePost">
                   <div className="headerTitle">
                     <div>ID</div>
-                    <div>Posts</div>
-                    <div>Likes</div>
-                    <div>Created at</div>
-                    <div>Email</div>
+                    <div>StartLocation</div>
+                    <div>Destination</div>
+                    <div>Trip Date</div>
+                    <div>Trip Finish Date</div>
+                    <div>Car</div>
                     <div>UserId</div>
                   </div>
                   <div className="body-container">
                     <div className="body">
-                      {posts?.map((post) => (
-                        <div key={post._id} className="row">
-                          <div className="idUser">
-                            {"..." + post._id.substring(19, 24)}
-                          </div>
-                          <div>{post.content.substring(0, 15)}</div>
-                          <div>{post.likes.length}</div>
+                      {trips?.map((trips) => (
+                        <div key={trips.id} className="row">
+                          <div className="idUser">{trips.id}</div>
+                          <div>{trips.startLocation}</div>
+                          <div>{trips.destination}</div>
                           <div className="datePost">
-                            {new Date(post.createdAt).toDateString()}
+                            {new Date(trips.tripDate).toDateString()}
                           </div>
-                          <div>{post?.userId.email}</div>
+
+                          <div className="datePost">
+                            {new Date(trips.tripFinishDate).toDateString()}
+                          </div>
+                          <div>{trips.car.model}</div>
+                          <div>{trips.car.numberPlate}</div>
+
+                          <div>{trips.car.seat}</div>
+                          <div>{!trips.car.accessible ? "no" : "yes"}</div>
+                          <div>{trips.car.powerEngine}</div>
+                          <div>{trips.driver.driverName}</div>
+                          <div>{trips.user.userName}</div>
+                          <div>{trips.user.payment}</div>
+                          {/* <div>{trips?.userId.email}</div> */}
+                          {trips?.destination.substring(0, 16) + "..."}
                           <div>
-                            {"..." + post?.userId._id.substring(19, 24)}
+                            {/* {"..." + trips?.userId.id.substring(19, 24)} */}
                           </div>
                           <div>
                             <input
@@ -396,7 +411,7 @@ const Managment = () => {
                               type="checkbox"
                               className="switch"
                               value={checkButtonPost.state}
-                              onChange={() => handleCheckPost(post._id)}
+                              onChange={() => handleCheckTrip(trips.id)}
                             />
                           </div>
                         </div>
