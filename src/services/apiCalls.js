@@ -305,10 +305,11 @@ export const fetchAllUsers = async (token) => {
   }
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/users`,
+      `${import.meta.env.VITE_API_URL}users`,
       options
     )
     const data = await response.json()
+    console.log(data)
     if (!data.success) {
       throw new Error(data.message)
     }
@@ -329,7 +330,7 @@ export const deleteMoreThanOneUsers = async (array, token) => {
 
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/users`,
+      `${import.meta.env.VITE_API_URL}users`,
       options
     )
 

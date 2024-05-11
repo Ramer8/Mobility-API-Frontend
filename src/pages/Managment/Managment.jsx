@@ -77,6 +77,7 @@ const Managment = () => {
         console.error(error)
       }
     }
+    console.log(users)
     const fetchingPost = async () => {
       try {
         const fetched = await getAllUsersPosts(rdxUser.credentials.token)
@@ -291,6 +292,12 @@ const Managment = () => {
                   <div>ID</div>
                   <div>Name</div>
                   <div>Email</div>
+                  <div>Phone </div>
+                  <div>Payment </div>
+                  <div>Address </div>
+                  <div>WorkAddress</div>
+                  <div>SavedAddress</div>
+                  <div>Documents</div>
                   <div>Role</div>
                 </div>
                 {!users?.length && (
@@ -302,14 +309,22 @@ const Managment = () => {
                 <div className="body-container">
                   <div className="body">
                     {users?.map((user) => (
-                      <div key={user._id} className="row">
-                        <div className="idUser">{user._id}</div>
-                        <div>{user.name}</div>
-                        <div>{user?.email}</div>
+                      <div key={user.id} className="row">
+                        <div className="idUser">{user.id}</div>
+                        <div> {user.userName}</div>
+                        <div> {user?.email}</div>
+                        <div> {user.phone} </div>
+                        <div> {user.payment}</div>
+                        <div> {user.address || "nd"} </div>
+                        <div> {user.workAddress || "nd"} </div>
+                        <div> {user.savedAddress || "nd"} </div>
+                        <div> {user.documents || "nd"} </div>
+                        <div> {new Date(user.createdAt).toDateString()} </div>
+
                         <div
                         // className={`${user.role === "user" && "colorized"}`}
                         >
-                          {user.role}
+                          {user.roleId}
                         </div>
                         <div>
                           <input
@@ -317,7 +332,7 @@ const Managment = () => {
                             type="checkbox"
                             className="switch"
                             value={checkButton.state}
-                            onChange={() => handleCheck(user._id)}
+                            onChange={() => handleCheck(user.id)}
                           />
                         </div>
                       </div>

@@ -35,8 +35,8 @@ const Maps = () => {
   })
 
   const [location, setLocation] = useState({
-    lat: null,
-    lng: null,
+    lat: 39.46975,
+    lng: -0.37739,
   })
   const [trip, setTrip] = useState({})
 
@@ -220,7 +220,8 @@ const Maps = () => {
     }, 500)
   }
 
-  const showDestination = (n) => {
+  const showDestination = () => {
+    //set default value
     {
       geocoder.geocode(
         { address: destiantionRef.current?.value },
@@ -230,10 +231,11 @@ const Maps = () => {
             map.panTo(destinationCoords)
           } else {
             console.error("Geocoding failed:", status)
+            return
           }
         }
       )
-      map.setZoom(n)
+      map.setZoom(15)
     }
   }
   const toggleSection = () => {
