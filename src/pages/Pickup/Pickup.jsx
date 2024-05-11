@@ -3,12 +3,19 @@ import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput"
 import { useEffect, useState } from "react"
-import { logout, userData } from "../../app/slices/userSlice"
+import { userData } from "../../app/slices/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { fetchMyTripWithId } from "../../services/apiCalls"
 
-const Pickup = ({ trip, setTrip, DriverNameSplited }) => {
+const Pickup = ({
+  trip,
+  setTrip,
+  DriverNameSplited,
+  toggleSectionTripInfo,
+  setTogglePickupComponent,
+  showDestination,
+}) => {
+  const [driverMessage, setDriverMessage] = useState("")
   const navigate = useNavigate()
   const rdxUser = useSelector(userData)
   const dispatch = useDispatch()
@@ -19,13 +26,50 @@ const Pickup = ({ trip, setTrip, DriverNameSplited }) => {
     }
   }, [rdxUser])
 
+  useEffect(() => {
+    timerMessage()
+    clearTimeout(timerMessage)
+
+    timerMessage2()
+    clearTimeout(timerMessage2)
+
+    timerMessage3()
+    clearTimeout(timerMessage3)
+
+    timerMessage4()
+    clearTimeout(timerMessage4)
+  }, [trip])
+
+  const timerMessage = () => {
+    setTimeout(() => {
+      setDriverMessage("I arrived at the pickup point, I'm waiting here. ")
+    }, 5000)
+  }
+  const timerMessage2 = () => {
+    setTimeout(() => {
+      setDriverMessage("Please, Fasten your seat belt and enjoy the trip.")
+    }, 10000)
+  }
+  const timerMessage3 = () => {
+    setTimeout(() => {
+      showDestination(17)
+      setDriverMessage("We arrived to your destination.")
+    }, 15000)
+  }
+  const timerMessage4 = () => {
+    setTimeout(() => {
+      setDriverMessage("")
+      setTogglePickupComponent(false)
+    }, 20000)
+  }
   return (
     <>
       {trip && (
         <div className="pickupContainer">
           <div className="pickupHeader">
-            {/* {trip.map((element) => console.log(element))} */}
-            <div className="pickupTitle">Pickup in {"3"}' minutes</div>
+            <div className="pickupTitle">
+              {driverMessage ? driverMessage : "Pickup in 3' minutes"}
+            </div>
             {/* posibility put the meesage of driver  */}
             <div className="pickupMsg">
               Meet {DriverNameSplited.name}
@@ -52,10 +96,7 @@ const Pickup = ({ trip, setTrip, DriverNameSplited }) => {
                   {!trip.driverScore ? "0" : trip.driverScore}
                 </div>
               </div>
-              <div className="carBrandModel">
-                {/* {"Car-Brand-"} */}
-                {trip.carModel}
-              </div>
+              <div className="carBrandModel">{trip.carModel}</div>
               <div className="numberPlate">{trip.carNumberPlate}</div>
             </div>
             <div className="bodyright">

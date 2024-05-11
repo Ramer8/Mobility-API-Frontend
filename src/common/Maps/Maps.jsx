@@ -21,7 +21,7 @@ const places = ["places"]
 const Maps = () => {
   const [showSection, setShowSection] = useState(false)
   const [toggleButtonTrip, setToggleButtonTrip] = useState(false)
-  const [toogleButtonPickupTrip, setToogleButtonPickupTrip] = useState(false)
+  const [togglePickupComponent, setTogglePickupComponent] = useState(false)
   const [map, setMap] = useState(null)
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [tripChanged, setTripChanged] = useState(false)
@@ -156,7 +156,6 @@ const Maps = () => {
       console.log(error)
     }
   }
-  // a.stringify()
   const geocoder = new google.maps.Geocoder()
   async function calculateRoute() {
     if (destiantionRef.current.value === "") {
@@ -210,6 +209,7 @@ const Maps = () => {
   function clearRoute() {
     setShowSection(false)
     setToggleButtonTrip(false)
+
     setTimeout(() => {
       setDirectionsResponse(null)
       setDistance("")
@@ -220,7 +220,7 @@ const Maps = () => {
     }, 500)
   }
 
-  const showDestination = () => {
+  const showDestination = (n) => {
     {
       geocoder.geocode(
         { address: destiantionRef.current?.value },
@@ -233,7 +233,7 @@ const Maps = () => {
           }
         }
       )
-      map.setZoom(15)
+      map.setZoom(n)
     }
   }
   const toggleSection = () => {
@@ -248,15 +248,15 @@ const Maps = () => {
   }
   const toggleSectionTripInfo = () => {
     setTimeout(() => {
-      setToogleButtonPickupTrip(
-        (prevToogleButtonPickupTrip) => !prevToogleButtonPickupTrip
+      console.log("se mueve el menu")
+      setTogglePickupComponent(
+        (prevTogglePickupComponent) => !prevTogglePickupComponent
       )
     }, 50)
   }
 
   return (
     <>
-      {/* {location && `${location.lat}` + `${location.lng}` */}
       {location && (
         <>
           <div className="inputBox">
@@ -290,7 +290,7 @@ const Maps = () => {
                   </svg>
                 }
                 functionEmit={() => {
-                  showDestination()
+                  showDestination(15)
                 }}
               />
               {/* <Autocomplete>
@@ -356,7 +356,7 @@ const Maps = () => {
             <GoogleMap
               center={location}
               // center={location? "insert lat & lng" : location} to fix warning error at start.
-              zoom={15}
+              zoom={17}
               mapContainerStyle={{ width: "100%", height: "100%" }}
               // map-id="DEMO_MAP_ID"
               options={{
@@ -495,36 +495,42 @@ const Maps = () => {
                 `}
                     title={"Order Taxi now"}
                     functionEmit={() => {
-                      myNewTrip()
-                      toggleSection()
-                      // setTimeout(() => {
-                      //   navigate("/pickup")
-                      // }, 500)
-                      //Navigate to new page and toggleSection()
+                      myNewTrip() // create new Trip
+                      toggleSection() // hide button
+
+                      map.panTo(location) //location in startPoint
+                      map.setZoom(18) //do zoom in
+
+                      setTimeout(() => {
+                        toggleSectionTripInfo() //show data Trip
+                      }, 500)
                     }}
                   />
                   <CustomButton
                     className={`primaryButton buttonLater  
                 `}
                     title={"Later"}
-                    functionEmit={() => {
-                      toggleSectionBottomButtonB()
-                      //Navigate to new page
-                    }}
+                    // functionEmit={() => {
+                    //   toggleSectionBottomButtonB()
+                    //   //To set another tripDate.
+                    // }}
                   />
                 </div>
               </div>
             </div>
             <div
-              className={`tripInfo ${toogleButtonPickupTrip ? "show" : ""}
+              className={`tripInfo ${togglePickupComponent ? "showTrip" : ""}
             }
             `}
-              onClick={() => toggleSectionTripInfo()}
+              onClick={() => toggleSectionTripInfo()} //show or hide data trip
             >
               <Pickup
                 trip={trip}
                 setTrip={setTrip}
                 DriverNameSplited={DriverNameSplited}
+                toggleSectionTripInfo={toggleSectionTripInfo}
+                showDestination={showDestination}
+                setTogglePickupComponent={setTogglePickupComponent}
               />
             </div>
           </div>
