@@ -367,7 +367,8 @@ export const deleteMoreThanOneUsers = async (array, token) => {
     return error
   }
 }
-export const deleteMoreThanOnePosts = async (array, token) => {
+export const deleteMoreThanOneTrips = async (array, token) => {
+  console.log(array)
   const options = {
     method: "DELETE",
     headers: {
@@ -378,7 +379,7 @@ export const deleteMoreThanOnePosts = async (array, token) => {
   }
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/posts`,
+      `${import.meta.env.VITE_API_URL}trips`,
       options
     )
 

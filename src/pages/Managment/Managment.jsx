@@ -14,10 +14,11 @@ import {
 } from "../../app/slices/searchUserSlice"
 
 import {
-  deleteMoreThanOnePosts,
+  deleteMoreThanOneTrips,
+  // deleteMoreThanOnePosts,
   deleteMoreThanOneUsers,
   fetchAllUsers,
-  getAllUsersPosts,
+  // getAllUsersPosts,
   getAllUsersTrips,
   searchUsers,
 } from "../../services/apiCalls"
@@ -26,7 +27,6 @@ const Managment = () => {
   const [loadedData, setLoadedData] = useState(false)
   const [users, setUsers] = useState()
   const [trips, setTrips] = useState()
-  const [posts, setPosts] = useState()
 
   const [searchUser, setSearchUser] = useState("")
 
@@ -162,7 +162,7 @@ const Managment = () => {
     // setUsersToDelete({ usersId: arrayToDelete })
   }
   const deletePosts = async () => {
-    const postsToRemove = { postsId: arrayToDeletePost }
+    const postsToRemove = { tripsId: arrayToDeletePost }
 
     if (arrayToDeletePost.length === 0) {
       toast.warn("You must select at least one user to delete", {
@@ -171,7 +171,7 @@ const Managment = () => {
       return
     }
     try {
-      const fetched = await deleteMoreThanOnePosts(
+      const fetched = await deleteMoreThanOneTrips(
         postsToRemove,
         rdxUser.credentials.token
       )
