@@ -72,12 +72,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-
-    /* justify-content: space-between; */
-    transform: translateY(6em);
+    justify-content: space-between;
+    transform: translateY(5.5em);
     z-index: 1;
     border-radius: 3em;
+}
 
+.rightSide {
+    background-color: rgba(25, 25, 112, 0.957);
+    display: flex;
+    flex-direction: row;
+    border-radius: 3em;
+    border: 1px solid gray;
 }
 
 /* .googleMap {} */
