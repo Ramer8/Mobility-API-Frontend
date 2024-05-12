@@ -21,9 +21,11 @@ import Payment from "../Card/Payment/Payment"
 const places = ["places"]
 const Maps = () => {
   const [showSection, setShowSection] = useState(false)
+
   const [toggleCalculateButton, setToggleCalculateButton] = useState(false)
   const [toggleButtonTrip, setToggleButtonTrip] = useState(false)
   const [togglePickupComponent, setTogglePickupComponent] = useState(false)
+  const [togglePayment, setTogglePayment] = useState(false)
   const [map, setMap] = useState(null)
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [tripChanged, setTripChanged] = useState(false)
@@ -136,7 +138,6 @@ const Maps = () => {
   }
   const myNewTrip = async () => {
     try {
-      console.log(newTrip, "los datos a guardar")
       const fetched = await createTrip(newTrip, rdxUser.credentials.token)
       console.log(fetched.message)
 
@@ -211,12 +212,12 @@ const Maps = () => {
   function clearRoute() {
     setShowSection(false)
     setToggleButtonTrip(false)
+    setTogglePayment(false)
 
     setTimeout(() => {
       setDirectionsResponse(null)
       setDistance("")
       setDuration("")
-      // setNewTrip({ startLocation: "", destination: "", driverId: "" })
       // originRef.current.value = ""
       destiantionRef.current.value = ""
     }, 500)
@@ -560,8 +561,6 @@ const Maps = () => {
             `}
               // onClick={() => toggleSectionTripInfo()} //show or hide data trip
             >
-              {/* <Payment /> */}
-
               <Pickup
                 trip={trip}
                 setTrip={setTrip}
@@ -569,8 +568,22 @@ const Maps = () => {
                 toggleSectionTripInfo={toggleSectionTripInfo}
                 showDestination={showDestination}
                 setTogglePickupComponent={setTogglePickupComponent}
+                setTogglePayment={setTogglePayment}
+                togglePickupComponent={togglePickupComponent}
               />
-              <Payment paymentUser={trip} />
+            </div>
+            <div
+              className={`paymentComponent ${togglePayment ? "showPayment" : ""}
+            }
+            `}
+            >
+              <Payment
+                paymentUser={trip}
+                distance={distance}
+                setTogglePayment={setTogglePayment}
+                setToggleCalculateButton={setToggleCalculateButton}
+                setTrip={setTrip}
+              />
             </div>
           </div>
         </>

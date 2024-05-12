@@ -106,6 +106,11 @@ export const formatDateToHumansWay = (dateString) => {
 }
 
 export const calculateMoneyTrip = (km) => {
-  const distance = parseInt(km.slice(0, -3))
-  return Math.round((distance * 23) / 12.5)
+  let price
+  if (km) {
+    const distance = parseInt(km.slice(0, -3))
+    price = Math.round((distance * 23) / 12.5)
+    return price
+  }
+  return price
 }

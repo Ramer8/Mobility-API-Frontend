@@ -12,6 +12,8 @@ const Pickup = ({
   DriverNameSplited,
   setTogglePickupComponent,
   showDestination,
+  setTogglePayment,
+  togglePickupComponent,
 }) => {
   const [driverMessage, setDriverMessage] = useState("")
   const navigate = useNavigate()
@@ -23,6 +25,15 @@ const Pickup = ({
       navigate("/login")
     }
   }, [rdxUser])
+
+  // useEffect(() => {
+  //   if (togglePickupComponent) {
+  //     setTogglePayment(true)
+  //     console.log("abre el pago")
+  //   }
+
+  //   console.log("paso por el componente de pago")
+  // }, [togglePickupComponent])
 
   useEffect(() => {
     timerMessage()
@@ -37,7 +48,6 @@ const Pickup = ({
     timerMessage4()
     clearTimeout(timerMessage4)
   }, [trip])
-  console.log(trip)
   const timerMessage = () => {
     setTimeout(() => {
       setDriverMessage("I arrived at the pickup point, I'm waiting here. ")
@@ -58,6 +68,10 @@ const Pickup = ({
     setTimeout(() => {
       setDriverMessage("")
       setTogglePickupComponent(false)
+      if (driverMessage === "") {
+        setTogglePayment(true)
+        console.log("no debe abrirse antes de fin de viaje")
+      }
     }, 20000)
   }
   return (

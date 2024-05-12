@@ -428,4 +428,25 @@
 
 .tripInfo.showTrip {
     transform: translateY(0%);
+
+}
+
+.paymentComponent {
+    border-top: solid 1px lightgrey;
+    padding-top: .5em;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    transition: transform 0.5s ease;
+    /* CSS transition for sliding */
+    transform: translateY(110%);
+    cursor: pointer;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+}
+
+
+.paymentComponent.showPayment {
+    transform: translateY(0%);
 }
