@@ -60,7 +60,6 @@
     flex-direction: row;
     /* display: flex; */
     width: 50%;
-    background-color: aqua;
 }
 
 .buttonBarBottom {
@@ -70,15 +69,23 @@
 
     display: flex;
     flex-direction: row;
+
     align-items: center;
     justify-content: flex-end;
     justify-content: space-between;
+
     transform: translateY(5.5em);
     z-index: 1;
     border-radius: 3em;
+    transition: transform 0.5s ease;
+    /* transform: translateX(0%); */
 }
 
-.rightSide {
+.buttonBarBottom.hideSlide {
+    transform: translateY(-3em);
+}
+
+.rightSideButtonBarBottom {
     background-color: rgba(25, 25, 112, 0.957);
     display: flex;
     flex-direction: row;

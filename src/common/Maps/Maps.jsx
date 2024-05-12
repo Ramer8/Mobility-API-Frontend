@@ -334,9 +334,15 @@ const Maps = () => {
               </Autocomplete> */}
             </div>
 
-            <div className="buttonBarBottom">
+            <div
+              className={`buttonBarBottom ${
+                togglePickupComponent ? "hideSlide" : ""
+              }
+              }
+              `}
+            >
               <div className="leftSide"></div>
-              <div className="rightSide">
+              <div className="rightSideButtonBarBottom">
                 <CustomButton
                   // className={"primaryButton uploadProfile calculateRouteButton"}
                   className={" calculateRouteButton"}
