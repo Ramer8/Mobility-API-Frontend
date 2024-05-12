@@ -307,6 +307,8 @@
     border: 1px solid gray;
     padding-inline: 1em;
     border-radius: 3em;
+    padding: .5em;
+    background-color: blue;
 }
 
 .clearRouteButton {

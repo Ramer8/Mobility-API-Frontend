@@ -375,7 +375,7 @@ const Maps = () => {
                 width: "100%",
                 height: "100%",
                 position: "relative",
-                top: "-1em",
+                top: "-2.3em",
               }}
               // map-id="DEMO_MAP_ID"
               options={{
