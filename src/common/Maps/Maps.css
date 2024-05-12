@@ -13,7 +13,7 @@
     background-color: whitesmoke;
     border-radius: 4em;
 
-    width: 95%;
+    width: 93.5%;
     display: flex;
     border: 1px solid;
     /* box-shadow: 1px 1px 5px lightslategrey; */
@@ -23,14 +23,18 @@
     align-items: center;
 }
 
-.iconInput {
+.inputArea {
+    margin-left: -.8em;
+}
 
+.iconInput {
+    z-index: 1;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-left: 3.5em;
+    margin-left: 2.5em;
     border-radius: 4em;
     padding: .5em;
     border-radius: 3em;
@@ -107,7 +111,7 @@
     transform: translateY(-7%);
 }
 
-@media(max-width: 500px) {
+@media(min-width: 1400px) {
     .footerData {
         justify-content: space-evenly;
     }
@@ -115,13 +119,12 @@
     .inputBarTop {
         margin-top: 1em;
         /* padding-right: 3em; */
-        margin-inline: 1em;
+        /* margin-inline: 1em; */
         margin-left: 1em;
-        margin-right: 2em;
-        background-color: whitesmoke;
+        margin-right: 1em;
+        /* background-color: whitesmoke; */
         border-radius: 4em;
-
-        width: 83%;
+        width: 94%;
         display: flex;
         border: 1px solid;
         /* box-shadow: 1px 1px 5px lightslategrey; */
@@ -129,6 +132,10 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+
+    .inputArea {
+        /* margin-left: -.5em; */
     }
 
     .iconInput {
@@ -150,6 +157,167 @@
         visibility: hidden;
     }
 }
+
+@media(min-width: 1500px) {
+    .footerData {
+        justify-content: space-evenly;
+    }
+
+    .inputBarTop {
+        margin-top: 1em;
+        /* padding-right: 3em; */
+        /* margin-inline: 1em; */
+        margin-left: 1em;
+        margin-right: 1em;
+        /* background-color: whitesmoke; */
+        border-radius: 4em;
+        width: 95%;
+        display: flex;
+        border: 1px solid;
+        /* box-shadow: 1px 1px 5px lightslategrey; */
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .inputArea {
+        /* margin-left: -.5em; */
+    }
+
+    .iconInput {
+
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 2.5em;
+        border-radius: 4em;
+        padding: .5em;
+        border-radius: 3em;
+        /* background-color: red; */
+    }
+
+    .infoBar {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media(max-width: 500px) {
+    .footerData {
+        justify-content: space-evenly;
+    }
+
+    .inputBarTop {
+        margin-top: 1em;
+        /* padding-right: 3em; */
+        /* margin-inline: 1em; */
+        margin-left: 1em;
+        margin-right: 1em;
+        background-color: whitesmoke;
+        border-radius: 4em;
+        /* background-color: red; */
+        width: 79%;
+        display: flex;
+        border: 1px solid;
+        /* box-shadow: 1px 1px 5px lightslategrey; */
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .inputArea {
+        /* margin-left: -.5em; */
+    }
+
+    .iconInput {
+
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 2.5em;
+        border-radius: 4em;
+        padding: .5em;
+        border-radius: 3em;
+        /* background-color: red; */
+    }
+
+    .infoBar {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media(max-width: 400px) {
+    .footerData {
+        justify-content: space-evenly;
+    }
+
+    .inputBarTop {
+        margin-top: 1em;
+        /* padding-right: 3em; */
+        margin-inline: 1em;
+        margin-left: 1em;
+        /* background-color: whitesmoke; */
+        border-radius: 4em;
+
+        width: 90%;
+        display: flex;
+        border: 1px solid;
+        /* box-shadow: 1px 1px 5px lightslategrey; */
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .profile-pic {
+        position: absolute;
+        top: 0em;
+        right: 0.5em;
+        transform: translateY(38%);
+        /* porque quiero la barra adentro de la de busqueda en maps */
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .iconInput {
+        z-index: 1;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 2em;
+        border-radius: 4em;
+        padding: .5em;
+        border-radius: 3em;
+        /* background-color: red; */
+    }
+
+    .arrow-icon {
+        cursor: pointer;
+        position: absolute;
+        top: 0%;
+        left: 2em;
+        transform: translateY(135%);
+        border-radius: 4em;
+        display: flex
+    }
+
+    .infoBar {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+
 
 .data {
     display: flex;

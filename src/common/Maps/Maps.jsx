@@ -292,7 +292,7 @@ const Maps = () => {
               </div>
               <Autocomplete>
                 <input
-                  className="inputDesign destination"
+                  className="inputDesign destination inputArea"
                   type="text"
                   placeholder="Enter your destination"
                   ref={destiantionRef}
