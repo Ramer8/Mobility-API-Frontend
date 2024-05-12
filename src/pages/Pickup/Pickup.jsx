@@ -37,7 +37,7 @@ const Pickup = ({
     timerMessage4()
     clearTimeout(timerMessage4)
   }, [trip])
-
+  console.log(trip)
   const timerMessage = () => {
     setTimeout(() => {
       setDriverMessage("I arrived at the pickup point, I'm waiting here. ")

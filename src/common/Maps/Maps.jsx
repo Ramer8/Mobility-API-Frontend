@@ -570,6 +570,7 @@ const Maps = () => {
                 showDestination={showDestination}
                 setTogglePickupComponent={setTogglePickupComponent}
               />
+              <Payment paymentUser={trip} />
             </div>
           </div>
         </>
