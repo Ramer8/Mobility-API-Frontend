@@ -298,8 +298,6 @@ const Maps = () => {
                   ref={destiantionRef}
                 ></input>
               </Autocomplete>{" "}
-              {/* <div className="input"></div> */}
-              {/* <div className="right"> */}
               {/* <CustomButton
                   aria-label="center back"
                   className="cursorButton"
@@ -369,10 +367,16 @@ const Maps = () => {
           </div>
           {location && (
             <GoogleMap
+              className="googleMap"
               center={location}
               // center={location? "insert lat & lng" : location} to fix warning error at start.
               zoom={17}
-              mapContainerStyle={{ width: "100%", height: "100%" }}
+              mapContainerStyle={{
+                width: "100%",
+                height: "100%",
+                position: "relative",
+                top: "-1em",
+              }}
               // map-id="DEMO_MAP_ID"
               options={{
                 zoomControl: false,

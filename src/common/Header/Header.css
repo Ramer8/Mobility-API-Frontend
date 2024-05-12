@@ -5,14 +5,16 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: 3;
     /* margin-inline: 1.5em; */
     position: relative;
+
 }
 
 .profile-pic {
+
     position: absolute;
-    top: 0em;
+    top: 1.5em;
     right: 2em;
     transform: translateY(38%);
     /* porque quiero la barra adentro de la de busqueda en maps */
@@ -24,7 +26,7 @@
 .arrow-icon {
     cursor: pointer;
     position: absolute;
-    top: 0%;
+    top: 1.5em;
     left: 3em;
     transform: translateY(135%);
     border-radius: 4em;

@@ -3,18 +3,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: red; */
 }
 
 .inputBarTop {
+    position: absolute;
+    transform: translateY(100%);
+    z-index: 2;
     margin-top: 1em;
-    /* padding-right: 3em; */
+    padding-right: 3em;
     margin-inline: 1em;
     background-color: whitesmoke;
     border-radius: 4em;
 
     width: 93.5%;
-    display: flex;
     border: 1px solid;
     /* box-shadow: 1px 1px 5px lightslategrey; */
 
@@ -47,16 +48,6 @@
     /* background-color: red; */
 }
 
-.right {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4em;
-    padding: .5em;
-}
-
-
 .searchButton {
     justify-content: center;
     align-items: center;
@@ -79,7 +70,11 @@
     width: 93.5%;
     justify-content: space-between;
     background-color: blue;
+    transform: translateY(1200%);
+    z-index: 1;
 }
+
+/* .googleMap {} */
 
 .footerMaps {
     border-top: solid 1px lightgrey;
@@ -285,7 +280,8 @@
 
     .profile-pic {
         position: absolute;
-        top: 0em;
+        /* top: 0em; */
+        top: 1.5em;
         right: 0.5em;
         transform: translateY(38%);
         /* porque quiero la barra adentro de la de busqueda en maps */
@@ -311,7 +307,8 @@
     .arrow-icon {
         cursor: pointer;
         position: absolute;
-        top: 0%;
+        /* top: 0%; */
+        top: 1.5em;
         left: 2em;
         transform: translateY(135%);
         border-radius: 4em;
