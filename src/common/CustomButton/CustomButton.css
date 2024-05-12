@@ -91,7 +91,7 @@
     color: white;
     width: 80%;
     margin: 0;
-    padding: 0;
+    padding: 1.5em;
     letter-spacing: 0px;
     border: 1px solid red;
 }
@@ -107,8 +107,9 @@
     font-weight: 300;
     width: 20%;
     margin: 0;
+    padding: 1.5em;
     background-color: #96ade7;
-    border: none
+    /* border: none */
 }
 
 /* .registerButton {
@@ -304,6 +305,7 @@
 
 .calculateRouteButton {
     color: whitesmoke;
+    /* border: 1px solid gray; */
     padding-inline: 1em;
     border-radius: 3em;
     padding: .5em;

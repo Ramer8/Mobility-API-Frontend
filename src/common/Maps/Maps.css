@@ -78,7 +78,6 @@
     z-index: 1;
     border-radius: 3em;
     transition: transform 0.5s ease;
-    /* transform: translateX(0%); */
 }
 
 .buttonBarBottom.hideSlide {
@@ -108,7 +107,7 @@
 
 .footerData {
     border-top: solid 1px lightgrey;
-    padding-top: .5em;
+    padding-top: 2.5em;
     width: 100%;
     display: flex;
     position: fixed;
@@ -121,15 +120,16 @@
     /* justify-content: space-evenly; */
     background-color: rgba(25, 25, 112, 0.957);
     color: antiquewhite;
+    padding-top: 1em;
 }
 
 
 .footerData.show {
-    transform: translateY(32%);
+    transform: translateY(50%);
 }
 
 .footerData.showMore {
-    transform: translateY(-7%);
+    transform: translateY(-0%);
 }
 
 @media(min-width: 1400px) {
@@ -352,7 +352,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-bottom: -.8em;
+    margin-bottom: .5em;
+    padding-top: .5em;
 }
 
 .price {
@@ -405,7 +406,7 @@
     display: flex;
     padding: 0;
     gap: .7em;
-    margin-bottom: .2em;
+    margin-bottom: 1em;
     margin-inline: .5em;
 }
 
@@ -418,7 +419,7 @@
     bottom: 0;
     transition: transform 0.5s ease;
     /* CSS transition for sliding */
-    transform: translateY(100%);
+    transform: translateY(110%);
     cursor: pointer;
     flex-direction: column;
     /* justify-content: space-evenly; */
