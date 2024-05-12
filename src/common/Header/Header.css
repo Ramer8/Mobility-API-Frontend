@@ -1,24 +1,38 @@
 .headerDesign {
     /* height: 10vh;
     width: 100vw; */
-
-    /* border-bottom: solid 1px rgba(60, 72, 88, .15); */
-    /* -webkit-box-shadow: 0 0 3px rgba(60, 72, 88, .15);
-    box-shadow: 0 0 3px rgba(60, 72, 88, .15); */
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-    margin-inline: 1em;
-    margin-top: 1em;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    /* margin-inline: 1.5em; */
+    position: relative;
+}
 
+.profile-pic {
+    position: absolute;
+    top: 0em;
+    right: 2em;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.arrow-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 0%;
+    left: 2em;
+    transform: translateY(-50%);
 }
 
 .headerDropDown {
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
 }
 
 .dropdownIcons {
@@ -26,7 +40,6 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
 }
 
 .menu {
@@ -38,7 +51,7 @@
 
     .headerDesign {
         /* color: #8492a6; */
-        color: beige;
+        /* color: beige; */
         /* background-color: #1b2836; */
         /* background-color: beige; */
         /* background-color: rgba(25, 25, 112, 0.957); */
@@ -52,13 +65,13 @@
     }
 }
 
-/* .picIconButton {
+.picIconButton {
     padding: 0;
     margin: 0;
-} */
+}
 
 .dropbtn {
-    color: #8492a6;
+    /* color: #8492a6; */
     border-radius: 50%;
     cursor: pointer;
 }
