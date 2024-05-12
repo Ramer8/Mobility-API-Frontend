@@ -23,8 +23,14 @@
     align-items: center;
 }
 
+.autocomplete {
+    width: 100%;
+}
+
 .inputArea {
     margin-left: -.8em;
+
+
 }
 
 .iconInput {
@@ -70,8 +76,9 @@
     flex-direction: row;
     display: flex;
     padding: 0;
-    width: 100%;
+    width: 93.5%;
     justify-content: space-between;
+    background-color: blue;
 }
 
 .footerMaps {

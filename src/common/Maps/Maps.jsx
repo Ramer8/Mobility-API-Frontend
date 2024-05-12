@@ -286,11 +286,11 @@ const Maps = () => {
                     </svg>
                   }
                   functionEmit={() => {
-                    showDestination(15)
+                    showDestination()
                   }}
                 />
               </div>
-              <Autocomplete>
+              <Autocomplete className="autocomplete">
                 <input
                   className="inputDesign destination inputArea"
                   type="text"
@@ -298,9 +298,9 @@ const Maps = () => {
                   ref={destiantionRef}
                 ></input>
               </Autocomplete>{" "}
-              <div className="input"></div>
-              <div className="right">
-                {/* <CustomButton
+              {/* <div className="input"></div> */}
+              {/* <div className="right"> */}
+              {/* <CustomButton
                   aria-label="center back"
                   className="cursorButton"
                   title={
@@ -320,7 +320,7 @@ const Maps = () => {
                     map.setZoom(15)
                   }}
                 /> */}
-              </div>
+              {/* </div> */}
             </div>
 
             <div className="buttonBar">
@@ -338,14 +338,16 @@ const Maps = () => {
 
             <div className="buttonBarBottom">
               <CustomButton
-                className={"primaryButton uploadProfile calculateRouteButton"}
+                // className={"primaryButton uploadProfile calculateRouteButton"}
+                className={" calculateRouteButton"}
                 title={"Calculate Route"}
                 functionEmit={() => {
                   calculateRoute()
                 }}
               />
               <CustomButton
-                className={"primaryButton uploadProfile clearRouteButton"}
+                // className={"primaryButton uploadProfile clearRouteButton"}
+                className={"clearRouteButton"}
                 title={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
