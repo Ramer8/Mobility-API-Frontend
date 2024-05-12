@@ -20,6 +20,7 @@ import Pickup from "../../pages/Pickup/Pickup"
 const places = ["places"]
 const Maps = () => {
   const [showSection, setShowSection] = useState(false)
+  const [toggleCalculateButton, setToggleCalculateButton] = useState(false)
   const [toggleButtonTrip, setToggleButtonTrip] = useState(false)
   const [togglePickupComponent, setTogglePickupComponent] = useState(false)
   const [map, setMap] = useState(null)
@@ -250,9 +251,15 @@ const Maps = () => {
   }
   const toggleSectionTripInfo = () => {
     setTimeout(() => {
-      console.log("se mueve el menu")
       setTogglePickupComponent(
         (prevTogglePickupComponent) => !prevTogglePickupComponent
+      )
+    }, 50)
+  }
+  const toggleCalculateRouteButton = () => {
+    setTimeout(() => {
+      setToggleCalculateButton(
+        (prevToggleCalculateButton) => !prevToggleCalculateButton
       )
     }, 50)
   }
@@ -336,7 +343,8 @@ const Maps = () => {
 
             <div
               className={`buttonBarBottom ${
-                togglePickupComponent ? "hideSlide" : ""
+                //poner otra flag
+                toggleCalculateButton ? "hideSlide" : ""
               }
               }
               `}
@@ -524,7 +532,7 @@ const Maps = () => {
                     functionEmit={() => {
                       myNewTrip() // create new Trip
                       toggleSection() // hide button
-
+                      toggleCalculateRouteButton()
                       map.panTo(location) //location in startPoint
                       map.setZoom(18) //do zoom in
 
@@ -549,7 +557,7 @@ const Maps = () => {
               className={`tripInfo ${togglePickupComponent ? "showTrip" : ""}
             }
             `}
-              onClick={() => toggleSectionTripInfo()} //show or hide data trip
+              // onClick={() => toggleSectionTripInfo()} //show or hide data trip
             >
               <Pickup
                 trip={trip}
