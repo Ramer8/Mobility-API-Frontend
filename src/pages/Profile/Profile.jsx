@@ -13,6 +13,7 @@ import { logout, userData } from "../../app/slices/userSlice"
 import { validame } from "../../utils/functions"
 import { CustomButton } from "../../common/CustomButton/CustomButton"
 import Spinner from "../../common/Spinner/Spinner"
+import Payment from "../../common/Card/Payment/Payment"
 
 const Profile = () => {
   const [write, setWrite] = useState("disabled")
@@ -293,7 +294,7 @@ const Profile = () => {
                     value={"cash"}
                     onChange={(e) => inputHandler(e)}
                   />
-                  <label htmlFor="cash">Cash</label>
+                  <label htmlFor="cash">Pay driver directly</label>
                 </div>
               </div>
 

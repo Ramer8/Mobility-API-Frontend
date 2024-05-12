@@ -9,9 +9,7 @@ import { useNavigate } from "react-router-dom"
 
 const Pickup = ({
   trip,
-  setTrip,
   DriverNameSplited,
-  toggleSectionTripInfo,
   setTogglePickupComponent,
   showDestination,
 }) => {
