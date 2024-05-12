@@ -232,7 +232,6 @@
         margin-right: 1em;
         background-color: whitesmoke;
         border-radius: 4em;
-        /* background-color: red; */
         width: 79%;
         display: flex;
         border: 1px solid;
@@ -310,9 +309,13 @@
         /* top: 0%; */
         top: 1.5em;
         left: 2em;
-        transform: translateY(135%);
+        transform: translateY(175%);
+        /* left: 1.4em;
+        transform: translateY(47%); */
         border-radius: 4em;
-        display: flex
+        display: flex;
+        /* border: 1px solid;
+        padding: .5em;  */
     }
 
     .iconInput {

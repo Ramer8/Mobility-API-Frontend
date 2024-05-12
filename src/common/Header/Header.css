@@ -27,10 +27,13 @@
     cursor: pointer;
     position: absolute;
     top: 1.5em;
-    left: 3em;
-    transform: translateY(135%);
+    left: 3.5em;
+    transform: translateY(175%);
+    /* transform: translateY(47%); */
     border-radius: 4em;
-    display: flex
+    display: flex;
+    /*border: 1px solid;
+    padding: .5em; */
 }
 
 .headerDropDown {
