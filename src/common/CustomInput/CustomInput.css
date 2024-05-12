@@ -25,7 +25,9 @@
 
 .destination {
     margin: 0;
-    padding: .5rem 1rem;
+    left: 1em;
+    box-shadow: none;
+    border-radius: 3em;
 }
 
 .inputDesignError {

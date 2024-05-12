@@ -3,13 +3,63 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: .5em;
+    /* background-color: red; */
 }
 
-.buttonBar {
-    flex-direction: row;
+.inputBarTop {
+    margin-top: 1em;
+    /* padding-right: 3em; */
+    margin-inline: 1em;
+    background-color: whitesmoke;
+    border-radius: 4em;
+
+    width: 95%;
     display: flex;
-    padding: 0;
+    border: 1px solid;
+    /* box-shadow: 1px 1px 5px lightslategrey; */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.iconInput {
+
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 3.5em;
+    border-radius: 4em;
+    padding: .5em;
+    border-radius: 3em;
+    /* background-color: red; */
+}
+
+.right {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4em;
+    padding: .5em;
+}
+
+
+.searchButton {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 3em;
+
+}
+
+.leftButtonBar {
+    flex-direction: row;
+    /* display: flex; */
+    width: 50%;
+    background-color: aqua;
 }
 
 .buttonBarBottom {
@@ -60,6 +110,39 @@
 @media(max-width: 500px) {
     .footerData {
         justify-content: space-evenly;
+    }
+
+    .inputBarTop {
+        margin-top: 1em;
+        /* padding-right: 3em; */
+        margin-inline: 1em;
+        margin-left: 1em;
+        margin-right: 2em;
+        background-color: whitesmoke;
+        border-radius: 4em;
+
+        width: 83%;
+        display: flex;
+        border: 1px solid;
+        /* box-shadow: 1px 1px 5px lightslategrey; */
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .iconInput {
+
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 2.5em;
+        border-radius: 4em;
+        padding: .5em;
+        border-radius: 3em;
+        /* background-color: red; */
     }
 
     .infoBar {

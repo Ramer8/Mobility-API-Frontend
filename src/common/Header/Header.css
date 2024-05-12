@@ -14,7 +14,8 @@
     position: absolute;
     top: 0em;
     right: 2em;
-    transform: translateY(-50%);
+    transform: translateY(38%);
+    /* porque quiero la barra adentro de la de busqueda en maps */
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -24,8 +25,10 @@
     cursor: pointer;
     position: absolute;
     top: 0%;
-    left: 2em;
-    transform: translateY(-50%);
+    left: 3em;
+    transform: translateY(135%);
+    border-radius: 4em;
+    display: flex
 }
 
 .headerDropDown {

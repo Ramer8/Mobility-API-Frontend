@@ -261,14 +261,35 @@ const Maps = () => {
     <>
       {location && (
         <>
-          <div className="inputBox">
-            {/* <button
+          {/* <button
               className="primaryButton"
               onClick={() => toggleSectionTripInfo()}
             >
               get info trip
             </button> */}
-            <div className="buttonBar">
+          <div className="inputBox">
+            <div className="inputBarTop">
+              <div className="iconInput">
+                {" "}
+                <CustomButton
+                  className="searchButton"
+                  title={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-search"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                  }
+                  functionEmit={() => {
+                    showDestination(15)
+                  }}
+                />
+              </div>
               <Autocomplete>
                 <input
                   className="inputDesign destination"
@@ -276,25 +297,35 @@ const Maps = () => {
                   placeholder="Enter your destination"
                   ref={destiantionRef}
                 ></input>
-              </Autocomplete>
-              <CustomButton
-                className={"searchButton"}
-                title={
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-search"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                  </svg>
-                }
-                functionEmit={() => {
-                  showDestination(15)
-                }}
-              />
+              </Autocomplete>{" "}
+              <div className="input"></div>
+              <div className="right">
+                {/* <CustomButton
+                  aria-label="center back"
+                  className="cursorButton"
+                  title={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-cursor-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
+                    </svg>
+                  }
+                  functionEmit={() => {
+                    map.panTo(location)
+                    map.setZoom(15)
+                  }}
+                /> */}
+              </div>
+            </div>
+
+            <div className="buttonBar">
+              <div className="leftButtonBar"></div>
+
               {/* <Autocomplete>
                 <input
                   className="inputDesign"
@@ -303,26 +334,6 @@ const Maps = () => {
                   ref={location}
                 ></input>
               </Autocomplete> */}
-              <CustomButton
-                aria-label="center back"
-                className={"cursorButton"}
-                title={
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-cursor-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
-                  </svg>
-                }
-                functionEmit={() => {
-                  map.panTo(location)
-                  map.setZoom(15)
-                }}
-              />
             </div>
 
             <div className="buttonBarBottom">
