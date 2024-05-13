@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify"
 
 import "./Home.css"
 import Profile from "../Profile/Profile"
-import Post from "../Post/Post"
+// import Post from "../Post/Post"
 import { searchUserData } from "../../app/slices/searchUserSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { logout, userData } from "../../app/slices/userSlice"

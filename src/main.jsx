@@ -17,9 +17,7 @@ import store from "./app/store.js"
 
 import { PersistGate } from "redux-persist/integration/react"
 import { persistStore } from "redux-persist"
-import Post from "./pages/Post/Post.jsx"
 import Managment from "./pages/Managment/Managment.jsx"
-import Pickup from "./pages/Pickup/Pickup.jsx"
 import Payment from "./common/Payment/Payment.jsx"
 
 const persistor = persistStore(store)

@@ -51,16 +51,20 @@ const Pickup = ({
   const timerMessage = () => {
     setTimeout(() => {
       setDriverMessage("I arrived at the pickup point, I'm waiting here. ")
+      setTogglePickupComponent(true)
     }, 5000)
   }
   const timerMessage2 = () => {
     setTimeout(() => {
       setDriverMessage("Please, Fasten your seat belt and enjoy the trip.")
+      setTogglePickupComponent(true)
     }, 10000)
   }
   const timerMessage3 = () => {
     setTimeout(() => {
       showDestination(17)
+      setTogglePickupComponent(true)
+
       setDriverMessage("We arrived to your destination.")
     }, 15000)
   }
@@ -70,7 +74,6 @@ const Pickup = ({
       setTogglePickupComponent(false)
       if (driverMessage === "") {
         setTogglePayment(true)
-        console.log("no debe abrirse antes de fin de viaje")
       }
     }, 20000)
   }

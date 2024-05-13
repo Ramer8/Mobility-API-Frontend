@@ -174,11 +174,9 @@ const Maps = () => {
       //hardcoded but I can put random with a function or put location
       //and add a function with the nearby postion
     })
-    console.log("calculating route")
 
     let results
     const directionsService = new google.maps.DirectionsService()
-    console.log(directionsService, "las direcciones de google")
     // Fetch the user's current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -187,7 +185,6 @@ const Maps = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           }
-          console.log(currentLocation)
           results = await directionsService.route({
             origin: currentLocation,
             destination: destiantionRef.current.value,
@@ -234,14 +231,17 @@ const Maps = () => {
         (results, status) => {
           if (status === google.maps.GeocoderStatus.OK) {
             const destinationCoords = results[0].geometry.location
-            map.panTo(destinationCoords)
+            if (destinationCoords) {
+              map.panTo(destinationCoords)
+              map.setZoom(15)
+            }
+            return
           } else {
             console.error("Geocoding failed:", status)
             return
           }
         }
       )
-      map.setZoom(15)
     }
   }
   const toggleSection = () => {

@@ -86,7 +86,6 @@ const Payment = ({
             className="paymentButton"
             onClick={() => {
               setTogglePayment(false)
-              clearRoute()
               navigate("/")
             }}
           >
