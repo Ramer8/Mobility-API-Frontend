@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux"
 import { login } from "../../app/slices/userSlice"
 
 export const Register = () => {
-  const [loadingFlag, setLoadingFlag] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [credentials, setCredentials] = useState({
     userName: "",
     email: "",
@@ -94,6 +94,7 @@ export const Register = () => {
       dispatch(login({ online: true }))
       dispatch(login({ super: false }))
 
+      setLoading(true)
       // Home redirected
       setTimeout(() => {
         navigate("/home")
@@ -127,51 +128,47 @@ export const Register = () => {
 
   return (
     <div className="registerDesign">
-      {!loadingFlag ? (
-        <div>
-          {/* <pre>{JSON.stringify(credentials, null, 2)}</pre> */}
-          <label>Name:</label>
-          <CustomInput
-            className={`inputDesign ${
-              credentialsError.nameError !== "" ? "inputDesignError" : ""
-            }`}
-            type="text"
-            name="userName"
-            value={credentials.userName || ""}
-            placeholder="write your name...."
-            functionChange={inputHandler}
-            onBlurFunction={(e) => checkError(e)}
-          />
-          <label>Email:</label>
-          <CustomInput
-            className={`inputDesign ${
-              credentialsError.emailError !== "" ? "inputDesignError" : ""
-            }`}
-            type="email"
-            name="email"
-            value={credentials.email || ""}
-            placeholder="write your email...."
-            functionChange={inputHandler}
-            onBlurFunction={(e) => checkError(e)}
-          />
-          <label>Password:</label>
-          <CustomInput
-            className={`inputDesign ${
-              credentialsError.passwordError !== "" ? "inputDesignError" : ""
-            }`}
-            type="password"
-            name="password"
-            value={credentials.password || ""}
-            placeholder="write your password...."
-            functionChange={inputHandler}
-            onBlurFunction={(e) => checkError(e)}
-          />
-        </div>
-      ) : (
-        <Spinner />
-      )}
+      {loading && <Spinner />}
+      <div>
+        <label>Name:</label>
+        <CustomInput
+          className={`inputDesign ${
+            credentialsError.nameError !== "" ? "inputDesignError" : ""
+          }`}
+          type="text"
+          name="userName"
+          value={credentials.userName || ""}
+          placeholder="write your name...."
+          functionChange={inputHandler}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <label>Email:</label>
+        <CustomInput
+          className={`inputDesign ${
+            credentialsError.emailError !== "" ? "inputDesignError" : ""
+          }`}
+          type="email"
+          name="email"
+          value={credentials.email || ""}
+          placeholder="write your email...."
+          functionChange={inputHandler}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <label>Password:</label>
+        <CustomInput
+          className={`inputDesign ${
+            credentialsError.passwordError !== "" ? "inputDesignError" : ""
+          }`}
+          type="password"
+          name="password"
+          value={credentials.password || ""}
+          placeholder="write your password...."
+          functionChange={inputHandler}
+          onBlurFunction={(e) => checkError(e)}
+        />
+      </div>
       <CustomButton
-        className={"primaryButton"}
+        className={"primaryButton login"}
         title={"Register"}
         functionEmit={regMe}
       />

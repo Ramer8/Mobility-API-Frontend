@@ -147,34 +147,10 @@ export const Login = () => {
     }, ERROR_MSG_TIME)
   }, [credentialsError])
 
-  const logSuperAdmin = async () => {
-    setCredentials({
-      email: "super@super.com",
-      password: "123456",
-    })
-    await logMe()
-  }
-  const log = () => {
-    setCredentials({
-      email: "user@user.com",
-      password: "123456",
-    })
-    logMe()
-  }
   return (
     <div>
       {loading && <Spinner />}
       <div className="loginDesign">
-        <CustomButton
-          className={"icon clear primaryButton"}
-          title={"Log superadmin"}
-          functionEmit={logSuperAdmin}
-        />
-        <CustomButton
-          className={"icon clear primaryButton"}
-          title={"Log user"}
-          functionEmit={log}
-        />
         <label>Name:</label>
         <CustomInput
           className={`inputDesign ${
@@ -183,7 +159,7 @@ export const Login = () => {
           type="email"
           name="email"
           value={credentials.email || ""}
-          placeholder="email"
+          placeholder="Email"
           functionChange={inputHandler}
           onBlurFunction={(e) => checkError(e)}
         />
@@ -192,15 +168,15 @@ export const Login = () => {
           className={`inputDesign ${
             credentialsError.passwordError !== "" ? "inputDesignError" : ""
           }`}
-          type="password"
+          type="Password"
           name="password"
           value={credentials.password || ""}
-          placeholder="password"
+          placeholder="Password"
           functionChange={inputHandler}
           onBlurFunction={(e) => checkError(e)}
         />
         <CustomButton
-          className={"primaryButton"}
+          className={"primaryButton login"}
           title={"Log in"}
           functionEmit={logMe}
         />

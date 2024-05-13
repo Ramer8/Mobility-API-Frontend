@@ -26,6 +26,21 @@
     box-shadow: 0 3px 5px 0 rgba(57, 108, 240, .3);
 }
 
+.login {
+    color: whitesmoke;
+    border-radius: 2em;
+    background-color: rgba(25, 25, 112, 0.957);
+    border: 1px solid #396cf0;
+    -webkit-box-shadow: 0 3px 5px 0 rgba(57, 108, 240, .3);
+    box-shadow: 0 3px 5px 0 rgba(57, 108, 240, .3);
+}
+
+.login.register.primaryButton:hover {
+    cursor: pointer;
+    color: rgba(25, 25, 112, 0.957);
+    background-color: rgba(127, 53, 255, 0.627);
+    box-shadow: 1px 1px 5px gray;
+}
 
 .primaryButton:hover {
     cursor: pointer;
