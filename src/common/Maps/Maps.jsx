@@ -71,12 +71,10 @@ const Maps = () => {
     const fetching = async () => {
       setTrip("")
       try {
-        console.log(tripId, "inside de function fecth trip")
         const fetched = await fetchMyTripWithId(
           tripId,
           rdxUser.credentials.token
         )
-        console.log(fetched.message, "hace el viaje??")
         if (!fetched?.success) {
           if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
             dispatch(logout({ credentials: "" }))
@@ -139,13 +137,11 @@ const Maps = () => {
   const myNewTrip = async () => {
     try {
       const fetched = await createTrip(newTrip, rdxUser.credentials.token)
-      console.log(fetched.message)
 
       if (!fetched?.success) {
         toast.error(fetched.message, { theme: "dark" })
         return
       }
-      console.log(fetched, "SE CREO EL VIAJE")
       // if (fetched?.success) {
       //   toast.success(fetched.message, { theme: "dark" })
       // } lo quito para ver si me da error
