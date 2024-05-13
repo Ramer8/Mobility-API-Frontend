@@ -4,13 +4,16 @@
 
 #### Mobile device Experience📱
 
-<!-- <img src="./public/mobileDemo.gif"/> -->
+<div style="display: flex; justify-content: space-around; flex-direction:row;">
+<center><img style="border-radius:15px; padding:1px; width:70%;"src="./public/mobiledemo.gif"></center>
+<center><img style="border-radius:15px; padding:1px; width:35%;"src="./public/phoneview.png"></center>
+</div>
 
 ---
 
 #### Desktop Experience 💻
 
-<!-- <img src="./public/pcRegister.gif"/> -->
+<div style="display: flex; justify-content: center; flex-direction:column;"><center><img style="border-radius:15px; padding:1px; width:80%;"src="./public/desktopdemo.gif"></center></div>
 
 ---
 
@@ -75,18 +78,26 @@ We use redux to save token and other variables.
 
 #### First Data Base Structure
 
+---
+
 - Users
 - Drivers
 - Trips
 
--Cars
--Brands
+---
+
+- Cars
+- Brands
+
+---
 
 - User
 - Drivers
 - Roles
 
-  Thats tables have relation between us.
+---
+
+Thats tables have relation between us.
 
 #### Data Base Diagram
 
@@ -115,7 +126,10 @@ The Driver table fields are: driver name, email, password, role, phone, score, c
 
 `http://localhost:5174/register`
 
-<!-- <img src="./public/register.png"/> -->
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:80%;"  
+src="./public/registerDesktop.png"></center>
+</div>
 
 ---
 
@@ -123,7 +137,10 @@ The Driver table fields are: driver name, email, password, role, phone, score, c
 
 `http://localhost:5174/login`
 
-<!-- <img src="./public/login.png"/> -->
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:80%;"  
+src="./public/loginDesktop.png"></center>
+</div>
 
 ---
 
@@ -131,61 +148,32 @@ The Driver table fields are: driver name, email, password, role, phone, score, c
 
 `http://localhost:5174`
 
-<!-- <img src="./public/home.png"/> -->
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:80%;"  
+src="./public/homedesktop.png"></center>
+</div>
 
 ---
 
 #### Editable User profile
 
-<!-- <img src="./public/editableProfile.png"/> -->
+`http://localhost:5174/profile`
 
-`http://localhost:5174/profile` or `http://localhost:5174`
-
----
-
-<!-- #### User Post List -->
-
-<img src="./public/posts.png" />
-
-`http://localhost:5174`
+<div style="display: flex; justify-content: space-around; flex-direction:row;">
+<center><img style="border-radius:15px; padding:1px; width:70%;"  
+src="./public/profileeditDesktop.png"></center>
+<center><img style="border-radius:15px; padding:1px; width:70%;"  
+src="./public/profileeditDesktop1.png"></center>
+</div>
 
 ---
 
-#### New Post
+#### Start a Trip
 
-<!-- <img src="./public/newPost.png" > -->
-
-`http://localhost:5174`
-
----
-
-#### Delete Post
-
-<!-- <img src="./public/deletePost.png" /> -->
-
-`http://localhost:5174`
-
----
-
-#### Edit Post
-
-<!-- <img src="./public/editPost.png"/> -->
-
-`http://localhost:5174`
-
----
-
-#### Like Post
-
-<!-- <img src="./public/like.png"/> -->
-
-`http://localhost:5174`
-
----
-
-#### Post Detail
-
-<img src="./public/postDetail.png"/>
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:40%;"  
+src="./public/demotripmobile.gif"></center>
+</div>
 
 `http://localhost:5174`
 
@@ -193,23 +181,31 @@ The Driver table fields are: driver name, email, password, role, phone, score, c
 
 #### Super Admin Dashboard
 
-<img src="./public/SuperAdminDashboard.png"/>
+<center><img style="border-radius:15px; padding:1px; width:60%;"  
+src="./public/managmentSuperadmin.png"></center>
+</div>
 
 `http://localhost:5174/managment`
 
 ---
 
-#### Search User & Delete Post
+### Delete one or more Trips & delete one or more Users (SuperAdmin)
 
-<img src="./public/search&delete.gif"/>
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:60%;"  
+src="./public/deleteTrip&users.gif"></center>
+</div>
 
 `http://localhost:5174/managment`
 
 ---
 
-#### Search User & Delete severals
+#### Search Users by name or email (superAdmin)
 
-<img src="./public/search&deleteUsers.gif"/>
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:60%;"  
+src="./public/searchDesktop.gif"></center>
+</div>
 
 `http://localhost:5174/managment`
 
@@ -221,7 +217,10 @@ The Driver table fields are: driver name, email, password, role, phone, score, c
 
 `http://localhost:5174/register`
 
-<img src="./public/registerMobile.png"/>
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:30%;"  
+src="./public/registermobile.png"></center>
+</div>
 
 ---
 
@@ -229,31 +228,45 @@ The Driver table fields are: driver name, email, password, role, phone, score, c
 
 `http://localhost:5174/login`
 
-<img src="./public/errors.png"/>
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:30%;"  
+src="./public/errormobile.png"></center>
+</div>
 
 ---
 
-#### Home page
+#### Payment Design
+
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:30%;"  
+src="./public/paymentView.png"></center>
+</div>
 
 ---
 
 ### Design
 
-The whole project is designed with CSS without external libraries.
-The design is fully responsive and with Dark or Light mode.
+---
 
-#### Dark 🌘 and Light ☀️ Mode
+<div style="display: flex; justify-content: space-between; flex-direction:row;">
+<center><img style="border-radius:15px; padding:1px; width:50%;"  
+src="./public/mapdesign.png"></center>
+<center><img style="border-radius:15px; padding:1px; width:50%;"  
+src="./public/tripinfo.png"></center>
+<center><img style="border-radius:15px; padding:1px; width:50%;"  
+src="./public/paymentView.png"></center>
+</div>
 
-`http://localhost:5174`
+---
 
-<img src="./public/darkMode.png"/>
-<img src="./public/lightMode.png"/>
+The whole project is designed with CSS without external libraries except the error managment external library.
+It is responsive on mobile, tablet or desktop and is very easy to configure in Dark 🌘 and Light ☀️ mode.
 
 </div>
 
 ---
 
-#### App Depyoyed ⚙️
+#### App Deployed ⚙️
 
 <ol>
 
@@ -273,6 +286,18 @@ Launch the project in your local device:
 
 </ol>
 
+<ol>
+
+### Enviroment variables 🔑
+
+The app need google maps api key to work. Attach file `.env.example`
+
+`VITE_API_URL = http://localhost:XXXX/`
+
+`VITE_GOOGLE_MAPS_API_KEY=XXXX`
+
+</ol>
+
 <li>Then in localhost:PORT, will be launched the application, and you will be on the landing page (Home).
 
 </li>
@@ -281,7 +306,7 @@ Launch the project in your local device:
 
 ### Libraries used
 
-I decided to use these libraries to get a good user experience in a short development time.
+I decided to use google maps plataform libraries to get localization and routes.
 
 #### Google APIs Node.js Client
 
@@ -293,6 +318,8 @@ src="./public/googleAPILibrary.png"></center>
 </div>
 
 ---
+
+I choose React-Toasty to show error messages
 
 #### React-Toastify
 

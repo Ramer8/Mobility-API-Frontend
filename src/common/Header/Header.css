@@ -49,12 +49,23 @@
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
+    gap: 1em;
+}
+
+.menuHighlighted {
+    background-color: red;
+}
+
+.admin {
+    padding: 0;
+    margin: 0;
 
 }
 
 .menu {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 @media (prefers-color-scheme: dark) {

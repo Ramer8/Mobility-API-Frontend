@@ -7,7 +7,7 @@ import { CustomInput } from "../../common/CustomInput/CustomInput"
 import { ToastContainer, toast } from "react-toastify"
 
 import { useDispatch, useSelector } from "react-redux"
-import { logout, userData } from "../../app/slices/userSlice"
+import { userData } from "../../app/slices/userSlice"
 import {
   searchUserData,
   updateUserCriteria,
@@ -219,12 +219,6 @@ const Managment = () => {
     search()
   }, [searchUserRdx?.criteriaUser])
 
-  // const columns = [
-  //   { key: "_id", label: "ID" },
-  //   { key: "name", label: "Name" },
-  //   { key: "email", label: "Email" },
-  //   { key: "role", label: "Role" },
-  // ]
   const nextPage = () => {}
   return (
     <>
@@ -278,9 +272,6 @@ const Managment = () => {
                   functionEmit={() => deleteUsers()}
                 />
               </div>
-              {/* <div>
-                  <CollapsibleTable data={users} columns={columns} />
-                </div> */}
               <div className="fullTableUser">
                 <div className="headerTitle">
                   <div>ID</div>
@@ -315,11 +306,7 @@ const Managment = () => {
                         <div> {user.documents || "nd"} </div>
                         <div> {new Date(user.createdAt).toDateString()} </div>
 
-                        <div
-                        // className={`${user.role === "user" && "colorized"}`}
-                        >
-                          {user.roleId}
-                        </div>
+                        <div>{user.roleId}</div>
                         <div>
                           <input
                             id="s1"
@@ -348,7 +335,7 @@ const Managment = () => {
             {trips && (
               <div className="tripTable">
                 <div className="preHeader">
-                  <div className="leftSide colorized">Trips list</div>
+                  <div className="leftSide colorized">Trip list</div>
                   <CustomButton
                     className={"deleteUsers"}
                     title={
@@ -392,18 +379,13 @@ const Managment = () => {
                           </div>
                           <div>{trips.car.model}</div>
                           <div>{trips.car.numberPlate}</div>
-
                           <div>{trips.car.seat}</div>
                           <div>{!trips.car.accessible ? "no" : "yes"}</div>
                           <div>{trips.car.powerEngine}</div>
                           <div>{trips.driver.driverName}</div>
                           <div>{trips.user.userName}</div>
                           <div>{trips.user.payment}</div>
-                          {/* <div>{trips?.userId.email}</div> */}
-
-                          <div>
-                            {/* {"..." + trips?.userId.id.substring(19, 24)} */}
-                          </div>
+                          <div></div>
                           <div>
                             <input
                               id="s1"
