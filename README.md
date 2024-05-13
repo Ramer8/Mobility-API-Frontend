@@ -181,6 +181,8 @@ src="./public/demotripmobile.gif"></center>
 
 #### Super Admin Dashboard
 
+---
+
 <center><img style="border-radius:15px; padding:1px; width:60%;"  
 src="./public/managmentSuperadmin.png"></center>
 </div>
@@ -202,6 +204,8 @@ src="./public/deleteTrip&users.gif"></center>
 
 #### Search Users by name or email (superAdmin)
 
+---
+
 <div style="display: flex; justify-content: center; flex-direction:column;">
 <center><img style="border-radius:15px; padding:1px; width:60%;"  
 src="./public/searchDesktop.gif"></center>
@@ -218,7 +222,7 @@ src="./public/searchDesktop.gif"></center>
 `http://localhost:5174/register`
 
 <div style="display: flex; justify-content: center; flex-direction:column;">
-<center><img style="border-radius:15px; padding:1px; width:30%;"  
+<center><img style="border-radius:15px; padding:1px; width:25%;"  
 src="./public/registermobile.png"></center>
 </div>
 
@@ -229,7 +233,7 @@ src="./public/registermobile.png"></center>
 `http://localhost:5174/login`
 
 <div style="display: flex; justify-content: center; flex-direction:column;">
-<center><img style="border-radius:15px; padding:1px; width:30%;"  
+<center><img style="border-radius:15px; padding:1px; width:25%;"  
 src="./public/errormobile.png"></center>
 </div>
 
@@ -237,8 +241,10 @@ src="./public/errormobile.png"></center>
 
 #### Payment Design
 
+---
+
 <div style="display: flex; justify-content: center; flex-direction:column;">
-<center><img style="border-radius:15px; padding:1px; width:30%;"  
+<center><img style="border-radius:15px; padding:1px; width:25%;"  
 src="./public/paymentView.png"></center>
 </div>
 
