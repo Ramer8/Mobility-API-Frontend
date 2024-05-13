@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import "./Payment.css"
 import { userData } from "../../app/slices/userSlice"
 import { useSelector } from "react-redux"
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { calculateMoneyTrip } from "../../utils/functions"
 const Payment = ({
   distance,
@@ -13,6 +13,9 @@ const Payment = ({
   clearRoute,
 }) => {
   const rdxUser = useSelector(userData)
+  const navigate = useNavigate()
+  const SUCCESS_MSG_TIME = 2000
+
   useEffect(() => {
     if (!rdxUser.credentials.token) {
       Navigate("/login")
@@ -83,9 +86,8 @@ const Payment = ({
             className="paymentButton"
             onClick={() => {
               setTogglePayment(false)
-              setTrip("")
-              // setToggleCalculateButton(true)
               clearRoute()
+              navigate("/")
             }}
           >
             Pay now

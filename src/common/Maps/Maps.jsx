@@ -538,7 +538,7 @@ const Maps = () => {
                     functionEmit={() => {
                       myNewTrip() // create new Trip
                       toggleSection() // hide order taxi button
-                      // setToggleCalculateButton(false)
+                      setToggleCalculateButton(false)
                       map.panTo(location) //location in startPoint
                       map.setZoom(18) //do zoom in
                       toggleSectionTripInfo() //show data Trip
