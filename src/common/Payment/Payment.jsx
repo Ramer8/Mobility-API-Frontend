@@ -84,7 +84,7 @@ const Payment = ({
             onClick={() => {
               setTogglePayment(false)
               setTrip("")
-              setToggleCalculateButton(true)
+              // setToggleCalculateButton(true)
               clearRoute()
             }}
           >
