@@ -13,8 +13,11 @@ import { CustomButton } from "../../common/CustomButton/CustomButton"
 
 import { useDispatch } from "react-redux"
 import { login } from "../../app/slices/userSlice"
+import Spinner from "../../common/Spinner/Spinner"
 
 export const Login = () => {
+  const [loading, setLoading] = useState(false)
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -41,12 +44,15 @@ export const Login = () => {
     setStatus("")
 
     let location = { latitude, longitude }
-
+    console.log(location)
     dispatch(login({ location }))
 
     //then we have the coords location go to home view
-
-    navigate("/home")
+    // Simulate loading
+    setLoading(true)
+    setTimeout(() => {
+      navigate("/home")
+    }, 3000)
   }
 
   const error = () => {
@@ -108,7 +114,11 @@ export const Login = () => {
     if (decoded?.tokenData?.roleName === "super_admin") {
       geoFindMe()
       dispatch(login({ super: true }))
-      navigate("/managment")
+
+      setLoading(true)
+      setTimeout(() => {
+        navigate("/managment")
+      }, 3000)
       return
     }
     geoFindMe()
@@ -160,54 +170,57 @@ export const Login = () => {
     logMe()
   }
   return (
-    <div className="loginDesign">
-      {/* <pre>{JSON.stringify(credentials, null, 2)}</pre> */}
-      <CustomButton
-        className={"icon clear primaryButton"}
-        title={"Log superadmin"}
-        functionEmit={logSuperAdmin}
-      />
-      <CustomButton
-        className={"icon clear primaryButton"}
-        title={"Log user"}
-        functionEmit={log}
-      />
-      <label>Name:</label>
-      <CustomInput
-        className={`inputDesign ${
-          credentialsError.emailError !== "" ? "inputDesignError" : ""
-        }`}
-        type="email"
-        name="email"
-        value={credentials.email || ""}
-        placeholder="email"
-        functionChange={inputHandler}
-        onBlurFunction={(e) => checkError(e)}
-      />
-      <label>Password:</label>
-      <CustomInput
-        className={`inputDesign ${
-          credentialsError.passwordError !== "" ? "inputDesignError" : ""
-        }`}
-        type="password"
-        name="password"
-        value={credentials.password || ""}
-        placeholder="password"
-        functionChange={inputHandler}
-        onBlurFunction={(e) => checkError(e)}
-      />
-      <CustomButton
-        className={"primaryButton"}
-        title={"Log in"}
-        functionEmit={logMe}
-      />
-      <div className="footerRedirection">
-        <div>Don't have an account? </div>
-        <div className="linkToRegister" onClick={() => navigate("/register")}>
-          Sign Up
+    <div>
+      {loading && <Spinner />}
+      <div className="loginDesign">
+        {/* <pre>{JSON.stringify(credentials, null, 2)}</pre> */}
+        <CustomButton
+          className={"icon clear primaryButton"}
+          title={"Log superadmin"}
+          functionEmit={logSuperAdmin}
+        />
+        <CustomButton
+          className={"icon clear primaryButton"}
+          title={"Log user"}
+          functionEmit={log}
+        />
+        <label>Name:</label>
+        <CustomInput
+          className={`inputDesign ${
+            credentialsError.emailError !== "" ? "inputDesignError" : ""
+          }`}
+          type="email"
+          name="email"
+          value={credentials.email || ""}
+          placeholder="email"
+          functionChange={inputHandler}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <label>Password:</label>
+        <CustomInput
+          className={`inputDesign ${
+            credentialsError.passwordError !== "" ? "inputDesignError" : ""
+          }`}
+          type="password"
+          name="password"
+          value={credentials.password || ""}
+          placeholder="password"
+          functionChange={inputHandler}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <CustomButton
+          className={"primaryButton"}
+          title={"Log in"}
+          functionEmit={logMe}
+        />
+        <div className="footerRedirection">
+          <div>Don't have an account? </div>
+          <div className="linkToRegister" onClick={() => navigate("/register")}>
+            Sign Up
+          </div>
         </div>
+        <ToastContainer position="top-left" autoClose={500} theme="colored" />
       </div>
-      <ToastContainer position="top-left" autoClose={500} theme="colored" />
     </div>
   )
 }
