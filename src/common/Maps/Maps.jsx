@@ -16,10 +16,12 @@ import "react-toastify/dist/ReactToastify.css"
 import { createTrip, fetchMyTripWithId } from "../../services/apiCalls"
 import Pickup from "../../pages/Pickup/Pickup"
 import Payment from "../Payment/Payment"
+import Spinner from "../Spinner/Spinner"
 // import Pickup from "../../pages/Pickup/Pickup"
 
 const places = ["places"]
 const Maps = () => {
+  const [loading, setLoading] = useState(false)
   const [showSection, setShowSection] = useState(false)
 
   const [toggleCalculateButton, setToggleCalculateButton] = useState(false)
@@ -31,8 +33,9 @@ const Maps = () => {
   const [tripChanged, setTripChanged] = useState(false)
   const [distance, setDistance] = useState("")
   const [duration, setDuration] = useState("")
+  const [trip, setTrip] = useState("")
+  const [tripId, setTripId] = useState("")
 
-  const [loadedData, setLoadedData] = useState(false)
   const [DriverNameSplited, setDriverNameSplited] = useState({
     name: "",
     last: "",
@@ -42,9 +45,7 @@ const Maps = () => {
     lat: 39.46975,
     lng: -0.37739,
   })
-  const [trip, setTrip] = useState("")
 
-  const [tripId, setTripId] = useState("")
   const [newTrip, setNewTrip] = useState({
     startLocation: "",
     destination: "",
@@ -53,6 +54,7 @@ const Maps = () => {
   const navigate = useNavigate()
   const rdxUser = useSelector(userData)
   const dispatch = useDispatch()
+  const SUCCESS_MSG_TIME = 2000
 
   useEffect(() => {
     if (rdxUser.location) {
@@ -94,7 +96,6 @@ const Maps = () => {
 
           return
         }
-        // setLoadedData(true)
         setTrip({
           carModel: fetched.data[0].car.model,
           carNumberPlate: fetched.data[0].car.numberPlate,
@@ -118,7 +119,6 @@ const Maps = () => {
         console.error(error)
       }
     }
-    // console.log(tripChanged, "es true o false? ")
     if (tripChanged) {
       fetching()
     }
@@ -152,7 +152,6 @@ const Maps = () => {
 
       //Save trip id to share to pickup component
       setTripId(fetched.data.id)
-      // console.log(tripId)
 
       setTripChanged(!tripChanged) //bandera para hacer el fetch data para pickup
     } catch (error) {
@@ -198,7 +197,10 @@ const Maps = () => {
           setDirectionsResponse(results)
           setDistance(results.routes[0].legs[0].distance.text)
           setDuration(results.routes[0].legs[0].duration.text)
-          toggleSection()
+          setTimeout(() => {
+            setLoading(false)
+            toggleSection()
+          }, SUCCESS_MSG_TIME)
         },
         (error) => {
           console.error("Error getting current location:", error)
@@ -218,6 +220,7 @@ const Maps = () => {
       setDirectionsResponse(null)
       setDistance("")
       setDuration("")
+      setTrip("")
       // originRef.current.value = ""
       destiantionRef.current.value = ""
     }, 500)
@@ -244,7 +247,7 @@ const Maps = () => {
   const toggleSection = () => {
     setTimeout(() => {
       setShowSection((prevShowSection) => !prevShowSection)
-    }, 50)
+    }, 100)
   }
   const toggleSectionBottomButtonB = () => {
     setTimeout(() => {
@@ -268,6 +271,7 @@ const Maps = () => {
 
   return (
     <>
+      {loading && <Spinner />}
       {location && (
         <>
           {/* <button
@@ -354,11 +358,11 @@ const Maps = () => {
               <div className="leftSide"></div>
               <div className="rightSideButtonBarBottom">
                 <CustomButton
-                  // className={"primaryButton uploadProfile calculateRouteButton"}
                   className={" calculateRouteButton"}
                   title={"Calculate Route"}
                   functionEmit={() => {
                     calculateRoute()
+                    setLoading(true)
                   }}
                 />
                 <CustomButton
@@ -533,8 +537,8 @@ const Maps = () => {
                     title={"Order Taxi now"}
                     functionEmit={() => {
                       myNewTrip() // create new Trip
-                      toggleSection() // hide button
-                      toggleCalculateRouteButton()
+                      toggleSection() // hide order taxi button
+                      setToggleCalculateButton(false)
                       map.panTo(location) //location in startPoint
                       map.setZoom(18) //do zoom in
 
@@ -584,6 +588,7 @@ const Maps = () => {
                 setToggleCalculateButton={setToggleCalculateButton}
                 setTrip={setTrip}
                 trip={trip}
+                clearRoute={clearRoute}
               />
             </div>
           </div>

@@ -52,7 +52,7 @@ export const Login = () => {
     setLoading(true)
     setTimeout(() => {
       navigate("/home")
-    }, 3000)
+    }, SUCCESS_MSG_TIME)
   }
 
   const error = () => {
@@ -118,17 +118,12 @@ export const Login = () => {
       setLoading(true)
       setTimeout(() => {
         navigate("/managment")
-      }, 3000)
+      }, SUCCESS_MSG_TIME)
       return
     }
     geoFindMe()
 
     dispatch(login({ super: false }))
-
-    // Home redirected
-    // setTimeout(() => {
-    //   navigate("/home")
-    // }, SUCCESS_MSG_TIME)
   }
 
   useEffect(() => {
@@ -214,7 +209,7 @@ export const Login = () => {
           functionEmit={logMe}
         />
         <div className="footerRedirection">
-          <div>Don't have an account? </div>
+          <div>Dont have an account? </div>
           <div className="linkToRegister" onClick={() => navigate("/register")}>
             Sign Up
           </div>

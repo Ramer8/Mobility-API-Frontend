@@ -10,6 +10,7 @@ const Payment = ({
   setToggleCalculateButton,
   setTrip,
   trip,
+  clearRoute,
 }) => {
   const rdxUser = useSelector(userData)
   useEffect(() => {
@@ -84,6 +85,7 @@ const Payment = ({
               setTogglePayment(false)
               setTrip("")
               setToggleCalculateButton(true)
+              clearRoute()
             }}
           >
             Pay now
