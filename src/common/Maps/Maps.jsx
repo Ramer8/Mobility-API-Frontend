@@ -62,9 +62,8 @@ const Maps = () => {
         lat: rdxUser.location.latitude,
         lng: rdxUser.location.longitude,
       })
-    } else {
-      console.log("location empty")
     }
+    // else (getLocation)
   }, [rdxUser.location])
 
   useEffect(() => {
@@ -157,7 +156,7 @@ const Maps = () => {
   const geocoder = new google.maps.Geocoder()
   async function calculateRoute() {
     if (destiantionRef.current.value === "") {
-      return console.log("no destination")
+      return
     }
 
     const coordinateArray = [location.lat, location.lng]

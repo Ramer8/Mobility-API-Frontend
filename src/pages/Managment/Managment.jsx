@@ -79,7 +79,6 @@ const Managment = () => {
         console.error(error)
       }
     }
-    console.log(users)
     const fetchingTrips = async () => {
       try {
         const fetched = await getAllUsersTrips(rdxUser.credentials.token)
@@ -208,7 +207,6 @@ const Managment = () => {
           throw new Error("Failed to fetch Appointment data")
         }
       }
-      console.log(fetched, "from managme")
       setUsers(fetched.data)
     } catch (error) {
       console.log(error)

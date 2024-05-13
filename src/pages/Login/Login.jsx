@@ -108,7 +108,6 @@ export const Login = () => {
     dispatch(login({ credentials: decoded }))
     // dispatch(login({ online: true }))
 
-    console.log(decoded?.tokenData?.roleName)
     // Go to SuperAdmin Managment
     if (decoded?.tokenData?.roleName === "super_admin") {
       geoFindMe()
@@ -160,14 +159,12 @@ export const Login = () => {
       email: "user@user.com",
       password: "123456",
     })
-    console.log(credentials)
     logMe()
   }
   return (
     <div>
       {loading && <Spinner />}
       <div className="loginDesign">
-        {/* <pre>{JSON.stringify(credentials, null, 2)}</pre> */}
         <CustomButton
           className={"icon clear primaryButton"}
           title={"Log superadmin"}

@@ -6,7 +6,6 @@ export const loginMe = async (credenciales) => {
     },
     body: JSON.stringify(credenciales),
   }
-  console.log(`${import.meta.env.VITE_API_URL}/auth/login`)
   try {
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}auth/login`,
@@ -17,8 +16,6 @@ export const loginMe = async (credenciales) => {
     if (!data.success) {
       throw new Error(data.message)
     }
-    console.log(data)
-
     return data
   } catch (error) {
     return error
@@ -50,7 +47,6 @@ export const registerMe = async (credenciales) => {
     return error
   }
 }
-//for taxi mobility proyect
 export const fetchMyProfile = async (token) => {
   const options = {
     method: "GET",
@@ -75,9 +71,7 @@ export const fetchMyProfile = async (token) => {
     return error
   }
 }
-//for mobility proyect
-// console.log(`${import.meta.env.VITE_API_URL}users/profile`)
-// http://localhost:5500/users/profile
+
 export const fetchMyTripWithId = async (tripId, token) => {
   const options = {
     method: "PUT",
@@ -87,7 +81,6 @@ export const fetchMyTripWithId = async (tripId, token) => {
     },
   }
   try {
-    // localhost:5500/trips/1
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}trips/${tripId}`,
       options
@@ -104,11 +97,7 @@ export const fetchMyTripWithId = async (tripId, token) => {
   }
 }
 
-//for mobility proyect
 export const updateProfile = async (data, token) => {
-  // console.log(`${import.meta.env.VITE_API_URL}users/profile`)
-  // http://localhost:5500/users/profile
-
   const options = {
     method: "PUT",
     headers: {
@@ -150,7 +139,6 @@ export const getAllUsersTrips = async (token) => {
     )
 
     const data = await response.json()
-    console.log(data)
     if (!data.success) {
       throw new Error(data.message)
     }
@@ -159,30 +147,6 @@ export const getAllUsersTrips = async (token) => {
     return error
   }
 }
-export const getAllUsersPosts = async (token) => {
-  const options = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/posts/`,
-      options
-    )
-
-    const data = await response.json()
-    if (!data.success) {
-      throw new Error(data.message)
-    }
-    return data
-  } catch (error) {
-    return error
-  }
-}
-//for mobility proyect
 
 export const createTrip = async (data, token) => {
   const options = {
@@ -200,119 +164,10 @@ export const createTrip = async (data, token) => {
     )
 
     const data = await response.json()
-    console.log(data, "recently created trip")
     if (!data.success) {
       throw new Error(data.message)
     }
 
-    return data
-  } catch (error) {
-    return error
-  }
-}
-
-export const createPost = async (data, token) => {
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-  }
-
-  try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/posts`,
-      options
-    )
-
-    const data = await response.json()
-
-    if (!data.success) {
-      throw new Error(data.message)
-    }
-
-    return data
-  } catch (error) {
-    return error
-  }
-}
-
-export const putlikes = async (userId, token) => {
-  const options = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    params: JSON.stringify(userId),
-  }
-
-  try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/posts/like/${userId}`,
-      options
-    )
-
-    const data = await response.json()
-
-    if (!data.success) {
-      throw new Error(data.message)
-    }
-    return data
-  } catch (error) {
-    return error
-  }
-}
-export const deletePost = async (id, token) => {
-  const options = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  }
-
-  try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/posts/${id}`,
-      options
-    )
-
-    const data = await response.json()
-    if (!data.success) {
-      throw new Error(data.message)
-    }
-
-    return data
-  } catch (error) {
-    return error
-  }
-}
-
-export const updateMyPost = async (id, data, token) => {
-  const options = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-    params: JSON.stringify(id),
-  }
-
-  try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/posts/${id}`,
-      options
-    )
-
-    const data = await response.json()
-
-    if (!data.success) {
-      throw new Error(data.message)
-    }
     return data
   } catch (error) {
     return error
@@ -333,7 +188,6 @@ export const fetchAllUsers = async (token) => {
       options
     )
     const data = await response.json()
-    console.log(data)
     if (!data.success) {
       throw new Error(data.message)
     }
@@ -368,7 +222,6 @@ export const deleteMoreThanOneUsers = async (array, token) => {
   }
 }
 export const deleteMoreThanOneTrips = async (array, token) => {
-  console.log(array)
   const options = {
     method: "DELETE",
     headers: {
@@ -394,7 +247,6 @@ export const deleteMoreThanOneTrips = async (array, token) => {
 }
 
 export const searchUsers = async (searchParam, token) => {
-  console.log(searchParam, "from api  calls")
   const options = {
     method: "GET",
     headers: {
@@ -403,21 +255,11 @@ export const searchUsers = async (searchParam, token) => {
     },
   }
   try {
-    console.log(
-      `${import.meta.env.VITE_API_URL}users/search?search=${searchParam}`
-    )
-
     const response = await fetch(
-      // api/users?email=john@example.com&name=John `/api/users?${searchParam}`
-
-      // `${import.meta.env.VITE_API_URL}/users?email=${email}&name=${name}`,
-      // `${import.meta.env.VITE_API_URL}/users?email=${email}`,
-
       `${import.meta.env.VITE_API_URL}users/search?search=${searchParam}`,
       options
     )
     const data = await response.json()
-    console.log(data, " from api")
     if (!data.success) {
       throw new Error(data.message)
     }
