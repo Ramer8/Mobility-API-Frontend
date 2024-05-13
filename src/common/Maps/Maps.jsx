@@ -256,25 +256,19 @@ const Maps = () => {
       )
     }, 50)
   }
-  const toggleCalculateRouteButton = () => {
-    setTimeout(() => {
-      setToggleCalculateButton(
-        (prevToggleCalculateButton) => !prevToggleCalculateButton
-      )
-    }, 50)
-  }
+  // const toggleCalculateRouteButton = () => {
+  //   setTimeout(() => {
+  //     setToggleCalculateButton(
+  //       (prevToggleCalculateButton) => !prevToggleCalculateButton
+  //     )
+  //   }, 50)
+  // }
 
   return (
     <>
       {loading && <Spinner />}
       {location && (
         <>
-          {/* <button
-            className="primaryButton"
-            onClick={() => toggleSectionTripInfo()}
-          >
-            get info trip
-          </button> */}
           <div className="inputBox">
             <div className="inputBarTop">
               <div className="iconInput">
@@ -331,20 +325,10 @@ const Maps = () => {
 
             <div className="buttonBar">
               <div className="leftButtonBar"></div>
-
-              {/* <Autocomplete>
-                <input
-                  className="inputDesign"
-                  type="text"
-                  placeholder="Origin"
-                  ref={location}
-                ></input>
-              </Autocomplete> */}
             </div>
 
             <div
               className={`buttonBarBottom ${
-                //poner otra flag
                 toggleCalculateButton ? "hideSlide" : ""
               }
               }
@@ -361,7 +345,6 @@ const Maps = () => {
                   }}
                 />
                 <CustomButton
-                  // className={"primaryButton uploadProfile clearRouteButton"}
                   className={"clearRouteButton"}
                   title={
                     <svg
@@ -386,7 +369,6 @@ const Maps = () => {
             <GoogleMap
               className="googleMap"
               center={location}
-              // center={location? "insert lat & lng" : location} to fix warning error at start.
               zoom={17}
               mapContainerStyle={{
                 width: "100%",
@@ -394,7 +376,6 @@ const Maps = () => {
                 position: "relative",
                 top: "-2.3em",
               }}
-              // map-id="DEMO_MAP_ID"
               options={{
                 zoomControl: false,
                 streetViewControl: false,
@@ -403,7 +384,6 @@ const Maps = () => {
               }}
               onLoad={(map) => setMap(map)}
             >
-              {/* <Marker position={location} /> */}
               {directionsResponse && (
                 <DirectionsRenderer directions={directionsResponse} />
               )}
