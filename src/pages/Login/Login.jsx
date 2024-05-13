@@ -44,7 +44,6 @@ export const Login = () => {
     setStatus("")
 
     let location = { latitude, longitude }
-    console.log(location)
     dispatch(login({ location }))
 
     //then we have the coords location go to home view
