@@ -44,10 +44,12 @@
 }
 
 .dropdownIcons {
-    /* display: flex; */
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 100%;
+
 }
 
 .menu {
@@ -88,6 +90,7 @@
 .dropbtn:hover,
 .dropbtn:focus {
     box-shadow: 1px solid;
+
 }
 
 .dropdown {
@@ -104,7 +107,7 @@
     background-color: #f1f1f1e0;
     width: 120px;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.348);
     z-index: 1;
 
 }
