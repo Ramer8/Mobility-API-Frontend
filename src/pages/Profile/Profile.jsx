@@ -13,7 +13,7 @@ import { logout, userData } from "../../app/slices/userSlice"
 import { validame } from "../../utils/functions"
 import { CustomButton } from "../../common/CustomButton/CustomButton"
 import Spinner from "../../common/Spinner/Spinner"
-import Payment from "../../common/Card/Payment/Payment"
+import Payment from "../../common/Payment/Payment"
 
 const Profile = () => {
   const [write, setWrite] = useState("disabled")

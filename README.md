@@ -1,8 +1,8 @@
-### Social Media Frontend
+### Mobility App
 
 ---
 
-#### Mobil device Experience📱
+#### Mobile device Experience📱
 
 <img src="./public/mobileDemo.gif"/>
 

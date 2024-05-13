@@ -15,7 +15,7 @@ import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { createTrip, fetchMyTripWithId } from "../../services/apiCalls"
 import Pickup from "../../pages/Pickup/Pickup"
-import Payment from "../Card/Payment/Payment"
+import Payment from "../Payment/Payment"
 // import Pickup from "../../pages/Pickup/Pickup"
 
 const places = ["places"]

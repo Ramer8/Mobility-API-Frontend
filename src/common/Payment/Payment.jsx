@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import "./Payment.css"
-import { userData } from "../../../app/slices/userSlice"
+import { userData } from "../../app/slices/userSlice"
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
-import { calculateMoneyTrip } from "../../../utils/functions"
+import { calculateMoneyTrip } from "../../utils/functions"
 const Payment = ({
   distance,
   setTogglePayment,
@@ -81,7 +81,7 @@ const Payment = ({
           setToggleCalculateButton(true)
         }}
       >
-        Pay
+        Pay now
       </div>
     </div>
   )
