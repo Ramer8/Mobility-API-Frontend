@@ -143,7 +143,7 @@ const Profile = () => {
             <div className="headerProfile">
               <img
                 className="pic"
-                src="/avatarMale.png"
+                src="/avatarboy1.svg"
                 width=""
                 alt="profilePic"
               />
@@ -155,12 +155,12 @@ const Profile = () => {
             </div>
             <div className="buttonsPicture">
               <CustomButton
-                className={"primaryButton uploadProfile"}
+                className={"primaryButton uploadProfile login"}
                 title={"Upload"}
                 functionEmit={() => setWrite("")}
               />
               <CustomButton
-                className={" primaryButton removeProfile"}
+                className={" primaryButton removeProfile login"}
                 title={"Remove"}
                 functionEmit={() => setWrite("")}
               />
@@ -300,7 +300,7 @@ const Profile = () => {
                 className={
                   write === ""
                     ? "primaryButton updateData"
-                    : "primaryButton editButton"
+                    : "primaryButton editButton login"
                 }
                 title={write === "" ? "Save changes" : "Edit"}
                 functionEmit={write === "" ? updateData : () => setWrite("")}
