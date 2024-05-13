@@ -42,7 +42,7 @@ const Maps = () => {
     lat: 39.46975,
     lng: -0.37739,
   })
-  const [trip, setTrip] = useState({})
+  const [trip, setTrip] = useState("")
 
   const [tripId, setTripId] = useState("")
   const [newTrip, setNewTrip] = useState({
@@ -271,11 +271,11 @@ const Maps = () => {
       {location && (
         <>
           {/* <button
-              className="primaryButton"
-              onClick={() => toggleSectionTripInfo()}
-            >
-              get info trip
-            </button> */}
+            className="primaryButton"
+            onClick={() => toggleSectionTripInfo()}
+          >
+            get info trip
+          </button> */}
           <div className="inputBox">
             <div className="inputBarTop">
               <div className="iconInput">
@@ -583,6 +583,7 @@ const Maps = () => {
                 setTogglePayment={setTogglePayment}
                 setToggleCalculateButton={setToggleCalculateButton}
                 setTrip={setTrip}
+                trip={trip}
               />
             </div>
           </div>

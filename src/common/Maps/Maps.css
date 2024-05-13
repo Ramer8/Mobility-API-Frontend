@@ -432,7 +432,7 @@
 }
 
 .paymentComponent {
-    border-top: solid 1px lightgrey;
+    /* border-top: solid 1px lightgrey; */
     padding-top: .5em;
     width: 100%;
     display: flex;
