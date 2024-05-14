@@ -3,9 +3,8 @@ import { CustomLink } from "../CustomLink/CustomLink"
 import "./Header.css"
 
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { logout, userData } from "../../app/slices/userSlice"
-import { fetchMyProfile } from "../../services/apiCalls"
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)

@@ -35,9 +35,6 @@ const Profile = () => {
 
   const navigate = useNavigate()
 
-  const ERROR_MSG_TIME = 6000
-  const SUCCESS_MSG_TIME = 3000
-
   useEffect(() => {
     if (!rdxUser.credentials.token) {
       navigate("/")
@@ -77,14 +74,14 @@ const Profile = () => {
             toast.error(fetched.message, {
               theme: "dark",
               position: "top-left",
-              autoClose: 500,
+              autoClose: 1500,
             })
             return
           }
           toast.error(fetched.message, {
             theme: "dark",
             position: "top-left",
-            autoClose: 500,
+            autoClose: 1500,
           })
           navigate("/login")
           return
@@ -110,7 +107,7 @@ const Profile = () => {
       try {
         const fetched = await updateProfile(user, rdxUser.credentials.token)
 
-        toast.success(fetched.message, { theme: "dark", autoClose: 500 })
+        toast.success(fetched.message, { theme: "dark", autoClose: 1500 })
         setUser({
           userName: fetched.userNameUpdated,
           address: fetched.addressUpdated,

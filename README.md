@@ -254,14 +254,13 @@ src="./public/paymentView.png"></center>
 
 ---
 
-<div style="display: flex; justify-content: space-between; flex-direction:row;">
-<center><img style="border-radius:15px; padding:1px; width:50%;"  
-src="./public/mapdesign.png"></center>
-<center><img style="border-radius:15px; padding:1px; width:50%;"  
-src="./public/tripinfo.png"></center>
-<center><img style="border-radius:15px; padding:1px; width:50%;"  
-src="./public/paymentView.png"></center>
-</div>
+ <p>
+  <img src="/public/taxiorder.png" width="19%" />
+  <img src="/public/taxiincoming.png" width="19%" />
+  <img src="/public/tripinfo.png" width="19%" />
+  <img src="/public/arriveddestination.png" width="19%" />
+  <img src="/public/payviewtaxi.png" width="19%" />
+  </p>
 
 ---
 
@@ -320,7 +319,7 @@ I decided to use google maps plataform libraries to get localization and routes.
 
 <div style="display: flex; justify-content: center; flex-direction:column;">
 <center><img style="border-radius:15px; padding:1px; width:80%;"  
-src="./public/googleAPILibrary.png"></center>
+src="./public/googlelibrary.png"></center>
 </div>
 
 ---
