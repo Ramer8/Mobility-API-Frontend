@@ -70,11 +70,32 @@ The registered user can search for a destination, choose between different types
 
 ---
 
+### Flow Chart
+
+<p>
+<div style="display: flex; justify-content: center; flex-direction:column;">
+<center><img style="border-radius:15px; padding:1px; width:100%;"  
+src="./public/flowchart.jpg"></center>
+</div>
+</p>
+
+The rectangle with black font inside represent the moment after loggin / register
+The rectangle with red frame and shadow letter in red belong to Minimum Viable Product (MVP)
+At least the flow chart was completed totally. Several data were hard coded because the driver's side application is not yet ready.
+
+---
+
 ### Develop
 
-Is a SPA (single-page application) with react router dom to organize the routes.
-The frontend is connected to MySQL DB data base created in Mobility API Backend.
-We use redux to save token and other variables.
+To start writing code, several problems had to be solved. The design of the database, its relationships.
+The connection with the external api and how to get the necessary data to show in frontend. The frontend and backend stack.
+
+### Start from scrach
+
+The backend was built with Node, Express, TypeScript and MySQL database on a Docker container. In the frontend I had doubts whether to start with TypeScript or Javascript, but then I decided for Javascript always in React.
+React router dom to organize routes and Redux for global state management.
+
+---
 
 #### First Data Base Structure
 
@@ -107,6 +128,12 @@ src="./public/databaseMobilityApp.png"></center>
 </div>
 
 ---
+
+#### Drafts
+
+<p>
+<img style="border-radius:10px; padding:1px; width:80%;" src="./public/draft.jpg">
+</p>
 
 #### Develop
 
