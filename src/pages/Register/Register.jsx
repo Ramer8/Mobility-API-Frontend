@@ -97,7 +97,7 @@ export const Register = () => {
       setLoading(true)
       // Home redirected
       setTimeout(() => {
-        navigate("/home")
+        navigate("/profile")
       }, SUCCESS_MSG_TIME)
     }
     logMe()
