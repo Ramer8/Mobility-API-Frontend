@@ -115,6 +115,7 @@ const Profile = () => {
           payment: fetched.paymentUpdated,
         })
         setWrite("disabled")
+        navigate("/")
       } catch (error) {
         console.log(error)
       }
