@@ -182,7 +182,6 @@ const Payment = ({
           <div
             className="paymentButton"
             onClick={() => {
-              paymentFlow()
               setTogglePayment(false)
               navigate("/")
             }}

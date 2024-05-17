@@ -7,11 +7,7 @@ const Spinner = () => {
     <div className="spinner-overlay">
       <div className="spinner-container">
         <div className="spinner">
-          <img
-            src="../public/carfront.png"
-            width={180}
-            className="bg-text"
-          ></img>
+          <img src="../carfront.png" width={180} className="bg-text"></img>
         </div>
       </div>
     </div>

@@ -117,13 +117,13 @@ const Pickup = ({
             <div className="bodyright">
               <img
                 className="profilePic"
-                src="./public/picprofilerounded.jpg"
+                src="./picprofilerounded.jpg"
                 alt="avatarMale"
                 width={45}
               ></img>
               <img
                 className="carIcn"
-                src="./public/icons/car1.svg"
+                src="./icons/car1.svg"
                 width={90}
                 alt="avatarfemale"
               ></img>
@@ -145,7 +145,7 @@ const Pickup = ({
             <div className="input">
               <img
                 className="chatIcon"
-                src="./public/icons/chatIcon.svg"
+                src="./icons/chatIcon.svg"
                 width={45}
                 color="#8492a6"
                 alt="chatIcon"
