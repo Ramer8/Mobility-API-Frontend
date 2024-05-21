@@ -554,7 +554,6 @@ const Maps = () => {
             `}
             >
               <Payment
-                paymentUser={trip}
                 distance={distance}
                 setTogglePayment={setTogglePayment}
                 setToggleCalculateButton={setToggleCalculateButton}

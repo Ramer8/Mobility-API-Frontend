@@ -49,15 +49,16 @@
 }
 
 .paymentInstrument {
-    margin-top: .5em;
     margin-top: 1em;
-    padding-inline: 1em;
+    /* padding-inline: 1em; */
     width: 100%;
     font-size: 1.1em;
     flex-direction: row;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-around;
+    /* background-color: aqua; */
+    height: 3em;
 }
 
 .paymentUser {}
@@ -79,10 +80,57 @@
 
 .creditCardIcon {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
     gap: .5em;
 }
 
 .creditTitle {
     display: flex;
-    margin-top: .8em;
+}
+
+.payDirectlyIcon {
+    display: flex;
+    gap: .5em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.payDirectlyTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.iconPay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: .3em; */
+
+}
+
+@media(max-width: 400px) {
+    .paymentInstrument {
+        font-size: 1em;
+    }
+
+    .creditCardIcon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: .5em;
+
+    }
+
+    .payDirectlyIcon {
+        display: flex;
+        gap: .5em;
+
+    }
+
+
 }

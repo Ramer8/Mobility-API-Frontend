@@ -170,13 +170,8 @@
         border-radius: 4em;
         padding: .5em;
         border-radius: 3em;
-        /* background-color: red; */
     }
 
-    .infoBar {
-        display: none;
-        visibility: hidden;
-    }
 }
 
 @media(min-width: 1500px) {
@@ -217,12 +212,6 @@
         border-radius: 4em;
         padding: .5em;
         border-radius: 3em;
-        /* background-color: red; */
-    }
-
-    .infoBar {
-        display: none;
-        visibility: hidden;
     }
 }
 
@@ -264,7 +253,6 @@
         border-radius: 4em;
         padding: .5em;
         border-radius: 3em;
-        /* background-color: red; */
     }
 
     .infoBar {
