@@ -4,22 +4,10 @@ import { logout, userData } from "../../app/slices/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { Navigate, useNavigate } from "react-router-dom"
 import { calculateMoneyTrip } from "../../utils/functions"
-import {
-  fetchMyProfile,
-  updateProfile,
-  updateTrip,
-} from "../../services/apiCalls"
+import { fetchMyProfile, updateTrip } from "../../services/apiCalls"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-const Payment = ({
-  distance,
-  setTogglePayment,
-  setToggleCalculateButton,
-  setTrip,
-  trip,
-  tripId,
-  clearRoute,
-}) => {
+const Payment = ({ distance, setTogglePayment, trip, tripId }) => {
   const [loadedData, setLoadedData] = useState(false)
 
   const [userPayment, setUserPayment] = useState({
@@ -29,7 +17,6 @@ const Payment = ({
   const dispatch = useDispatch()
   const rdxUser = useSelector(userData)
   const navigate = useNavigate()
-  const SUCCESS_MSG_TIME = 2000
 
   useEffect(() => {
     if (!rdxUser.credentials.token) {
@@ -69,25 +56,6 @@ const Payment = ({
     }
   }, [rdxUser])
 
-  const updateData = async () => {
-    try {
-      const fetched = await updateProfile(
-        userPayment,
-        rdxUser.credentials.token
-      )
-
-      toast.success(fetched.message, { theme: "dark" })
-      console.log(fetched)
-      setUserPayment({
-        payment: fetched.paymentUpdated,
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {}, [userPayment])
-
   const handlePaymentChange = (event) => {
     const { value } = event.target
     setUserPayment((prevUserPayment) => ({
@@ -97,7 +65,6 @@ const Payment = ({
   }
 
   const updateCurrentTrip = async () => {
-    console.log("saving...")
     const data = {
       trip_id: tripId,
       pay: userPayment.payment,

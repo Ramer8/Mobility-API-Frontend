@@ -175,7 +175,6 @@ export const createTrip = async (data, token) => {
 }
 
 export const updateTrip = async (data, token) => {
-  console.log(data)
   const options = {
     method: "PUT",
     headers: {
@@ -192,7 +191,6 @@ export const updateTrip = async (data, token) => {
     )
 
     const data = await response.json()
-    console.log(data, "from apicalls")
     if (!data.success) {
       throw new Error(data.message)
     }

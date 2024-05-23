@@ -545,7 +545,6 @@ const Maps = () => {
                 showDestination={showDestination}
                 setTogglePickupComponent={setTogglePickupComponent}
                 setTogglePayment={setTogglePayment}
-                togglePickupComponent={togglePickupComponent}
               />
             </div>
             <div
@@ -556,10 +555,7 @@ const Maps = () => {
               <Payment
                 distance={distance}
                 setTogglePayment={setTogglePayment}
-                setToggleCalculateButton={setToggleCalculateButton}
-                setTrip={setTrip}
                 trip={trip}
-                clearRoute={clearRoute}
                 tripId={tripId}
               />
             </div>

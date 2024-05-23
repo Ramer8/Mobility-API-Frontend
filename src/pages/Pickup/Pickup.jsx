@@ -1,10 +1,8 @@
 import "./Pickup.css"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput"
 import { useEffect, useState } from "react"
 import { userData } from "../../app/slices/userSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 const Pickup = ({
@@ -13,27 +11,16 @@ const Pickup = ({
   setTogglePickupComponent,
   showDestination,
   setTogglePayment,
-  togglePickupComponent,
 }) => {
   const [driverMessage, setDriverMessage] = useState("")
   const navigate = useNavigate()
   const rdxUser = useSelector(userData)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!rdxUser.credentials.token) {
       navigate("/login")
     }
   }, [rdxUser])
-
-  // useEffect(() => {
-  //   if (togglePickupComponent) {
-  //     setTogglePayment(true)
-  //     console.log("abre el pago")
-  //   }
-
-  //   console.log("paso por el componente de pago")
-  // }, [togglePickupComponent])
 
   useEffect(() => {
     timerMessage()
@@ -163,7 +150,6 @@ const Pickup = ({
           </div>
         </div>
       )}
-      <ToastContainer />
     </>
   )
 }
