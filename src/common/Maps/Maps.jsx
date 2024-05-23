@@ -560,6 +560,7 @@ const Maps = () => {
                 setTrip={setTrip}
                 trip={trip}
                 clearRoute={clearRoute}
+                tripId={tripId}
               />
             </div>
           </div>

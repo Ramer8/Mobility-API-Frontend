@@ -4,7 +4,11 @@ import { logout, userData } from "../../app/slices/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { Navigate, useNavigate } from "react-router-dom"
 import { calculateMoneyTrip } from "../../utils/functions"
-import { fetchMyProfile, updateProfile } from "../../services/apiCalls"
+import {
+  fetchMyProfile,
+  updateProfile,
+  updateTrip,
+} from "../../services/apiCalls"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 const Payment = ({
@@ -13,9 +17,9 @@ const Payment = ({
   setToggleCalculateButton,
   setTrip,
   trip,
+  tripId,
   clearRoute,
 }) => {
-  const [Payment, setPayment] = useState(false)
   const [loadedData, setLoadedData] = useState(false)
 
   const [userPayment, setUserPayment] = useState({
@@ -56,7 +60,6 @@ const Payment = ({
         setUserPayment({
           payment: fetched.data.payment,
         })
-        console.log(userPayment, "el q paga")
       } catch (error) {
         console.error(error)
       }
@@ -91,6 +94,20 @@ const Payment = ({
       ...prevUserPayment,
       payment: value,
     }))
+  }
+
+  const updateCurrentTrip = async () => {
+    console.log("saving...")
+    const data = {
+      trip_id: tripId,
+      pay: userPayment.payment,
+    }
+    try {
+      const fetched = await updateTrip(data, rdxUser.credentials.token)
+      console.log(fetched)
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <>
@@ -203,6 +220,7 @@ const Payment = ({
             className="paymentButton"
             onClick={() => {
               setTogglePayment(false)
+              updateCurrentTrip()
               navigate("/")
             }}
           >
