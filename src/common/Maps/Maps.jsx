@@ -195,10 +195,12 @@ const Maps = () => {
           }, SUCCESS_MSG_TIME)
         },
         (error) => {
+          setLoading(false)
           console.error("Error getting current location:", error)
         }
       )
     } else {
+      setLoading(false)
       console.error("Geolocation is not supported by this browser.")
     }
   }
