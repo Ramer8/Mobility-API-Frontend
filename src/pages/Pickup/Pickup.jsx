@@ -5,6 +5,10 @@ import { userData } from "../../app/slices/userSlice"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
+import picProfileRounded from "/public/picprofilerounded.jpg"
+import car1 from "/public/icons/car1.svg"
+import chatIcon from "/public/icons/chatIcon.svg"
+
 const Pickup = ({
   trip,
   DriverNameSplited,
@@ -104,13 +108,13 @@ const Pickup = ({
             <div className="bodyright">
               <img
                 className="profilePic"
-                src="./picprofilerounded.jpg"
+                src={picProfileRounded}
                 alt="avatarMale"
                 width={45}
               ></img>
               <img
                 className="carIcn"
-                src="./icons/car1.svg"
+                src={car1}
                 width={90}
                 alt="avatarfemale"
               ></img>
@@ -132,7 +136,7 @@ const Pickup = ({
             <div className="input">
               <img
                 className="chatIcon"
-                src="./icons/chatIcon.svg"
+                src={chatIcon}
                 width={45}
                 color="#8492a6"
                 alt="chatIcon"
