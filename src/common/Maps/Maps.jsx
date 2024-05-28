@@ -16,7 +16,6 @@ import "react-toastify/dist/ReactToastify.css"
 import { createTrip, fetchMyTripWithId } from "../../services/apiCalls"
 import Pickup from "../../pages/Pickup/Pickup"
 import Payment from "../Payment/Payment"
-import Spinner from "../Spinner/Spinner"
 import RotatingText from "../Spinner/RotatingText"
 // import Pickup from "../../pages/Pickup/Pickup"
 
@@ -158,6 +157,7 @@ const Maps = () => {
   // eslint-disable-next-line no-undef
   const geocoder = new google.maps.Geocoder()
   async function calculateRoute() {
+    setLoading(true)
     if (destiantionRef.current.value === "") {
       setLoading(false)
       return
@@ -197,6 +197,7 @@ const Maps = () => {
           // added time to get data and not show null
           setTimeout(() => {
             setLoading(false)
+
             toggleSection()
           }, SUCCESS_MSG_TIME)
         },
@@ -349,7 +350,6 @@ const Maps = () => {
                   title={"Calculate Route"}
                   functionEmit={() => {
                     calculateRoute()
-                    setLoading(true)
                   }}
                 />
                 <CustomButton
