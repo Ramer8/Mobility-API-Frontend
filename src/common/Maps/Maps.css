@@ -256,6 +256,20 @@
     .infoBar {
         display: none;
         visibility: hidden;
+        width: 0em;
+    }
+
+    .data {
+        margin-bottom: .1em !important;
+        padding-top: .1em !important;
+        font-size: .9em !important;
+    }
+
+    .rowInfoBarPrice {
+        display: flex !important;
+        flex-direction: row;
+        visibility: visible !important;
+        gap: .3em;
     }
 }
 
@@ -329,9 +343,28 @@
     .infoBar {
         display: none;
         visibility: hidden;
+        width: 0em;
     }
+
+    .data {
+        margin-bottom: .1em !important;
+        padding-top: .1em !important;
+        font-size: .8em !important;
+    }
+
+    .rowInfoBarPrice {
+        display: flex !important;
+        flex-direction: row;
+        visibility: visible !important;
+        gap: .3em;
+    }
+
 }
 
+.rowInfoBarPrice {
+    display: none;
+    visibility: hidden;
+}
 
 
 .data {
@@ -340,6 +373,7 @@
     justify-content: space-evenly;
     margin-bottom: .5em;
     padding-top: .5em;
+    font-size: 1em;
 }
 
 .price {
