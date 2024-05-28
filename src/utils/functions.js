@@ -13,6 +13,7 @@ export const validame = (type, value) => {
     case "e-mail":
     case "correo":
     case "mail":
+      // eslint-disable-next-line
       const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
       if (!emailRegex.test(value)) {
@@ -110,6 +111,9 @@ export const calculateMoneyTrip = (km) => {
   if (km) {
     const distance = parseInt(km.slice(0, -3))
     price = Math.round((distance * 23) / 12.5)
+    if (price < 7.5) {
+      price = 7.5
+    }
     return price
   }
   return price

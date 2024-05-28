@@ -119,6 +119,7 @@ const Maps = () => {
     if (tripChanged) {
       fetching()
     }
+    // eslint-disable-next-line
   }, [tripChanged])
 
   const { isLoaded } = useJsApiLoader({

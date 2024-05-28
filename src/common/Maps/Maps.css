@@ -156,9 +156,6 @@
         align-items: center;
     }
 
-    .inputArea {
-        /* margin-left: -.5em; */
-    }
 
     .iconInput {
 
@@ -198,9 +195,7 @@
         align-items: center;
     }
 
-    .inputArea {
-        /* margin-left: -.5em; */
-    }
+
 
     .iconInput {
 
@@ -239,9 +234,7 @@
         align-items: center;
     }
 
-    .inputArea {
-        /* margin-left: -.5em; */
-    }
+
 
     .searchButton {
         margin-right: 0em;

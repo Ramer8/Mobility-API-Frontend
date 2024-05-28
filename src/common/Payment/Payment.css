@@ -60,7 +60,9 @@
     height: 3em;
 }
 
-.paymentUser {}
+.paymentUser {
+    background-color: transparent;
+}
 
 .paymentButton {
     margin-top: 1em;
@@ -111,27 +113,26 @@
 
 }
 
+.iconSelectPayment {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 1em;
+}
+
 .selectPaymentList {
-    color: gray;
+    color: #8492a6;
     background-color: transparent;
     border: none;
     outline: white;
     letter-spacing: .5px;
     font-size: 1em;
+    cursor: pointer;
 }
 
 @media(max-width: 400px) {
     .paymentInstrument {
         font-size: 1em;
-    }
-
-    .creditCardIcon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        gap: .5em;
-
     }
 
     .payDirectlyIcon {
