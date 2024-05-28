@@ -112,6 +112,14 @@
 
 }
 
+.selectPaymentList {
+    color: dimgray;
+    background-color: transparent;
+    border: none;
+    outline: white;
+    letter-spacing: .5px;
+}
+
 @media(max-width: 400px) {
     .paymentInstrument {
         font-size: 1em;

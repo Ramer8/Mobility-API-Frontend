@@ -13,7 +13,7 @@ const Payment = ({ distance, setTogglePayment, trip, tripId }) => {
   const [userPayment, setUserPayment] = useState({
     payment: "",
   })
-
+  // eslint-disable-next-line
   const dispatch = useDispatch()
   const rdxUser = useSelector(userData)
   const navigate = useNavigate()
@@ -30,6 +30,7 @@ const Payment = ({ distance, setTogglePayment, trip, tripId }) => {
 
         if (!fetched?.success) {
           if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
+            // eslint-disable-next-line
             useDispatch(logout({ credentials: "" }))
 
             toast.error(fetched.message, {
@@ -117,6 +118,7 @@ const Payment = ({ distance, setTogglePayment, trip, tripId }) => {
               <option value={"credit"}>{"Credit"}</option>
               <option value={"debit"}>{"Debit"}</option>
             </select>
+
             <div className="paymentUser">
               {userPayment.payment == "cash" ? (
                 <div className="payDirectlyIcon">
