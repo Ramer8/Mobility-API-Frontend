@@ -70,6 +70,21 @@ The registered user can search for a destination, choose between different types
 
 ---
 
+#### Link to App Deployed ⚙️
+
+ <li>mobilityApp</li>
+
+<details>
+  <summary style="padding-left:15px; color:darkgray"> </summary>
+<ol>
+
+https://mobilityapp.zeabur.app/login
+
+</ol>
+</details>
+
+---
+
 ### Flow Chart
 
 <p>

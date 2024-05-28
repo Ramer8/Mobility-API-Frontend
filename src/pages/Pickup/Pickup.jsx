@@ -24,6 +24,7 @@ const Pickup = ({
     if (!rdxUser.credentials.token) {
       navigate("/login")
     }
+    // eslint-disable-next-line
   }, [rdxUser])
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const Pickup = ({
 
     timerMessage4()
     clearTimeout(timerMessage4)
+    // eslint-disable-next-line
   }, [trip])
   const timerMessage = () => {
     setTimeout(() => {
