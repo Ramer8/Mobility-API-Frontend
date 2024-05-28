@@ -13,8 +13,6 @@
     /* Adjust background color as needed */
     z-index: 9999;
     /* Ensure spinner is on top of other content */
-
-
 }
 
 
@@ -38,7 +36,6 @@ text {
     font-size: 14px;
     /* Adjust the font size as needed */
     fill: #f0f0f0;
-    /* fill: #333; */
     /* Adjust the text color as needed */
 }
 

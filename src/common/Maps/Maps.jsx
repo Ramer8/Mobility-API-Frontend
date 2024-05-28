@@ -159,6 +159,7 @@ const Maps = () => {
   const geocoder = new google.maps.Geocoder()
   async function calculateRoute() {
     if (destiantionRef.current.value === "") {
+      setLoading(false)
       return
     }
 
@@ -275,7 +276,6 @@ const Maps = () => {
   return (
     <>
       {loading && <RotatingText />}
-
       {location && (
         <>
           <div className="inputBox">

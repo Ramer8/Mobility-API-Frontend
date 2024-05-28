@@ -16,7 +16,6 @@ const RotatingText = () => {
           ></path>
         </defs>
         <image
-          // href="/assets/logos/logo-6.svg"
           href="/carfront.png"
           x="75"
           y="75"
@@ -25,7 +24,7 @@ const RotatingText = () => {
         ></image>
         <text>
           <textPath xlinkHref="#circlePath" style={{ letterSpacing: "3px" }}>
-            Mobility App Mobility App Mobility App
+            Mobility App • Mobility App • Mobility App •
           </textPath>
         </text>
       </svg>
