@@ -213,6 +213,7 @@
     display: flex;
     border-radius: 4em;
     border: none;
+    padding: .5em;
 }
 
 .cursorButton:hover {

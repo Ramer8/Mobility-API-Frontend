@@ -53,7 +53,7 @@
     align-items: center;
     display: flex;
     border-radius: 3em;
-
+    cursor: pointer;
 }
 
 .leftButtonBar {

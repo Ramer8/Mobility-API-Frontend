@@ -1,5 +1,5 @@
 import "./Spinner.css" // Import CSS for styling
-import spinCar from "/public/carfront.png"
+import spinCar from "/carfront.png"
 const Spinner = () => {
   return (
     <div className="spinner-overlay">
