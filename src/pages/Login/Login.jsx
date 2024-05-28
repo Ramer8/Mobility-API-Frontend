@@ -14,6 +14,7 @@ import { CustomButton } from "../../common/CustomButton/CustomButton"
 import { useDispatch } from "react-redux"
 import { login } from "../../app/slices/userSlice"
 import Spinner from "../../common/Spinner/Spinner"
+import RotatingText from "../../common/Spinner/RotatingText"
 
 export const Login = () => {
   const [loading, setLoading] = useState(false)
@@ -149,7 +150,8 @@ export const Login = () => {
 
   return (
     <div>
-      {loading && <Spinner />}
+      {/* {loading && <Spinner />} */}
+      {loading && <RotatingText />}
       <div className="loginDesign">
         <label>Name:</label>
         <CustomInput

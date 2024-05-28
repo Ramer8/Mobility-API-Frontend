@@ -12,6 +12,7 @@ import { CustomButton } from "../../common/CustomButton/CustomButton"
 import { decodeToken } from "react-jwt"
 import { useDispatch } from "react-redux"
 import { login } from "../../app/slices/userSlice"
+import RotatingText from "../../common/Spinner/RotatingText"
 
 export const Register = () => {
   const [loading, setLoading] = useState(false)
@@ -128,7 +129,8 @@ export const Register = () => {
 
   return (
     <div className="registerDesign">
-      {loading && <Spinner />}
+      {/* {loading && <Spinner />} */}
+      {loading && <RotatingText />}
       <div>
         <label>Name:</label>
         <CustomInput

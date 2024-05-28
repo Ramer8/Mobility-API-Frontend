@@ -1,0 +1,48 @@
+.spin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    /* background-color: #f0f0f0; */
+    background-color: rgba(0, 0, 0, 0.8);
+
+    /* Adjust background color as needed */
+    z-index: 9999;
+    /* Ensure spinner is on top of other content */
+
+
+}
+
+
+.rotatingText {
+    animation: rotate 10s linear infinite;
+    transform-origin: center center;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+text {
+    color: whitesmoke;
+    font-size: 14px;
+    /* Adjust the font size as needed */
+    fill: #f0f0f0;
+    /* fill: #333; */
+    /* Adjust the text color as needed */
+}
+
+image {
+    transform: translate(-25px, -25px);
+    /* Adjust the position of the logo */
+}

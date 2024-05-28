@@ -17,6 +17,7 @@ import { createTrip, fetchMyTripWithId } from "../../services/apiCalls"
 import Pickup from "../../pages/Pickup/Pickup"
 import Payment from "../Payment/Payment"
 import Spinner from "../Spinner/Spinner"
+import RotatingText from "../Spinner/RotatingText"
 // import Pickup from "../../pages/Pickup/Pickup"
 
 const places = ["places"]
@@ -273,7 +274,8 @@ const Maps = () => {
 
   return (
     <>
-      {loading && <Spinner />}
+      {loading && <RotatingText />}
+
       {location && (
         <>
           <div className="inputBox">
