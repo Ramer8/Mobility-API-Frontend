@@ -13,7 +13,6 @@ import { CustomButton } from "../../common/CustomButton/CustomButton"
 
 import { useDispatch } from "react-redux"
 import { login } from "../../app/slices/userSlice"
-import Spinner from "../../common/Spinner/Spinner"
 import RotatingText from "../../common/Spinner/RotatingText"
 
 export const Login = () => {
@@ -28,7 +27,7 @@ export const Login = () => {
     emailError: "",
     passwordError: "",
   })
-
+  // eslint-disable-next-line
   const [status, setStatus] = useState("")
 
   const ERROR_MSG_TIME = 6000
@@ -81,6 +80,8 @@ export const Login = () => {
   }
 
   const logMe = async () => {
+    setLoading(true)
+
     for (let credential in credentials) {
       if (credentials[credential] === "") {
         toast.error("You must fill in all fields", {
@@ -150,7 +151,6 @@ export const Login = () => {
 
   return (
     <div>
-      {/* {loading && <Spinner />} */}
       {loading && <RotatingText />}
       <div className="loginDesign">
         <label>Name:</label>

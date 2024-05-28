@@ -3,7 +3,6 @@ import "./Register.css"
 import { loginMe, registerMe } from "../../services/apiCalls"
 import { CustomInput } from "../../common/CustomInput/CustomInput"
 import { useNavigate } from "react-router-dom"
-import Spinner from "../../common/Spinner/Spinner"
 import { validame } from "../../utils/functions"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -67,7 +66,7 @@ export const Register = () => {
     if (fetched.success) {
       toast.success(fetched.message, { theme: "dark" })
     }
-
+    // eslint-disable-next-line
     const { name, ...newCredentials } = credentials
 
     const logMe = async () => {
