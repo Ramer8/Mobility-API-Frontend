@@ -54,6 +54,7 @@
     display: flex;
     border-radius: 3em;
     cursor: pointer;
+    margin-right: 1em;
 }
 
 .leftButtonBar {
@@ -242,6 +243,10 @@
         /* margin-left: -.5em; */
     }
 
+    .searchButton {
+        margin-right: 0em;
+    }
+
     .iconInput {
 
         flex-direction: column;
@@ -369,7 +374,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: blue; */
     /* justify-content: space-around; */
 }
 
@@ -399,7 +403,6 @@
 }
 
 .tripInfo {
-    border-top: solid 1px lightgrey;
     padding-top: .5em;
     width: 100%;
     display: flex;
