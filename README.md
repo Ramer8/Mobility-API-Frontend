@@ -72,7 +72,13 @@ The registered user can search for a destination, choose between different types
 
 #### Link to App Deployed ⚙️
 
- <li>mobilityApp</li>
+<ol>
+
+https://mobilityapp.zeabur.app/login
+
+</ol>
+
+ <!-- <li>mobilityApp</li>
 
 <details>
   <summary style="padding-left:15px; color:darkgray"> </summary>
@@ -81,7 +87,7 @@ The registered user can search for a destination, choose between different types
 https://mobilityapp.zeabur.app/login
 
 </ol>
-</details>
+</details> -->
 
 ---
 
