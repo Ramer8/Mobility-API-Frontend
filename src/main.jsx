@@ -8,6 +8,9 @@ import { Home } from "./pages/Home/Home.jsx"
 import { Register } from "./pages/Register/Register.jsx"
 import { Login } from "./pages/Login/Login.jsx"
 import Profile from "./pages/Profile/Profile.jsx"
+import { DriverRegister } from "./pages/DriverRegister/DriverRegister.jsx"
+// import { Login } from "./pages/Login/Login.jsx"
+// import Profile from "./pages/Profile/Profile.jsx"
 
 //Redux
 
@@ -55,6 +58,18 @@ const router = createBrowserRouter([
         path: "/managment",
         element: <Managment />,
       },
+      {
+        path: "/driver/register",
+        element: <DriverRegister />,
+      },
+      // {
+      //   path: "/driver/login",
+      //   element: <DriverLogin />,
+      // },
+      // {
+      //   path: "/driver/profile",
+      //   element: <DriverProfile />,
+      // },
     ],
   }, // we can add the route that we need
 ])
