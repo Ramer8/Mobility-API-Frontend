@@ -295,3 +295,52 @@ export const searchUsers = async (searchParam, token) => {
     return error
   }
 }
+
+export const loginDriver = async (credenciales) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credenciales),
+  }
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}auth/drivers/login`,
+      options
+    )
+
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    return error
+  }
+}
+export const registerDriver = async (credenciales) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credenciales),
+  }
+
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}auth/drivers/register`,
+      options
+    )
+
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+
+    return data
+  } catch (error) {
+    return error
+  }
+}
