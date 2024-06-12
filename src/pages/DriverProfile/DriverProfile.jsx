@@ -40,6 +40,7 @@ const DriverProfile = () => {
     if (!rdxUser.credentials.token) {
       navigate("/")
     }
+    // eslint-disable-next-line
   }, [rdxUser])
 
   const inputHandler = (e) => {
@@ -61,6 +62,7 @@ const DriverProfile = () => {
     if (!rdxUser.credentials.token) {
       navigate("/drivers/login")
     }
+    // eslint-disable-next-line
   }, [rdxUser])
 
   useEffect(() => {
@@ -88,12 +90,9 @@ const DriverProfile = () => {
           return
         }
         setLoadedData(true)
-        console.log(fetched.data)
         setUser({
           driverName: fetched.data.driverName,
           phone: fetched.data.phone,
-          address: fetched.data.address,
-          payment: fetched.data.payment,
         })
       } catch (error) {
         console.error(error)
@@ -102,6 +101,7 @@ const DriverProfile = () => {
     if (!loadedData) {
       fetching()
     }
+    // eslint-disable-next-line
   }, [rdxUser]) // Execute useEffect whenever the user changes
 
   const updateData = async () => {

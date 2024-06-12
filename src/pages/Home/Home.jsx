@@ -16,6 +16,7 @@ export const Home = () => {
     if (!rdxUser.credentials.token) {
       navigate("/login")
     }
+    // eslint-disable-next-line
   }, [rdxUser])
 
   return (

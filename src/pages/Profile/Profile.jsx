@@ -39,6 +39,7 @@ const Profile = () => {
     if (!rdxUser.credentials.token) {
       navigate("/")
     }
+    // eslint-disable-next-line
   }, [rdxUser])
 
   const inputHandler = (e) => {
@@ -60,6 +61,7 @@ const Profile = () => {
     if (!rdxUser.credentials.token) {
       navigate("/login")
     }
+    // eslint-disable-next-line
   }, [rdxUser])
 
   useEffect(() => {
@@ -100,6 +102,7 @@ const Profile = () => {
     if (!loadedData) {
       fetching()
     }
+    // eslint-disable-next-line
   }, [rdxUser]) // Execute useEffect whenever the user changes
 
   const updateData = async () => {

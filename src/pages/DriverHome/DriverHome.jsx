@@ -16,6 +16,7 @@ export const DriverHome = () => {
     if (!rdxUser.credentials.token) {
       navigate("/drivers/login")
     }
+    // eslint-disable-next-line
   }, [rdxUser])
 
   return (
