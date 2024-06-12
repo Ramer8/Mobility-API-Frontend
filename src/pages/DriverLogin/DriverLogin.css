@@ -1,0 +1,72 @@
+.loginDesign {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gold;
+}
+
+.loginButton {
+
+    /* height: 2.5em;
+
+    width: 10em; */
+    padding: .5rem 2rem;
+    height: 2.5em;
+    width: 15em;
+    margin: 1em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: medium;
+    background-color: violet;
+    border-radius: 0.4em;
+    transition: 0.4s;
+    color: black;
+    font-weight: bolder !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 60px grey;
+}
+
+.loginButton:hover {
+
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 10px 10px 60px white;
+    box-shadow: 10px 10px 60px fuchsia;
+}
+
+.error {
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    width: max-content;
+    border-radius: 2em;
+    padding: 1em;
+}
+
+.footerRedirection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+}
+
+.linkToRegister {
+    font-weight: bolder;
+    color: #396cf0;
+}
+
+.linkToRegister:hover {
+    cursor: pointer;
+    text-shadow:
+        1px 1px 2px black,
+        0 0 1em blue,
+        0 0 0.2em blue;
+    color: whitesmoke;
+}
