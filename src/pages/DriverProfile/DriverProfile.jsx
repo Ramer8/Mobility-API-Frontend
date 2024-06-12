@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import "./DriverProfile.css"
-import { fetchMyProfile, updateProfile } from "../../services/apiCalls"
+import {
+  fetchDriverProfile,
+  fetchMyProfile,
+  updateDriverProfile,
+  updateProfile,
+} from "../../services/apiCalls"
 import { useEffect, useState } from "react"
 
 import { ToastContainer, toast } from "react-toastify"
@@ -19,7 +24,7 @@ const DriverProfile = () => {
   const [loadedData, setLoadedData] = useState(false)
 
   const [user, setUser] = useState({
-    userName: "",
+    driverName: "",
     phone: "",
     address: "",
     payment: "",
@@ -58,14 +63,14 @@ const DriverProfile = () => {
   }
   useEffect(() => {
     if (!rdxUser.credentials.token) {
-      navigate("/login")
+      navigate("/drivers/login")
     }
   }, [rdxUser])
 
   useEffect(() => {
     const fetching = async () => {
       try {
-        const fetched = await fetchMyProfile(rdxUser.credentials.token)
+        const fetched = await fetchDriverProfile(rdxUser.credentials.token)
 
         if (!fetched?.success) {
           if (fetched.message === "JWT NOT VALID OR TOKEN MALFORMED") {
@@ -83,12 +88,13 @@ const DriverProfile = () => {
             position: "top-left",
             autoClose: 1500,
           })
-          navigate("/login")
+          navigate("/drivers/login")
           return
         }
         setLoadedData(true)
+        console.log(fetched.data)
         setUser({
-          userName: fetched.data.userName,
+          driverName: fetched.data.driverName,
           phone: fetched.data.phone,
           address: fetched.data.address,
           payment: fetched.data.payment,
@@ -105,17 +111,20 @@ const DriverProfile = () => {
   const updateData = async () => {
     if (!userError.name) {
       try {
-        const fetched = await updateProfile(user, rdxUser.credentials.token)
+        const fetched = await updateDriverProfile(
+          user,
+          rdxUser.credentials.token
+        )
 
         toast.success(fetched.message, { theme: "dark", autoClose: 1500 })
         setUser({
-          userName: fetched.userNameUpdated,
-          address: fetched.addressUpdated,
+          driverName: fetched.driverNameUpdated,
+          //   address: fetched.addressUpdated,
           phone: fetched.phoneUpdated,
-          payment: fetched.paymentUpdated,
+          //   payment: fetched.paymentUpdated,
         })
         setWrite("disabled")
-        navigate("/")
+        // navigate("/") // then navigate to driver home
       } catch (error) {
         console.log(error)
       }
@@ -186,13 +195,13 @@ const DriverProfile = () => {
                 }
                 type={"text"}
                 placeholder={""}
-                name={"userName"}
+                name={"driverName"}
                 disabled={write}
-                value={user.userName || ""}
+                value={user.driverName || ""}
                 functionChange={(e) => inputHandler(e)}
                 onBlurFunction={(e) => checkError(e)}
               />
-              <div className="addressLabel">
+              {/* <div className="addressLabel">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -204,8 +213,8 @@ const DriverProfile = () => {
                   <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
                 </svg>
                 <label>Address</label>
-              </div>
-              <CustomInput
+              </div> */}
+              {/* <CustomInput
                 className={
                   `inputDesign ${
                     userError.nameError.length !== 0 ? "inputDesignError" : ""
@@ -218,7 +227,7 @@ const DriverProfile = () => {
                 value={user.address || ""}
                 functionChange={(e) => inputHandler(e)}
                 // onBlurFunction={(e) => checkError(e)}
-              />
+              /> */}
               <div className="phoneLabel">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +255,7 @@ const DriverProfile = () => {
                 functionChange={(e) => inputHandler(e)}
                 // onBlurFunction={(e) => checkError(e)}
               />
-              <div className="paymentLabel">
+              {/* <div className="paymentLabel">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -260,8 +269,8 @@ const DriverProfile = () => {
                 </svg>
                 <label>Payment:</label>{" "}
                 {user.payment ? <div> {user.payment}</div> : " "}
-              </div>
-              <div className="payment">
+              </div> */}
+              {/* <div className="payment">
                 <div>
                   <input
                     type="radio"
@@ -296,7 +305,7 @@ const DriverProfile = () => {
                   />
                   <label htmlFor="cash">Pay driver directly</label>
                 </div>
-              </div>
+              </div> */}
 
               <CustomButton
                 className={

@@ -97,7 +97,7 @@ export const DriverRegister = () => {
       setLoading(true)
       // Home redirected
       setTimeout(() => {
-        navigate("/profile")
+        navigate("/drivers/profile")
       }, SUCCESS_MSG_TIME)
     }
     logMe()

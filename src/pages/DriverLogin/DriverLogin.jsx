@@ -50,7 +50,9 @@ export const DriverLogin = () => {
     // Simulate loading
     setLoading(true)
     setTimeout(() => {
-      navigate("/home")
+      //   navigate("/home")
+      navigate("/drivers/profile")
+      // change navigate to driverHome, before create the page!
     }, SUCCESS_MSG_TIME)
   }
 
@@ -152,7 +154,7 @@ export const DriverLogin = () => {
   return (
     <div>
       {loading && <RotatingText />}
-      <div className="loginDesign">
+      <div className="loginDriverDesign">
         <div>
           <h1>
             <svg
@@ -202,7 +204,7 @@ export const DriverLogin = () => {
           <div>Dont have an account? </div>
           <div
             className="linkToRegister"
-            onClick={() => navigate("/driver/register")}
+            onClick={() => navigate("/drivers/register")}
           >
             Sign Up
           </div>

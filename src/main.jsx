@@ -9,6 +9,7 @@ import { Register } from "./pages/Register/Register.jsx"
 import { Login } from "./pages/Login/Login.jsx"
 import Profile from "./pages/Profile/Profile.jsx"
 import { DriverRegister } from "./pages/DriverRegister/DriverRegister.jsx"
+import { DriverLogin } from "./pages/DriverLogin/DriverLogin.jsx"
 // import { Login } from "./pages/Login/Login.jsx"
 // import Profile from "./pages/Profile/Profile.jsx"
 
@@ -22,6 +23,7 @@ import { PersistGate } from "redux-persist/integration/react"
 import { persistStore } from "redux-persist"
 import Managment from "./pages/Managment/Managment.jsx"
 import Payment from "./common/Payment/Payment.jsx"
+import DriverProfile from "./pages/DriverProfile/DriverProfile.jsx"
 
 const persistor = persistStore(store)
 
@@ -59,17 +61,17 @@ const router = createBrowserRouter([
         element: <Managment />,
       },
       {
-        path: "/driver/register",
+        path: "/drivers/register",
         element: <DriverRegister />,
       },
-      // {
-      //   path: "/driver/login",
-      //   element: <DriverLogin />,
-      // },
-      // {
-      //   path: "/driver/profile",
-      //   element: <DriverProfile />,
-      // },
+      {
+        path: "/drivers/login",
+        element: <DriverLogin />,
+      },
+      {
+        path: "/drivers/profile",
+        element: <DriverProfile />,
+      },
     ],
   }, // we can add the route that we need
 ])
