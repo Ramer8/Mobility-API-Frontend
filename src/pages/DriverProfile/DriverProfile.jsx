@@ -2,9 +2,7 @@ import { useNavigate } from "react-router-dom"
 import "./DriverProfile.css"
 import {
   fetchDriverProfile,
-  fetchMyProfile,
   updateDriverProfile,
-  updateProfile,
 } from "../../services/apiCalls"
 import { useEffect, useState } from "react"
 
@@ -26,8 +24,6 @@ const DriverProfile = () => {
   const [user, setUser] = useState({
     driverName: "",
     phone: "",
-    address: "",
-    payment: "",
   })
 
   const [userError, setUserError] = useState({
@@ -119,12 +115,10 @@ const DriverProfile = () => {
         toast.success(fetched.message, { theme: "dark", autoClose: 1500 })
         setUser({
           driverName: fetched.driverNameUpdated,
-          //   address: fetched.addressUpdated,
           phone: fetched.phoneUpdated,
-          //   payment: fetched.paymentUpdated,
         })
         setWrite("disabled")
-        // navigate("/") // then navigate to driver home
+        navigate("/drivers/home")
       } catch (error) {
         console.log(error)
       }

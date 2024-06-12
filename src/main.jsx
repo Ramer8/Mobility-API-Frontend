@@ -24,6 +24,7 @@ import { persistStore } from "redux-persist"
 import Managment from "./pages/Managment/Managment.jsx"
 import Payment from "./common/Payment/Payment.jsx"
 import DriverProfile from "./pages/DriverProfile/DriverProfile.jsx"
+import { DriverHome } from "./pages/DriverHome/DriverHome.jsx"
 
 const persistor = persistStore(store)
 
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/drivers/profile",
         element: <DriverProfile />,
+      },
+      {
+        path: "/drivers/home",
+        element: <DriverHome />,
       },
     ],
   }, // we can add the route that we need
