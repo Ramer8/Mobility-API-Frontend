@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./DriverRegister.css"
-import { loginMe, registerMe } from "../../services/apiCalls"
+import { loginDriver, registerDriver } from "../../services/apiCalls"
 import { CustomInput } from "../../common/CustomInput/CustomInput"
 import { useNavigate } from "react-router-dom"
 import { validame } from "../../utils/functions"
@@ -16,7 +16,7 @@ import RotatingText from "../../common/Spinner/RotatingText"
 export const DriverRegister = () => {
   const [loading, setLoading] = useState(false)
   const [credentials, setCredentials] = useState({
-    userName: "",
+    driverName: "",
     email: "",
     password: "",
   })
@@ -56,7 +56,7 @@ export const DriverRegister = () => {
       }
     }
 
-    const fetched = await registerMe(credentials)
+    const fetched = await registerDriver(credentials)
 
     if (!fetched.success) {
       toast.error(fetched.message, { theme: "dark", position: "top-left" })
@@ -70,7 +70,7 @@ export const DriverRegister = () => {
     const { name, ...newCredentials } = credentials
 
     const logMe = async () => {
-      const fetchedLogin = await loginMe(newCredentials)
+      const fetchedLogin = await loginDriver(newCredentials)
       if (!fetchedLogin.success) {
         toast.error(fetchedLogin.message, {
           theme: "colored",
@@ -153,8 +153,8 @@ export const DriverRegister = () => {
             credentialsError.nameError !== "" ? "inputDesignError" : ""
           }`}
           type="text"
-          name="userName"
-          value={credentials.userName || ""}
+          name="driverName"
+          value={credentials.driverName || ""}
           placeholder="write your name...."
           functionChange={inputHandler}
           onBlurFunction={(e) => checkError(e)}
