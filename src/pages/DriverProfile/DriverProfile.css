@@ -1,0 +1,156 @@
+.profileDesign {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gold;
+}
+
+@media(max-width: 500px) {
+    .boxProfile {
+        width: 70%;
+    }
+
+    .profileDesign {
+        height: auto;
+    }
+}
+
+@media(min-width: 500px) {
+    .boxProfile {
+        width: 70%;
+    }
+}
+
+@media(min-width: 700px) {
+    .boxProfile {
+        width: 45%;
+
+    }
+}
+
+@media(min-width: 1000px) {
+    .boxProfile {
+        width: 50%;
+    }
+}
+
+.boxProfile {
+
+    border-radius: .5em;
+    /* border: 1px solid gray; */
+    width: 100%;
+    /* padding-right: 2em; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerProfile {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .2em;
+}
+
+.titleHeader {
+    padding-top: .5em;
+    font-weight: 600;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    color: black;
+    text-shadow:
+        /* 1px 1px 1px white, */
+        /* 0 0 1em blue, */
+        0 0 0.3em whitesmoke;
+}
+
+.pic {
+    margin: .5em;
+    border-radius: 50%;
+    width: 4%;
+}
+
+.titlePic {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: black;
+    text-shadow:
+        /* 1px 1px 1px white, */
+        /* 0 0 1em blue, */
+        0 0 0.2em whitesmoke;
+}
+
+.advicePicture {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+}
+
+.buttonsPicture {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* text-align: center; */
+}
+
+.formProfile {
+    display: flex;
+    flex-direction: column;
+    gap: .1em;
+    /* background-color: red; */
+    justify-content: start;
+    align-items: start;
+}
+
+.phoneLabel,
+.paymentLabel,
+.addressLabel,
+.nameLabel {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+
+.payment {
+    flex-direction: column;
+    display: flex;
+    margin: 1em;
+    gap: 1em;
+
+}
+
+.formFooter {
+    width: 60%;
+}
+
+.titleFooter {
+    color: coral;
+    font-weight: 600;
+}
+
+.deleteText {
+    padding-top: .5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+}
