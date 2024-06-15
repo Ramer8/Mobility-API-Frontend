@@ -51,12 +51,14 @@ const Managment = () => {
     return () => {
       clearTimeout(searching)
     }
+    // eslint-disable-next-line
   }, [searchUser])
 
   useEffect(() => {
     if (!rdxUser.credentials.token) {
       navigate("/")
     }
+    // eslint-disable-next-line
   }, [rdxUser, searchUserRdx])
 
   useEffect(() => {
@@ -101,6 +103,7 @@ const Managment = () => {
       fetching()
       fetchingTrips()
     }
+    // eslint-disable-next-line
   }, [loadedData, searchUserRdx.criteriaUser])
 
   const handleCheck = (id) => {
@@ -217,6 +220,7 @@ const Managment = () => {
   }
   useEffect(() => {
     search()
+    // eslint-disable-next-line
   }, [searchUserRdx?.criteriaUser])
 
   const nextPage = () => {}

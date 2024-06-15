@@ -134,7 +134,7 @@ const DriverProfile = () => {
 
   return (
     <>
-      <div className="profileDesign">
+      <div className="driverProfileDesign">
         {!loadedData ? (
           <div>CARGADNDO</div>
         ) : (
